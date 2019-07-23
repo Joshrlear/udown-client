@@ -1,0 +1,33 @@
+.profile_container {
+    position: relative;
+}
+
+.profile {
+  position: relative;
+  /* transform: 
+  translateX(50%)
+  translateY(50%); */
+}
+
+.img_container > * {
+  display: block;
+}
+
+img {
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile_info, .upload_image {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.save_button, .home_button {
+  margin-top: 25px;
+}
+
+.home_button {
+  margin-left: 10px;
+}
