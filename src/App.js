@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import config from './config';
+import LandingPage from './LandingPage/LandingPage';
 import Login from './forms/login';
 import Signup from './forms/signup';
 import Profile from './profile/profile';
@@ -26,6 +27,11 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
+        <Route
+          exact
+          path="/"
+          component={ LandingPage }
+        />
         {this.renderLoginSignup()}
       <Route
         path="/profile"

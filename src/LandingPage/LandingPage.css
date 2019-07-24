@@ -1,0 +1,23 @@
+.landing-page_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.landing-page {
+    position: relative;
+    top: calc(50% - 100px);
+}
+
+.title {
+    text-align: center;
+}
+
+.button_rack {
+    display: flex;
+    justify-content: center;
+}
+
+.button_rack button {
+    margin: 0px 8px;
+}

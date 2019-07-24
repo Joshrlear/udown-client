@@ -37,6 +37,10 @@ input {
   font-size: 22px;
 }
 
+::placeholder {
+  text-align: center;
+}
+
 .button_container {
   display: flex;
   justify-content: space-between;

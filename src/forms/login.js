@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config';
 import { NavLink } from 'react-router-dom';
 import functions from '../functions';
 import ErrorMsg from '../ErrorMsg/ErrorMsg';
@@ -15,15 +16,10 @@ export default class Login extends Component {
         })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        // filtering unwwanted state elements then validating state
-        const { username, password } = this.state
-        const stateVals = { username, password }
-
-        if (functions.inputLengthValidator(stateVals).includes(false) === true) {
+    formValidate(newUser) {
+        if (functions.inputLengthValidator(newUser).includes(false) === true) {
             
-            const invalidArr = functions.inputLength(stateVals)
+            const invalidArr = functions.inputLength(newUser)
             const invalid = invalidArr.filter(val => val !== null).map(val => val[0]).join(', ')
             const errorMsg = `Invalid fields: ${invalid}`
             this.setState({
@@ -31,11 +27,42 @@ export default class Login extends Component {
                 errorMsg
             }) 
         } 
-        else { 
-            this.setState({ error: false })
-            this.props.history.push('/profile')
+        else {
+            // validate retype_password
+            if (this.state.password !== this.state.retype_password) {
+                console.log('failed password')
+                this.setState({
+                    error: true
+                }) 
+            } 
+            else { 
+                this.setState({ 
+                    error: false, 
+                    errorMsg: ''
+                }) 
+            }
         }
-            
+    }    
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        // filtering unwwanted state elements then validating state
+        const { username, password } = this.state
+        const   newUser = { username, password }
+
+        this.formValidate(newUser)
+
+        fetch(`${config.API_ENDPOINT}login`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "username": username,
+                "password": password
+            }
+        })
+        .then(res => {
+            console.log(res)
+        })   
     }
 
     render() {

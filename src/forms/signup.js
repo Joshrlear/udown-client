@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import config from '../config';
 import functions from '../functions';
 import ErrorMsg from '../ErrorMsg/ErrorMsg';
 import './forms.css';
@@ -16,15 +17,8 @@ export default class Login extends Component {
             [target.name]: target.value
         })
     }
-    
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-
-        // filtering unwwanted state elements then validating state
-        const { username, password, retype_password } = this.state
-        const stateVals = { username, password, retype_password }
-
+    formValidate(stateVals) {
         if (functions.inputLengthValidator(stateVals).includes(false) === true) {
             
             const invalidArr = functions.inputLength(stateVals)
@@ -44,11 +38,44 @@ export default class Login extends Component {
                 }) 
             } 
             else { 
-                this.setState({ error: false }) 
-                this.props.history.push('/profile') 
+                this.setState({ 
+                    error: false, 
+                    errorMsg: ''
+                }) 
             }
         }
-        
+    }
+    
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { username, password, retype_password } = this.state
+        const stateVals = { username, password, retype_password }
+        const newUser = { username, password }
+
+        this.formValidate(stateVals)
+
+        fetch(`${config.API_ENDPOINT}/users` , {
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                return res.json().then(err => {
+                    throw err
+                })
+            }
+            return res.json()
+        })
+        .then(data => {
+            this.props.history.push('/profile')
+        })
+        .catch(err => {
+            console.log(`Error: ${err}`)
+        })
     }
     
     render() {
