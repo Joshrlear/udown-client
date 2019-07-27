@@ -14,11 +14,10 @@ export default class Profile extends Component {
     componentDidMount() {
       const path = this.props.location.pathname.split('/')
       const user_id = path[path.length - 1]
-      console.log(user_id)
 
       this.setState({ user_id })
 
-      fetch(`${config.API_ENDPOINT}images/${user_id}`, {
+      fetch(`${config.API_ENDPOINT}profile/images/${user_id}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
@@ -26,9 +25,10 @@ export default class Profile extends Component {
         }
       })
       .then(res => {
+        console.log(res)
           if (!res.ok) {
             return res.json().then(error => {
-              console.log(`Error: ${error}`)
+              //console.log(`Error: ${error}`)
               throw error
             })
           }

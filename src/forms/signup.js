@@ -89,9 +89,9 @@ export default class Login extends Component {
                 this.props.history.push(`/profile/${data.id}`)
             })
             .catch(error => {
-                const err = error.message
-                this.setState({ errorMsg: err }, 
-                console.log(`Error is: ${err}`))
+                this.setState({
+                    errorMsg: error.message
+                })
             })
         })
     }
