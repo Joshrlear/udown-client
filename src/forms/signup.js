@@ -4,6 +4,7 @@ import config from '../config';
 import functions from '../functions';
 import ErrorMsg from '../ErrorMsg/ErrorMsg';
 import './forms.css';
+import { resolve, reject } from 'q';
 
 export default class Login extends Component {
     
@@ -19,29 +20,35 @@ export default class Login extends Component {
     }
 
     formValidate(stateVals) {
+        console.log('validating')
         if (functions.inputLengthValidator(stateVals).includes(false) === true) {
-            
+            console.log('1')
             const invalidArr = functions.inputLength(stateVals)
             const invalid = invalidArr.filter(val => val !== null).map(val => val[0]).join(', ')
             const errorMsg = `Invalid fields: ${invalid}`
             this.setState({
                 error: true,
                 errorMsg
-            }) 
+            }, console.log('2'))
+            return false
         } 
         else {
             // validate retype_password
+            console.log('3')
             if (this.state.password !== this.state.retype_password) {
                 console.log('failed password')
                 this.setState({
-                    error: true
-                }) 
+                    error: true,
+                    errorMsg: `Passwords don't match`
+                })
+                return false
             } 
-            else { 
+            else {
                 this.setState({ 
                     error: false, 
                     errorMsg: ''
-                }) 
+                }, console.log('4'))
+                return true
             }
         }
     }
@@ -53,28 +60,39 @@ export default class Login extends Component {
         const stateVals = { username, password, retype_password }
         const newUser = { username, password }
 
-        this.formValidate(stateVals)
+        // wait for valid inputs
+        let validated = new Promise((resolve, reject) => {
+            this.formValidate(stateVals) === true
+            ? resolve()
+            : reject()
+        })
 
-        fetch(`${config.API_ENDPOINT}/users` , {
-            method: 'POST',
-            body: JSON.stringify(newUser),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(err => {
-                    throw err
-                })
-            }
-            return res.json()
-        })
-        .then(data => {
-            this.props.history.push('/profile')
-        })
-        .catch(err => {
-            console.log(`Error: ${err}`)
+        // if valid inputs run fetch request
+        validated.then(() => {
+            fetch(`${config.API_ENDPOINT}signup` , {
+                method: 'POST',
+                body: JSON.stringify(newUser),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => {
+                        
+                        throw error
+                    })
+                }
+                return res.json()
+            })
+            .then(data => {
+                this.props.history.push(`/profile/${data.id}`)
+            })
+            .catch(error => {
+                const err = error.message
+                this.setState({ errorMsg: err }, 
+                console.log(`Error is: ${err}`))
+            })
         })
     }
     

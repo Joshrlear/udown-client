@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import config from '../config';
 import './profile.css';
+
+const imageHeight = window.outerHeight * 0.35;
+const imageWidth = window.innerWidth;
 
 export default class Profile extends Component {
 
@@ -7,35 +11,59 @@ export default class Profile extends Component {
 
     }  
 
+    componentDidMount() {
+      const path = this.props.location.pathname.split('/')
+      const user_id = path[path.length - 1]
+      console.log(user_id)
+
+      this.setState({ user_id })
+
+      fetch(`${config.API_ENDPOINT}images/${user_id}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          "user_id": user_id
+        }
+      })
+      .then(res => {
+          if (!res.ok) {
+            return res.json().then(error => {
+              console.log(`Error: ${error}`)
+              throw error
+            })
+          }
+          return res.json()
+        })
+        .then(imageFile => {
+          const image = imageFile.image
+
+          this.setState({
+            profileImage: image
+          })
+            document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
+        })
+    }
+
 
     render() {
-        const img = `https://via.placeholder.com/${window.innerWidth}x200`
-        
-        return (
-            <div className="profile_container">
-                <div className="profile">
-                  <div className="img_container">
-                    <img src={img}/>
-                    <button id="upload-image" className="upload_image">+ Upload</button>
-                  </div>
-                  <br/>
-                  <form className="profile_info">
-                    <div>
-                      <label>Username: </label>
-                      <input id="username"/>
-                    </div>
-                    <br/>
-                    <div>
-                      <label>Headline: </label>
-                      <input id="headline" placeholder="I still need to fill this out..."/>
-                    </div>
-                  </form>
-                  <section className="button_container">
-                    <button id="save-button" className="save_button">Save</button>
-                    <button id="home-button" className="home_button">Home</button>
-                 </section>
+      
+      return (
+          <div className="profile_container">
+              <div className="profile">
+                <div className="img_container">
+                  <img id='profile-image' className="profile_image" src={`https://via.placeholder.com/${imageWidth}x${imageHeight}`} alt="User profile" />
                 </div>
-            </div>
-        )
+                <form ref='uploadForm' 
+                  id='uploadForm' 
+                  action={`${config.API_ENDPOINT}profile/` }
+                  method='post' 
+                  encType="multipart/form-data">
+                  <input type="file" name="imageUpload" />
+                  <input type='submit' value='Upload!' />
+                </form> 
+
+              </div>
+          </div>
+      )
     }
 }

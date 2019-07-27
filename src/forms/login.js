@@ -28,21 +28,13 @@ export default class Login extends Component {
             }) 
         } 
         else {
-            // validate retype_password
-            if (this.state.password !== this.state.retype_password) {
-                console.log('failed password')
-                this.setState({
-                    error: true
-                }) 
-            } 
-            else { 
-                this.setState({ 
-                    error: false, 
-                    errorMsg: ''
-                }) 
-            }
-        }
-    }    
+            this.setState({
+                error: false, 
+                errorMsg: ''
+            })
+        } 
+    }
+  
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -53,20 +45,33 @@ export default class Login extends Component {
         this.formValidate(newUser)
 
         fetch(`${config.API_ENDPOINT}login`, {
-            method: 'GET',
+            method: 'POST',
+            body: JSON.stringify(newUser),
             headers: {
-                "Content-Type": "application/json",
-                "username": username,
-                "password": password
-            }
+                "Content-Type": "application/json"
+            },
+            credentials: "include"
         })
         .then(res => {
-            console.log(res)
-        })   
+            if (!res.ok) {
+                return res.json().then(error => {
+                    
+                    throw error
+                })
+            }
+            return res.json()
+        })
+        .then(data => {
+            this.props.history.push(`/profile/${data.id}`)
+        })
+        .catch(error => {
+            this.setState({
+                errorMsg: error.message
+            })
+        })
     }
 
     render() {
-
     return (
         <div>
             <form
