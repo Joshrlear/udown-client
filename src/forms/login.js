@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import config from '../config';
 import { NavLink } from 'react-router-dom';
+import UdownContext from '../UdownContext';
 import functions from '../functions';
-import ErrorMsg from '../ErrorMsg/ErrorMsg';
+import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.css';
 
 export default class Login extends Component {
     state = {
         error: true
     };
+
+    static contextType = UdownContext;
 
     handleInput = target => {
         this.setState({
@@ -59,10 +62,12 @@ export default class Login extends Component {
                     throw error
                 })
             }
+            
             return res.json()
+            
         })
         .then(data => {
-            this.props.history.push(`/profile/${data.id}`)
+            functions.setIdRedirect(this.props, data)
         })
         .catch(error => {
             this.setState({
@@ -71,7 +76,12 @@ export default class Login extends Component {
         })
     }
 
+    componentDidUpdate() {
+        functions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
+    }
+
     render() {
+        
     return (
         <div>
             <form

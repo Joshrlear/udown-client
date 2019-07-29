@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import config from '../config';
+import UdownContext from '../UdownContext';
 import functions from '../functions';
-import ErrorMsg from '../ErrorMsg/ErrorMsg';
+import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.css';
-import { resolve, reject } from 'q';
 
 export default class Login extends Component {
     
     state = {
         error: true
     };
+
+    static contextType = UdownContext;
 
     handleInput = target => {
 
@@ -20,21 +22,21 @@ export default class Login extends Component {
     }
 
     formValidate(stateVals) {
-        console.log('validating')
+
         if (functions.inputLengthValidator(stateVals).includes(false) === true) {
-            console.log('1')
+
             const invalidArr = functions.inputLength(stateVals)
             const invalid = invalidArr.filter(val => val !== null).map(val => val[0]).join(', ')
             const errorMsg = `Invalid fields: ${invalid}`
             this.setState({
                 error: true,
                 errorMsg
-            }, console.log('2'))
+            })
             return false
         } 
         else {
             // validate retype_password
-            console.log('3')
+
             if (this.state.password !== this.state.retype_password) {
                 console.log('failed password')
                 this.setState({
@@ -47,7 +49,7 @@ export default class Login extends Component {
                 this.setState({ 
                     error: false, 
                     errorMsg: ''
-                }, console.log('4'))
+                }, )
                 return true
             }
         }
@@ -74,7 +76,8 @@ export default class Login extends Component {
                 body: JSON.stringify(newUser),
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                credentials: "include"
             })
             .then(res => {
                 if (!res.ok) {
@@ -86,7 +89,7 @@ export default class Login extends Component {
                 return res.json()
             })
             .then(data => {
-                this.props.history.push(`/profile/${data.id}`)
+                functions.setIdRedirect(this.props, data)
             })
             .catch(error => {
                 this.setState({
@@ -94,6 +97,10 @@ export default class Login extends Component {
                 })
             })
         })
+    }
+
+    componentDidUpdate() {
+        functions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
     }
     
     render() {
