@@ -1,0 +1,62 @@
+body {
+    margin: 0px;
+}
+  
+.info_display {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F5F5F5;
+  border-left: solid 1px lightgray;
+}
+
+.info {
+    width: 100%;
+}
+
+header {
+  display: block;
+}
+
+.review_header {
+  display: flex;
+}
+
+header > * {
+  width: 100%;
+  margin-top: 20px;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  margin: 0px;
+}
+
+.button_container > button {
+    display: flex;
+    justify-content: space-around;
+    width: 130px;
+    height: 40px;
+    margin: 0px;
+}
+.main_info {
+  display: flex;
+}
+
+.review_list{
+  width: 300px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.address {
+  position: relative;
+  width: 200px;
+  text-align: right;
+  right: 0px;
+}
+
+.playBtn {
+
+}

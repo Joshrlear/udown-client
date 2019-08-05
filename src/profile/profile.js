@@ -4,8 +4,7 @@ import UdownContext from '../UdownContext';
 import functions from '../functions';
 import './profile.css';
 
-const imageHeight = window.outerHeight * 0.35;
-const imageWidth = window.innerWidth;
+const authFunctions = functions.authFunctions
 
 export default class Profile extends Component {
 
@@ -17,16 +16,16 @@ export default class Profile extends Component {
 
     
     componentWillMount() {
-      functions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
+      authFunctions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
     }
     
 
     componentDidMount() {
-      const path = this.props.location.pathname.split('/')
-      const user_id = path[path.length - 1]
-
+      /* const path = this.props.location.pathname.split('/')
+      const user_id = path[path.length - 1] */
+      console.log("localStorage.user_id: ",localStorage.user_id)
       this.setState({
-        user_id
+        "user_id": localStorage.user_id
       })
     }
 
@@ -46,7 +45,7 @@ export default class Profile extends Component {
           if (!res.ok) {
             return res.json().then(error => {
               if (res.status !== 401) {
-                throw error
+                return res.send('')
               }
               else {
                 this.props.history.push('/login')
@@ -61,11 +60,15 @@ export default class Profile extends Component {
            
             const image = res.image.image
             document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
+            return res.send('')
           }
         })
     }
 
     render() {
+
+      const imageHeight = Math.ceil(window.outerHeight * 0.35);
+      const imageWidth = Math.ceil(window.innerWidth);
 
       return (
           <div className="profile_container">

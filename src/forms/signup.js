@@ -6,6 +6,8 @@ import functions from '../functions';
 import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.css';
 
+const formFunctions = functions.formFunctions
+
 export default class Login extends Component {
     
     state = {
@@ -23,9 +25,9 @@ export default class Login extends Component {
 
     formValidate(stateVals) {
 
-        if (functions.inputLengthValidator(stateVals).includes(false) === true) {
+        if (formFunctions.inputLengthValidator(stateVals).includes(false) === true) {
 
-            const invalidArr = functions.inputLength(stateVals)
+            const invalidArr = formFunctions.inputLength(stateVals)
             const invalid = invalidArr.filter(val => val !== null).map(val => val[0]).join(', ')
             const errorMsg = `Invalid fields: ${invalid}`
             this.setState({

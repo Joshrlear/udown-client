@@ -1,0 +1,385 @@
+[
+    {
+        "name": "Cabrillo Recreation Center",
+        "address": "3051 Canon St. 92106",
+        "position": {
+            "lat": 32.721560,
+            "long": -117.231910
+        },
+        "phone": "619-531-1534",
+        "details": "2 courts - no lights",
+        "hours_of_operation": "Monday - Sunday 7am - 6pm"
+    },
+
+    {
+        "name": "Mission Hills/Pioneer Park",
+        "address": "1500 Washington Pl. 92103",
+        "position": {
+            "lat": 32.749640,
+            "long": -117.178230
+        },
+        "phone": "619-235-1100",
+        "details": "2 courts - no lights",
+        "hours_of_operation": "Monday - Sunday Dawn to Dusk"
+    },
+    
+    {
+        "name": "Cadman Recreation Center",
+        "address": "4680 Avati Dr. 92117",
+        "position": {
+            "lat": 32.817020,
+            "long": -117.215720
+        },
+        "phone": "858-581-9929",
+        "details": "1 court - no lights",
+        "hours_of_operation": "Monday - Sunday Dawn to Dusk"
+    },
+    
+    {
+        "name": "Mountain View Park",
+        "address": "551 South 40th St. 92113",
+        "position": {
+            "lat": 32.700210,
+            "long": -117.108020
+        },
+        "phone": "619-527-3417",
+        "details": "2 courts - lighted",
+        "hours_of_operation": "Monday - Sunday 6am to Dusk"
+    },
+    
+    {
+        "name": "Canyonside Community Park",
+        "address": "12350 Black Mtn Rd. 92129",
+        "position": {
+            "lat": 32.941360,
+            "long": -117.129530
+        },
+        "phone": "858-538-8131",
+        "details": "12 courts - lighted",
+        "hours_of_operation": "Monday - Sunday 8am - 9:45pm"
+    },
+    
+    {
+        "name": "Morley Field Sports Complex",
+        "address": "2221 Morley Field Dr. 92104",
+        "position": {
+            "lat": 32.739760,
+            "long": -117.141350
+        },
+        "phone": "619-295-9278",
+        "details": "25 courts - lighted",
+        "hours_of_operation": "Monday - Friday 8am - 8pm, Saturday - Sunday 8am - 6pm"
+    },
+    
+    {
+        "name": "Carmel Valley Community Park",
+        "address": "3777 Townsgate Dr. 92130",
+        "position": {
+            "lat": 32.949110,
+            "long": -117.233750
+        },
+        "phone": "858-552-1616",
+        "details": "4 courts - lighted",
+        "hours_of_operation": "Monday - Friday  8:30am - 8pm, Saturday 8am - 6pm, Sunday 8am - 5pm"
+    },
+    
+    {
+        "name": "Murray Ridge Park",
+        "address": "8651 Celestine Ave. 92123",
+        "position": {
+            "lat": 32.790750,
+            "long": -117.144780
+        },
+        "phone": "858-573-1408",
+        "details": "1 court - no lights",
+        "hours_of_operation": "Monday - Sunday Dawn to Dusk"
+    },
+    
+    {
+        "name": "City Heights Recreation Center",
+        "address": "4380 Landis St. 92105",
+        "position": {
+            "lat": 32.746340,
+            "long": -117.100400
+        },
+        "phone": "619-641-6107",
+        "details": "4 courts - lighted",
+        "hours_of_operation": "Monday - Friday 10am - 7pm, Saturday 10am - 4pm"
+    },
+    
+    {
+        "name": "North Clairemont Recreation Center",
+        "address": "4421 Bannock Ave. 92117",
+        "position": {
+            "lat": 32.831680,
+            "long": -117.196930
+        },
+        "phone": "858-581-9926",
+        "details": "1 court - lighted",
+        "hours_of_operation": "Monday - Sunday Dawn - 10pm"
+    },
+    
+    {
+        "name": "Colina del Sol Park",
+        "address": "5319 Orange Ave. 92115",
+        "position": {
+            "lat": 32.751330,
+            "long": -117.081560
+        },
+        "phone": "619-235-1144",
+        "details": "6 courts - lighted",
+        "hours_of_operation": "Monday - Thursday Dawn - 8pm, Friday Dawn - 6pm, Saturday - Sunday Dawn - 4pm"
+    },
+    
+    {
+        "name": "North Park Recreation Center",
+        "address": "4044 Idaho St. 92104",
+        "position": {
+            "lat": 32.751330,
+            "long": -117.134210
+        },
+        "phone": "619-235-1152",
+        "details": "3 courts - lighted",
+        "hours_of_operation": "Monday - Friday 7am - 7pm, Saturday 7am - 5pm,Sunday 7am - 4pm"
+    },
+    
+    {
+        "name": "Emerald Hills",
+        "address": "Bethune Ct. & Kelton Rd. 92114",
+        "position": {
+            "lat": 32.721300,
+            "long": -117.075680
+        },
+        "phone": "619-527-3411",
+        "details": "2 courts - lighted",
+        "hours_of_operation": "Monday - Sunday 6am - 10pm"
+    },
+    
+    {
+        "name": "Pacific Beach Recreation Center",
+        "address": "1405 Diamond St 92109",
+        "position": {
+            "lat": 32.801449,
+            "long": -117.244720
+        },
+        "phone": "858-581-9927",
+        "details": "2 courts - lighted",
+        "hours_of_operation": "Monday - Wednesday 8am - 8pm, Thursday 8am - 9pm, Friday 8am - 7pm, Saturday - Sunday 9am - Dusk"
+    },
+    
+    {
+        "name": "Encanto Park",
+        "address": "6508 Wunderlin Ave. 92114",
+        "position": {
+            "lat": 32.714520,
+            "long": -117.058050
+        },
+        "phone": "619-527-3411",
+        "details": "2 courts - lighted",
+        "hours_of_operation": " Monday - Sunday 6am - 10pm"
+    },
+    
+    {
+        "name": "Point Loma Park",
+        "address": "1049 Catalina Blvd. 92107",
+        "position": {
+            "lat": 32.726930,
+            "long": -117.244340
+        },
+        "phone": "619-531-1534",
+        "details": "4 courts - no lights",
+        "hours_of_operation": " Monday - Sunday 7am - Dusk"
+    },
+    
+    {
+        "name": "Gershwin Park",
+        "address": "3508 Conrad Ave. 92117",
+        "position": {
+            "lat": 32.835350,
+            "long": -117.193270
+        },
+        "phone": "858-581-9926",
+        "details": "1 court - no lights",
+        "hours_of_operation": " Monday - Sunday Dawn to Dusk"
+    },
+    
+    {
+        "name": "Rancho Bernardo Community Park",
+        "address": "18402 W. Bernardo Dr. 92127",
+        "position": {
+            "lat": 33.051680,
+            "long": -117.076240
+        },
+        "phone": "858-538-8129",
+        "details": "6 courts - lighted",
+        "hours_of_operation": " Monday - Sunday 7am - 10pm"
+    },
+    
+    {
+        "name": "Hourglass Park",
+        "address": "14440 Black Mtn Rd. 92126",
+        "position": {
+            "lat": 32.917080,
+            "long": -117.124860
+        },
+        "phone": "858-538-8153",
+        "details": "8 courts - lighted",
+        "hours_of_operation": " Monday to Sunday 8am - 10pm"
+    },
+    
+    {
+        "name": "Robb Athletic Field",
+        "address": "2525 Bacon St. 92107",
+        "position": {
+            "lat": 32.746440,
+            "long": -117.251430
+        },
+        "phone": "619-531-1563",
+        "details": "12 courts - lighted",
+        "hours_of_operation": " Monday to Sunday 8am - 8pm"
+    },
+    
+    {
+        "name": "Jerabek Park",
+        "address": "10060 Avenida Magnifica 92131",
+        "position": {
+            "lat": 32.910820,
+            "long": -117.077680
+        },
+        "phone": "858-538-8085",
+        "details": "2 courts - no lights",
+        "hours_of_operation": " Monday to Sunday 8am - Dusk"
+    },
+    
+    {
+        "name": "Santa Clara Recreation Center",
+        "address": "1008 Santa Clara Pl. 92109",
+        "position": {
+            "lat": 32.783540,
+            "long": -117.249340
+        },
+        "phone": "858-581-9928",
+        "details": "1 court - lighted",
+        "hours_of_operation": " Monday to Sunday Dawn - 10pm"
+    },
+    
+    {
+        "name": "La Jolla Tennis Courts",
+        "address": "7632 Draper Ave. La Jolla 92037",
+        "position": {
+            "lat": 32.836540,
+            "long": -117.275510
+        },
+        "phone": "858-552-1658",
+        "details": "9 courts - lighted",
+        "hours_of_operation": " Monday to Sunday Dawn - 9pm"
+    },
+    
+    {
+        "name": "San Ysidro Recreation Center",
+        "address": "125 East Park Ave. 92173",
+        "position": {
+            "lat": 32.554610,
+            "long": -117.044110
+        },
+        "phone": "619-424-0472",
+        "details": "2 courts - lighted",
+        "hours_of_operation": " Monday - Friday 7am - 8pm, Saturday 9am - 4pm"
+    },
+    
+    {
+        "name": "Lake Murray Park",
+        "address": "7003 Murray Park Dr. 92119",
+        "position": {
+            "lat": 32.792300,
+            "long": -117.048150
+        },
+        "phone": "619-469-3232",
+        "details": "10 courts - lighted",
+        "hours_of_operation": " Monday - Thursday 8am - 10pm, Friday 7am - 8pm, Saturday - Sunday 8am - 8pm"
+    },
+    
+    {
+        "name": "Serra High School",
+        "address": "5156 Santo Rd. 92124",
+        "position": {
+            "lat": 32.825450,
+            "long": -117.108150
+        },
+        "phone": "858-573-1393",
+        "details": "6 courts - lighted",
+        "hours_of_operation": " Monday - Friday After school to 9pm, Saturday - Sunday Dawn - 9pm"
+    },
+    
+    {
+        "name": "Linda Vista Recreation Center",
+        "address": "7064 Levant St. 92111",
+        "position": {
+            "lat": 32.791130,
+            "long": -117.167940
+        },
+        "phone": "858-573-1392",
+        "details": "4 courts - lighted",
+        "hours_of_operation": " Monday - Sunday 7am - 10pm"
+    },
+    
+    {
+        "name": "South Clairemont Recreation Center",
+        "address": "3605 Clairemont Dr. 92117",
+        "position": {
+            "lat": 32.806250,
+            "long": -117.199300
+        },
+        "phone": "858-581-9924",
+        "details": "1 court - lighted",
+        "hours_of_operation": " Monday to Sunday Dawn - 10pm"
+    },
+    
+    {
+        "name": "Martin Luther King, Jr., Recreation Center",
+        "address": "6401 Skyline Dr. 92114",
+        "position": {
+            "lat": 32.699620,
+            "long": -117.060110
+        },
+        "phone": "619-527-3415",
+        "details": "7 courts - lighted",
+        "hours_of_operation": " Monday - Friday 9am - 7pm, Saturday 9am - 3pm"
+    },
+    
+    {
+        "name": "Standley Park and Recreation Center",
+        "address": "3585 Governor Dr. 92122",
+        "position": {
+            "lat": 32.850670,
+            "long": -117.210110
+        },
+        "phone": "858-552-1652",
+        "details": "6 courts - lighted",
+        "hours_of_operation": " Monday - Friday 8am - 10pm, Saturday - Sunday 8am - Dusk"
+    },
+    
+    {
+        "name": "Pacific Beach Tennis Club (Bob McEvoy Fields)",
+        "address": "2639 Grand Ave. 92109",
+        "position": {
+            "lat": 32.799900,
+            "long": -117.230750
+        },
+        "phone": "858-273-9177",
+        "details": "7 courts - lighted",
+        "hours_of_operation": " Monday - Sun 8am - 10pm"
+    },
+    
+    {
+        "name": "Tierrasanta Recreation Center",
+        "address": "11220 Clairemont Mesa Blvd. 92124",
+        "position": {
+            "lat": 32.827770,
+            "long": -117.092520
+        },
+        "phone": "858-278-3009",
+        "details": "4 courts - lighted",
+        "hours_of_operation": " Monday to Sunday 7am - 9pm"
+    }
+]

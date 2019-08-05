@@ -1,4 +1,8 @@
-const functions = {
+import React from 'react';
+import config from './config';
+import GoogleMapsLoader from 'react-google-maps'
+
+const formFunctions = {
 
     // validation for all inputs where length of 3 or more characters needed
     inputLengthValidator(inputValue) {
@@ -16,6 +20,9 @@ const functions = {
                 : null
             )
     },
+}
+
+const authFunctions = {
 
     redirectIfLoggedIn(props, context) {
         if (context === true) {
@@ -26,7 +33,30 @@ const functions = {
     setIdRedirect(props, result) {
         localStorage.user_id = result.id
         props.history.push(`/profile/${localStorage.user_id}`)
+    },
+
+    logout(props) {
+        localStorage.removeItem('user_id')
+        fetch(`${config.API_ENDPOINT}logout`, {
+            method: 'GET',
+            credentials: 'include'
+        })
+        .then(result => {
+            props.history.push('/login')
+        })
     }
 }
 
-export default functions
+const mapFunctions = {
+    createMap(mapDiv) {
+        GoogleMapsLoader.load((google) => {
+            new google.maps.Map(mapDiv)
+        })
+    }
+}
+
+export default {
+    formFunctions,
+    authFunctions,
+    mapFunctions
+}
