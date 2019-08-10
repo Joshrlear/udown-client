@@ -7,6 +7,7 @@ import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.css';
 
 const formFunctions = functions.formFunctions
+const authFunctions = functions.authFunctions
 
 export default class Login extends Component {
     state = {
@@ -69,7 +70,7 @@ export default class Login extends Component {
             
         })
         .then(data => {
-            functions.setIdRedirect(this.props, data)
+            authFunctions.setIdRedirect(this.props, data)
         })
         .catch(error => {
             this.setState({
@@ -79,7 +80,7 @@ export default class Login extends Component {
     }
 
     componentDidUpdate() {
-        functions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
+        authFunctions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
     }
 
     render() {

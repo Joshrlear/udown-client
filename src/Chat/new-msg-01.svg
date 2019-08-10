@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY st0 "opacity:0.3;">
+	<!ENTITY st1 "fill:#6AB4CE;">
+	<!ENTITY st2 "fill:#EDA8B0;">
+	<!ENTITY st3 "fill:#C8DB16;">
+	<!ENTITY st4 "opacity:0.7;fill:#A8AD3B;">
+	<!ENTITY st5 "fill:#FFFFFF;">
+	<!ENTITY st6 "opacity:0.6;fill:#DEDEDE;">
+	<!ENTITY st7 "fill:#C6CC46;">
+	<!ENTITY st8 "display:none;fill:#FFFFFF;stroke:#363F3F;stroke-width:1.2004;stroke-miterlimit:10;">
+	<!ENTITY st9 "fill:#FFFFFF;stroke:#363F3F;stroke-width:0.9558;stroke-miterlimit:10;">
+	<!ENTITY st10 "font-family:'DIN-Black';">
+	<!ENTITY st11 "font-size:68.8188px;">
+]>
+<svg version="1.1" id="OBJECTS" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<g>
+	<g style="&st0;">
+		<image style="overflow:visible;" width="418" height="393" xlink:href="A1BD3FA2.png"  transform="matrix(1 0 0 1 21 110)">
+		</image>
+	</g>
+	<path style="&st1;" d="M359.25,140H91.43c-21.11,0-38.38,17.51-38.38,38.63v196.4c0,21.11,17.26,37.97,38.38,37.97h170.88
+		l69.74,48.95V413h27.2c21.11,0,38.8-16.86,38.8-37.97v-196.4C398.05,157.51,380.37,140,359.25,140z"/>
+	<g>
+		<rect x="132.33" y="254.43" style="&st2;" width="186.03" height="120.09"/>
+		<g style="&st0;">
+			<image style="overflow:visible;" width="259" height="274" xlink:href="A1BD3FA6.png"  transform="matrix(1 0 0 1 102 143)">
+			</image>
+		</g>
+		<rect x="132.33" y="254" style="&st3;" width="186.03" height="121"/>
+		<path style="&st3;" d="M233.92,178.24c0,0-11.78-12.5-24.44,0.09L132.35,254h186.03L233.92,178.24z"/>
+		<path style="&st4;" d="M232.9,187.22c0,0-10.38-11.05-21.52,0.04l-67.94,66.8l163.83,0.03L232.9,187.22z"/>
+		<g style="&st0;">
+			<image style="overflow:visible;" width="227" height="203" xlink:href="A1BD3FA1.png"  transform="matrix(1 0 0 1 112 168)">
+			</image>
+		</g>
+		<rect x="145.74" y="200.26" style="&st5;" width="153.38" height="130.47"/>
+		<rect x="158.16" y="221.4" style="&st6;" width="128.53" height="5.66"/>
+		<rect x="158.16" y="238.58" style="&st6;" width="128.53" height="5.66"/>
+		<rect x="158.16" y="255.76" style="&st6;" width="128.53" height="5.66"/>
+		<rect x="158.16" y="272.93" style="&st6;" width="128.53" height="5.66"/>
+		<rect x="158.16" y="290.11" style="&st6;" width="128.53" height="5.66"/>
+		<path style="&st7;" d="M234.5,288.91c0,0-4.31,1.66-5.43,2.92c-2.52,2.85-6.64,15.21-6.64,15.21l8.59,8.15l87.34,59.34
+			l0.02-120.09L234.5,288.91z"/>
+		<g>
+			<path style="&st3;" d="M220.85,307.99L220.85,307.99C220.85,308.01,220.86,308.01,220.85,307.99z"/>
+			<path style="&st7;" d="M214.05,292.89c-1.13-1.25-5.47-2.84-5.47-2.84l-76.23-35.62l-0.02,120.09l80.03-58.26l8.5-8.27
+				C220.7,307.59,216.34,295.42,214.05,292.89z"/>
+		</g>
+		<path style="&st3;" d="M256.64,300.03c-2.39-4.24-6.62-4.22-6.62-4.22l-28.16-0.15l-0.23,0l-28.1,0.21c0,0-3.91-0.12-6.04,4.87
+			l-55.16,73.77l90.11-0.33l95.92,0.33L256.64,300.03z"/>
+	</g>
+	<g>
+		<g style="&st0;">
+			<image style="overflow:visible;" width="249" height="249" xlink:href="A1BD3FA3.png"  transform="matrix(1 0 0 1 234 6)">
+			</image>
+		</g>
+		
+			<ellipse transform="matrix(0.2256 -0.9742 0.9742 0.2256 154.8796 436.9388)" style="&st3;" cx="352.27" cy="121.05" rx="88.05" ry="88.05"/>
+		<g>
+			<path style="&st8;" d="M347.17,96.91v87.06c0,4.57-3.84,8.12-8.26,8.12c-4.58,0-8.12-3.54-8.12-8.12v-72.6l-5.9,3.39
+				c-1.33,0.89-2.8,1.18-4.13,1.18c-2.8,0-5.46-1.48-6.94-4.13c-2.51-3.69-1.18-8.85,2.66-11.07l18.15-10.77
+				c0.15-0.15,0.44-0.15,0.59-0.3c0.3,0,0.44-0.29,0.74-0.44c0.3,0,0.59-0.15,0.89-0.15c0.15-0.15,0.44-0.15,0.59-0.15
+				c0.3-0.15,0.74-0.15,1.03-0.15c0.15,0,0.29,0,0.44,0h0.15c0.44,0,0.74,0,1.03,0c0.15,0.15,0.44,0.15,0.59,0.15
+				c0.44,0,0.59,0.15,0.88,0.3c0.15,0,0.44,0,0.59,0.15c0.44,0.29,0.59,0.44,0.89,0.44c0.15,0.15,0.3,0.3,0.59,0.44
+				c0.15,0.15,0.44,0.3,0.59,0.44c0.3,0.15,0.44,0.44,0.59,0.59c0.15,0.15,0.3,0.3,0.44,0.59c0.15,0.15,0.44,0.44,0.59,0.59
+				l0.15,0.29c0,0.15,0.15,0.3,0.15,0.44c0.15,0.29,0.29,0.44,0.29,0.74c0.15,0.3,0.15,0.59,0.3,0.74c0,0.29,0.15,0.59,0.15,0.74
+				c0,0.44,0,0.74,0.3,1.03C347.17,96.62,347.17,96.77,347.17,96.91z"/>
+		</g>
+		<g>
+			<text transform="matrix(1 0 0 1 282.1338 142.2363)" style="&st9; &st10; &st11;">New</text>
+		</g>
+	</g>
+</g>
+</svg>

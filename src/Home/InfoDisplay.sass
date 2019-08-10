@@ -1,0 +1,63 @@
+body 
+    margin: 0px
+
+  
+img 
+  object-fit: cover
+  width: 100%
+  margin: 0px
+
+
+.info_display
+  position: absolute
+  overflow: auto
+  width: 100vw
+  height: 0vh
+  background-color: #F5F5F5
+  border-left: solid 1px lightgray
+  transition: all .25s ease-out
+
+  &.active
+    height: 93vh - 35vh
+
+.info_container
+  
+
+  .info 
+    width: 100%
+    padding: 0% 10% 10% 10%
+
+    .review_header 
+      display: flex
+
+
+    header > * 
+      width: 100%
+      margin-top: 20px
+      text-align: center
+
+
+  .button_container > button 
+      display: flex
+      justify-content: space-around
+      width: 130px
+      height: 40px
+      margin: 0px
+
+  .main_info 
+    display: block
+    text-align: center
+    margin: 10px
+
+
+  .review_list
+    width: 300px
+    margin: 0px
+    padding: 0px
+
+
+  .address 
+    position: relative
+    width: 200px
+    margin-top: 20px
+    right: 0px

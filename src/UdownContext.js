@@ -8,7 +8,9 @@ const UdownContext = createContext({
     isLoggedIn: false,
     chatOpened: false,
     msgBtnClass: 'chat_button',
-    openMsg: () => {}
+    openMsg: () => {},
+    startChat: () => {},
+    chatRoomName: '',
 })
 
 export default UdownContext;

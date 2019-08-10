@@ -1,0 +1,92 @@
+/* form
+    width: 500px */
+input {
+  width: 80%;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-style: italic;
+}
+
+::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-style: italic;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  font-style: italic;
+}
+
+.input_note_container {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.save_btn {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  right: -75%;
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px 0px 0px 0px;
+  margin: 0px;
+  text-decoration: none;
+  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: 600;
+  background-color: #6ab4ce;
+  -webkit-box-shadow: 5px 5px 4px rgba(64, 166, 255, 0.3) inset, -3px -3px 5px rgba(145, 255, 112, 0.3) inset;
+          box-shadow: 5px 5px 4px rgba(64, 166, 255, 0.3) inset, -3px -3px 5px rgba(145, 255, 112, 0.3) inset;
+  -webkit-transition: -webkit-box-shadow 0.2s ease-out;
+  transition: -webkit-box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out, -webkit-box-shadow 0.2s ease-out;
+}
+
+.save {
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  font-size: 16px;
+}
+
+.back_btn {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  right: -75%;
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px 0px 0px 0px;
+  margin: 0px;
+  text-decoration: none;
+  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: 600;
+  background-color: #6ab4ce;
+  -webkit-box-shadow: 5px 5px 4px rgba(64, 166, 255, 0.3) inset, -3px -3px 5px rgba(145, 255, 112, 0.3) inset;
+          box-shadow: 5px 5px 4px rgba(64, 166, 255, 0.3) inset, -3px -3px 5px rgba(145, 255, 112, 0.3) inset;
+  -webkit-transition: -webkit-box-shadow 0.2s ease-out;
+  transition: -webkit-box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out, -webkit-box-shadow 0.2s ease-out;
+}
+
+.back_btn:hover {
+  -webkit-box-shadow: 0px 0px 100px rgba(158, 239, 70, 0.5) inset, 0px 0px 100px rgba(158, 239, 70, 0.5) inset;
+          box-shadow: 0px 0px 100px rgba(158, 239, 70, 0.5) inset, 0px 0px 100px rgba(158, 239, 70, 0.5) inset;
+}
+/*# sourceMappingURL=EditProfile.css.map */

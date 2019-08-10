@@ -31,7 +31,10 @@ const authFunctions = {
     },
 
     setIdRedirect(props, result) {
+        console.log(result)
+        //should I encrypt info?
         localStorage.user_id = result.id
+        localStorage.username = result.username
         props.history.push(`/profile/${localStorage.user_id}`)
     },
 

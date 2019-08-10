@@ -49,6 +49,29 @@ button {
   transition: all 0.4s ease 0s;
 }
 
+.edit_btn {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  right: -75%;
+  border-radius: 20px;
+  text-align: center;
+  padding: 7px 0px 0px 0px;
+  margin: 0px;
+  text-decoration: none;
+  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: 600;
+  background-color: #6ab4ce;
+  box-shadow: 5px 5px 4px rgba(64,166,255,0.3) inset, -3px -3px 5px rgba(145,255,112,0.3) inset;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.edit_btn:hover {
+  box-shadow: 0px 0px 100px rgba(158, 239, 70, 0.5) inset, 0px 0px 100px rgba(158, 239, 70, 0.5) inset
+}
+
 .profile_info {
     margin-left: auto;
     margin-right: auto;

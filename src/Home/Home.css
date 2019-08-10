@@ -1,11 +1,12 @@
-#map {
-    height: 100%;
-    position: relative;
+.map_container {
+  height: 93vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-.map_container {
-    height: 93vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
+#map {
+  height: 100%;
+  width: 100%;
 }
+/*# sourceMappingURL=Home.css.map */

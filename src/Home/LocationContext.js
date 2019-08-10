@@ -5,7 +5,10 @@ const LocationContext = React.createContext({
     address: '',
     details: '',
     hours_of_operations: '',
-    phone: ''
+    phone: '',
+    isSelected: () => {},
+    isUnselected: () => {},
+    hasSelection: false
 })
 
 export default LocationContext

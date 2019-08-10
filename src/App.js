@@ -6,11 +6,13 @@ import LandingPage from './LandingPage/LandingPage';
 import Home from './Home/Home'
 import Login from './forms/login';
 import Signup from './forms/signup';
-import Profile from './profile/profile';
+import Profile from './profile/Profile';
+import EditProfile from './profile/EditProfile'
 import ErrorBoundary from './Errors/ErrorBoundary';
 import UdownContext from './UdownContext';
 import ChatButton from './Chat/ChatButton';
 import Chat from './Chat/Chat'
+import ChatRedirect from './Chat/ChatRedirect'
 
 class App extends Component {
 
@@ -18,7 +20,8 @@ class App extends Component {
     userHistory: [],
     isLoggedIn: false,
     hasMessage: true,
-    chatOpened: true,
+    chatOpened: false,
+    chatRoomName: '',
   }
 
   /* static contextType = UdownContext
@@ -73,6 +76,16 @@ class App extends Component {
     )
   }
 
+  // opens chat when socket room created (after clicking play - on infoDisplay)
+  startChat = chatRoomName => {
+    console.log(chatRoomName)
+    this.setState({
+      chatOpened: true,
+      chatRoomName
+    })
+  }
+
+  // if new message, click button to open chat
   openMsg = () => {
 
     this.setState({
@@ -80,7 +93,7 @@ class App extends Component {
     })
     setTimeout(() => this.setState({
       hasMessage: !this.state.hasMessage
-    }) , 1000)
+    }))
   }
 
 
@@ -124,6 +137,8 @@ class App extends Component {
       chatOpened: this.state.chatOpened,
       openMsg: this.openMsg,
       msgBtnClass: this.msgBtnClass(),
+      startChat: this.startChat,
+      chatRoomName: this.state.chatRoomName,
     }
 
     //console.log(this.state.userHistory)
@@ -161,6 +176,14 @@ class App extends Component {
             <Route
               path="/profile"
               component={ Profile }
+            />
+            <Route
+                  path="/profileEdit"
+                  component={ EditProfile }
+                />
+            <Route
+              path="/chat/:roomName"
+              component={ ChatRedirect }
             />
         </ErrorBoundary>
         </main>

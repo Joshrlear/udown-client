@@ -1,32 +1,53 @@
 .chat_button_container {
-  -o-object-fit: cover;
-     object-fit: cover;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 15px;
+  right: 15px;
+  z-index: 3;
+}
+
+.chat_button {
   display: none;
+  background-color: #6ab4ce;
+  border-radius: 50%;
+  border-radius: 50%;
+  padding-top: 6px;
+  text-align: center;
+  color: white;
+  width: 0px;
+  height: 0px;
+  -webkit-box-shadow: 5px 5px 4px rgba(64, 166, 255, 0.3) inset, -3px -3px 5px rgba(145, 255, 112, 0.3) inset;
+          box-shadow: 5px 5px 4px rgba(64, 166, 255, 0.3) inset, -3px -3px 5px rgba(145, 255, 112, 0.3) inset;
+  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4);
+  -webkit-transition: -webkit-box-shadow 0.2s ease-out;
+  transition: -webkit-box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out, -webkit-box-shadow 0.2s ease-out;
 }
 
-.chat_button_container.active {
+.chat_button h2 {
+  font-size: 15px;
+}
+
+.chat_button.active {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
 }
 
-.chat_button_container.active.opened {
+.chat_button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 100px rgba(158, 239, 70, 0.5) inset, 0px 0px 100px rgba(158, 239, 70, 0.5) inset;
+          box-shadow: 0px 0px 100px rgba(158, 239, 70, 0.5) inset, 0px 0px 100px rgba(158, 239, 70, 0.5) inset;
+}
+
+.chat_button:hover.opened {
   width: 150%;
   height: 150%;
   bottom: -50%;
   right: -50%;
   border-radius: 0%;
   z-index: 3;
-}
-
-.chat_button_container .chat_button {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  border-radius: 50%;
-  width: 0px;
-  height: 0px;
-  -webkit-transition: width 0.3s ease-in;
-  transition: width 0.3s ease-in;
 }
 /*# sourceMappingURL=ChatButton.css.map */

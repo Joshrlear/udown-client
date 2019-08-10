@@ -72,6 +72,10 @@
   transform: rotate(-135deg);
 }
 
+a {
+  cursor: pointer;
+}
+
 .chat_input_section_container {
   position: absolute;
   display: -webkit-box;
@@ -79,7 +83,7 @@
   display: flex;
   bottom: 1.5vh;
   width: 100vw;
-  height: 30px;
+  height: 38px;
 }
 
 .chat_input_section_container .input_container {
