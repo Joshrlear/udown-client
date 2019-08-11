@@ -41,7 +41,7 @@ class Home extends Component {
             }
 
         const height = this.state.hasSelection ? "35vh" : "100vh"
-
+            console.log(process.env.NODE_ENV)
         return (
             <LocationContext.Provider value={ contextValue }>
                 <div className="map_container">

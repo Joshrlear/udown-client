@@ -17,6 +17,7 @@ export default class Map extends Component {
             toggleClass: '',
             locations: [],
             locationPhoto: `https://via.placeholder.com/${width}x${hieght}`,
+            locationImage: '',
         }
     }
     
@@ -49,7 +50,7 @@ export default class Map extends Component {
             this.setState({
                 locations: res.results
             })
-            console.log(res)
+            //console.log(res)
         })
     }
 
@@ -59,36 +60,22 @@ export default class Map extends Component {
     // I don't seem to have exceeded anyb quota when looking on google cloud console
     // I have contacted sales to ask about it... consider removing photos for now.
     getLocationPhoto = () => {
-        console.log('getting location photo')
-        console.log(this.state.locationPhoto)
+        //console.log('getting location photo')
+        //console.log(this.state.locationPhoto)
         this.state.selectedLocation && (
             
             // Get location photo from google api
             fetch(`${config.API_ENDPOINT}home/location-photo`, {
               method: 'POST',
               headers: {
-                'ContentType': 'application/json',
+                //'ContentType': 'application/json',
                 'photo': this.state.locationPhoto,
                 'width': width
               }
             })
-            .then(res => {
-                console.log('here is the response for location-photo: ', res)
-              if (!res.ok) {
-                return res.json().then(err => {
-                  console.log('Error getting photo from google: ', err)
-                  throw err
-                })
-              }
-              else {
-                  console.log(res.headers.content)
-                return res.json()
-              }
-            })
-            .then(res => {
-              console.log(res)
-              //setLocationPhoto(res)
-            })
+            .then(res => { return res })
+            .then(results => console.log('here is the response for location-photo: ', results))
+            .catch(err => console.log(err))
         )
     }
 
@@ -98,16 +85,16 @@ export default class Map extends Component {
         const toBeToggled = await selectedLocation && (selectedLocation.setAttribute('className', `marker ${toggleClass}`))
     } */
     componentDidUpdate() {
-        console.log('Map Component Updating')
+        //console.log('Map Component Updating')
         const { hasSelection, isSelected, isUnselected } = this.context
         if (this.state.selectedLocation !== null) {
-            console.log('running true')
+            //console.log('running true')
             !hasSelection && (
                 isSelected(true)
             )
         } 
         else {
-            console.log('running false')
+            //console.log('running false')
             hasSelection && (
                 isUnselected(false)
             )
@@ -122,6 +109,7 @@ export default class Map extends Component {
 
     
     render() {
+        //console.log(this.state.locationImage)
         const selectedLocation = this.state.selectedLocation
         const photo_reference = selectedLocation && (
             selectedLocation.photos &&(
@@ -129,7 +117,7 @@ export default class Map extends Component {
             )
         )
 
-        this.state.selectedLocation && (this.getLocationPhoto())
+        this.state.selectedLocation && (!this.state.locationImage && (this.getLocationPhoto()))
 
         const contextValue = {
             name: selectedLocation ? selectedLocation.name : 'Name',
@@ -137,7 +125,7 @@ export default class Map extends Component {
             details: selectedLocation ? selectedLocation.details : 'Details',
             hours_of_operations: selectedLocation ? selectedLocation.opening_hours ? selectedLocation.opening_hours.open_now ? "Now Open" : "Now Closed" : 'Hours of operation not listed' : 'Open now?',
             phone: selectedLocation ? selectedLocation.phone : 'Phone number',
-            photo: selectedLocation? selectedLocation.photos ? photo_reference : null : null
+            photo: selectedLocation? selectedLocation.photos ? this.state.locationImage : null : null
         }
 
         const center = selectedLocation ? {lat: selectedLocation.geometry.location.lat, lng: selectedLocation.geometry.location.lng} : { lat: 32.8180, lng: -117.0560 }
