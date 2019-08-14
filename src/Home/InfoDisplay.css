@@ -41,6 +41,10 @@ img {
   text-align: center;
 }
 
+.info_container .button_container {
+  margin-top: 20px;
+}
+
 .info_container .button_container > button {
   display: -webkit-box;
   display: -ms-flexbox;

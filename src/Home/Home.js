@@ -19,29 +19,22 @@ class Home extends Component {
 
     static contextType = LocationContext
 
-    isSelected = (boolean) => {
-        console.log('is selected')
-        this.setState({
-            hasSelection: boolean
-        })
-    }
-
-    isUnselected = (boolean) => {
-        console.log('no selection')
-        this.setState({
-            hasSelection: boolean
-        })
+    setSelection = (boolean) => {
+        this.state.hasSelection !== boolean && (
+            this.setState({
+                hasSelection: boolean
+            })
+        )   
     }
     
     render() {
         const contextValue = { 
             hasSelection: this.state.hasSelection,
-            isSelected: this.isSelected,
-            isUnselected: this.isUnselected
+            setSelection: this.setSelection,
             }
 
         const height = this.state.hasSelection ? "35vh" : "100vh"
-            console.log(process.env.NODE_ENV)
+
         return (
             <LocationContext.Provider value={ contextValue }>
                 <div className="map_container">

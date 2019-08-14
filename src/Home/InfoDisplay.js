@@ -15,11 +15,6 @@ export default function InfoDisplay(props) {
   const chatFuncs = useContext(udownContext)
   const [locationPhoto, setLocationPhoto] = useState(`https://via.placeholder.com/${width}x${hieght}`)
 
-  useEffect(() => {
-
-  })
-
-
   function sendTxt() {
     const { chatOpened, startChat } = chatFuncs
     //console.log(location.name)
@@ -63,10 +58,10 @@ export default function InfoDisplay(props) {
     })
   }
 
-  console.log(location.photo)
+  // removing photo till google places api figured out
   return (
       <div className={location.name === "Name" ? "info_display" : "info_display active"}>
-        <img src={location.photo || `https://via.placeholder.com/${width}x${hieght}`}/>
+        {/* <img src={location.photo || `https://via.placeholder.com/${width}x${hieght}`}/> */}
         <div className="info_container">
         <div className="button_container">
           <button>Directions</button>

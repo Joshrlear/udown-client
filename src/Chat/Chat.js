@@ -134,9 +134,10 @@ export default class Chat extends Component {
                         <input 
                             ref={ this.chatInput } 
                             className="chat_intput" 
-                            placeholder="type message"
+                            placeholder="type message..."
                             onChange={e => this.handleInput(e.target.value)}/>
                     </div>
+                    <br/>
                     <div className="button_container">
                         <button 
                             className="send_button" 

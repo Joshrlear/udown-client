@@ -22,43 +22,9 @@ class App extends Component {
     hasMessage: true,
     chatOpened: false,
     chatRoomName: '',
+    navExpanded: false,
+    query: '',
   }
-
-  /* static contextType = UdownContext
-
-  pushHistory = (currentPath, pathEntries) => {
-
-    console.log(currentPath, pathEntries)
-
-    switch (pathEntries || 0) {
-      case 2:
-        this.setState({ userHistory: [this.state.userHistory[0], currentPath] })
-        break
-      case 1:
-        this.setState({ userHistory: currentPath })
-        break
-      case 0:
-        break
-    }
-
-    // if current path exists
-    currentPath
-      // then check if lastPath exists
-      &&  (lastPath
-            // if last userHistory entry isn't equal to the current path
-            ? this.state.userHistory[1] !== currentPath
-                // push currentPath as second value
-                && (this.setState({
-                      userHistory: [this.state.userHistory[lastPath], currentPath]
-                    }, console.log('pushed second path'))
-                )
-                  
-            // if lastPath doesn't exist push currentPath as initial value
-            : this.setState({
-              userHistory: currentPath
-            }, console.log('pushed initial path'))
-          ) 
-  }*/
 
   renderLoginSignup() {
     return (
@@ -76,12 +42,24 @@ class App extends Component {
     )
   }
 
+  defineQuery = query => {
+    this.setState({
+      query
+    })
+  }
+
   // opens chat when socket room created (after clicking play - on infoDisplay)
   startChat = chatRoomName => {
     console.log(chatRoomName)
     this.setState({
       chatOpened: true,
       chatRoomName
+    })
+  }
+
+  expandNav = () => {
+    this.setState({
+      navExpanded: !this.state.navExpanded
     })
   }
 
@@ -116,32 +94,34 @@ class App extends Component {
     })
   }
 
-  msgBtnClass() {
-    const chatOpened = this.state.chatOpened
-    const hasMessage = this.state.hasMessage
-    let classValue
-    !hasMessage
-      ? classValue = 'chat_button'
-      : hasMessage && !chatOpened
-        ? classValue = 'chat_button active'
-        : classValue = 'chat_button active open'
-    
-    return classValue
+  msgBtnClass(val) {
+    if (!val) {
+      const chatOpened = this.state.chatOpened
+      const hasMessage = this.state.hasMessage
+      let classValue
+      !hasMessage
+        ? classValue = ''
+        : hasMessage && !chatOpened
+          ? classValue = 'active'
+          : classValue = 'active open'
+      
+      return classValue
+    }
   }
 
   render() {
     const contextValue = {
-      //userHistory: this.state.userHistory,
-      //pushHistory: this.pushHistory,
       isLoggedIn: this.state.isLoggedIn,
       chatOpened: this.state.chatOpened,
       openMsg: this.openMsg,
       msgBtnClass: this.msgBtnClass(),
       startChat: this.startChat,
       chatRoomName: this.state.chatRoomName,
+      expandNav: this.expandNav,
+      navExpanded: this.state.navExpanded,
+      query: this.state.query,
+      defineQuery: this.defineQuery,
     }
-
-    //console.log(this.state.userHistory)
 
     return (
       <UdownContext.Provider value={ contextValue }>

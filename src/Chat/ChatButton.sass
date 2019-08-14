@@ -6,9 +6,11 @@
     height: 50px
     bottom: 15px
     right: 15px
-    z-index: 3
+    z-index: 0
 
-    
+    &.active
+        z-index: 1
+
 
 .chat_button
     display: none
@@ -23,6 +25,7 @@
     box-shadow: 5px 5px 4px rgba(64,166,255,0.3) inset, -3px -3px 5px rgba(145,255,112,0.3) inset
     text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4)
     transition: box-shadow 0.2s ease-out
+    z-index: 0
 
     h2
         font-size: 15px

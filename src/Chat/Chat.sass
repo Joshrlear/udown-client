@@ -10,8 +10,10 @@
 
 .chat_container
     display: none
+    position: absolute
+    z-index: 4
     width: 100vw
-    height: 100vh - 7vh
+    height: 100vh
     background: white
 
 
@@ -20,32 +22,33 @@
     
 
     .chat_title_container
-        width: 100%
-        height: 7vh
+        width: 100vw
+        height: 8vh
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
         background-color: $blue-color
 
 
         .chat_title
-            display: block
+            display: flex
+            justify-content: center
+            align-items: center
             height: 100%
-            padding-top: 1vh
             text-align: center
-            margin-left: auto
-            margin-right: auto
             color: white
             font-size: 1.5em
 
 
         .back_arrow_container
             display: block
-            position: absolute
-            top: 9vh
-            left: 2vh
             height: 6vh
 
 
             a
-                display: inline-block
+                display: flex
+                position: relative
+                top: 2vh
+                left: 2vh
                 border-radius: 50%
                 text-decoration: none
                 color: white
@@ -86,30 +89,65 @@ a
 
 
 .chat_input_section_container
-    position: absolute
-    display: flex
-    bottom: 1.5vh
+    position: fixed
+    display: grid
+    grid-template-columns: 72% 3% 20%
+    bottom: 3vh
     width: 100vw
     height: 38px
+    padding-top: 0px 
 
+    div
+        padding-top: 0px
+        margin: 0% 0% 0% 8%
 
     .input_container
-        width: 75%
         height: 100%
 
 
         input
             box-sizing: border-box
-            margin: 0px auto 0px auto
+            width: 100%
             height: 100%
+            margin: 0px
 
+            &:placeholder-shown
+                border-style: solid
+                border-color: rgba(0, 0, 0, 0.2)
+
+
+            &::placeholder
+                text-align: left
+                padding-left: 20px
 
     .button_container
-        width: 25%
+        width: 100%
         height: 100%
+        justify-content: flex-end
 
 
         .send_button
             box-sizing: border-box
-            width: 90%
+            width: 80px
             height: 100%
+            display: block
+            position: relative
+            border-radius: 8px
+            border-right: none
+            border-top: none
+            border-bottom: none
+            border-left-color: rgba(0, 0, 0, 0.2)
+            text-align: center
+            left: -8%
+            margin: 0px
+            text-decoration: none
+            text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4)
+            color: white
+            font-weight: 600
+            font-size: 16px
+            background-color: #6ab4ce
+            box-shadow: 5px 5px 4px rgba(64,166,255,0.3) inset, -3px -3px 5px rgba(145,255,112,0.3) inset
+            transition: box-shadow 0.2s ease-out
+
+            &:hover 
+                box-shadow: 0px 0px 100px rgba(158, 239, 70, 0.5) inset, 0px 0px 100px rgba(158, 239, 70, 0.5) inset

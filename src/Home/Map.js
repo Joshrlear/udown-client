@@ -3,69 +3,98 @@ import { GoogleMap, Marker } from 'react-google-maps';
 import config from '../config'
 import uuid from 'uuid/v4';
 import LocationContext from './LocationContext'
+import UdownContext from '../UdownContext'
 //import locations from '../data/tennis-courts.json'
 import InfoDisplay from './InfoDisplay'
+import fetches from '../mapFetches/mapFetches'
+import { reject } from 'q';
 
+const { getLocations, getLocationPhoto } = fetches.mapFetches
 const width = Math.ceil(window.innerWidth)
 const hieght = Math.ceil(window.innerHeight / 5)
+const searchQuery = UdownContext 
 
 export default class Map extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedLocation: null,
+            hasSelection: false,
+            setSelection: () => {}, 
             toggleClass: '',
             locations: [],
             locationPhoto: `https://via.placeholder.com/${width}x${hieght}`,
             locationImage: '',
+            query: '',
         }
     }
     
-    
-    static contextType = LocationContext
+    static contextType = UdownContext
 
-    setSelectedLocation = (value) => {
-        //console.log('this is the value', value, 'this is the photo', value.photos[0].photo_reference)
-        const photo_ref = value.photos[0].photo_reference
+    mapClick = (setSelection) => {
         this.setState({
-            selectedLocation: value,
-            locationPhoto: photo_ref
+            selectedLocation: null
         })
+        setSelection(false)
     }
+
+    setSelectedLocation = (loc, setSelection) => {
+
+        let photo_ref
+
+        // run only if updated hasSelection value
+        if (this.state.selectedLocation !== loc) {
+            this.setState({
+                hasSelection: true,
+            })
+            setSelection(true)
+        } 
+        else {
+            console.log('selection is not unique')
+        }
+
+        // set state only if loc.photo is truthy
+        if (loc.photos) {
+            photo_ref = loc.photos[0].photo_reference
+            this.setState({
+                selectedLocation: loc,
+                locationPhoto: photo_ref,
+            })
+        } 
+        // set state only if loc.photo is falsy
+        else {
+            this.setState({
+                selectedLocation: loc
+            })
+        }
+
+
+        
+        
+    }
+
 
     componentDidMount() {
-        // this fetch request works. commented out for development purposes
-        // need to flesh out how people will interact with the data before using actual data
-        
-        fetch(`${config.API_ENDPOINT}home/map`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res => {
-            return res.json()
-        })
-        .then(res => {
+        this.runQuerySearch()
+    }
+
+    runQuerySearch(){
+        const result = Promise.resolve(getLocations(this.state.query))
+        result.then((value) => {
             this.setState({
-                locations: res.results
+                locations: value.results
             })
-            //console.log(res)
         })
     }
 
-
-    // This router should be all good but I am receiving a 403 unauthorized error saying
-    // that I have met my quota indicated by the icon in the Network > preview
-    // I don't seem to have exceeded anyb quota when looking on google cloud console
-    // I have contacted sales to ask about it... consider removing photos for now.
     getLocationPhoto = () => {
-        //console.log('getting location photo')
-        //console.log(this.state.locationPhoto)
-        this.state.selectedLocation && (
-            
-            // Get location photo from google api
-            fetch(`${config.API_ENDPOINT}home/location-photo`, {
+        if (this.state.selectedLocation) {
+            const result = getLocationPhoto(this.state.locationPhoto, width)
+            this.setState({
+                locationImage: result
+            })
+            {// KEEP THIS FOR REF UNTIL PHOTOS WORK
+            /* fetch(`${config.API_ENDPOINT}home/location-photo`, {
               method: 'POST',
               headers: {
                 //'ContentType': 'application/json',
@@ -73,51 +102,64 @@ export default class Map extends Component {
                 'width': width
               }
             })
-            .then(res => { return res })
+            .then(res => { 
+                // currently it is not receiving info from server.
+                // the objectURL is just a link to my website showing only nav bar...
+                console.log('here! ', res.headers)
+                res.blob().then(blob => {
+                    const objectURL = URL.createObjectURL(blob)
+                    this.setState({
+                        locationImage: objectURL
+                    })
+                })
+                return res
+            })
             .then(results => console.log('here is the response for location-photo: ', results))
-            .catch(err => console.log(err))
-        )
-    }
-
-    // fix this after main functions complete
-    /* async function isSelected() {
-        setToggleClass(toggleClass === '' ? ' isActive' : '')
-        const toBeToggled = await selectedLocation && (selectedLocation.setAttribute('className', `marker ${toggleClass}`))
-    } */
-    componentDidUpdate() {
-        //console.log('Map Component Updating')
-        const { hasSelection, isSelected, isUnselected } = this.context
-        if (this.state.selectedLocation !== null) {
-            //console.log('running true')
-            !hasSelection && (
-                isSelected(true)
-            )
-        } 
-        else {
-            //console.log('running false')
-            hasSelection && (
-                isUnselected(false)
-            )
+            .catch(err => console.log(err)) */}
         }
     }
 
-    mapClick = () => {
-        this.setState({
-            selectedLocation: null
-        })
+    componentDidUpdate() {
+
+        // only starts on query search
+        if (this.context.query) {
+            // only start on unique query
+            new Promise((resolve, reject, next) => {
+                if (this.state.query !== this.context.query) {
+                    resolve(
+                        this.setState({
+                            query: this.context.query
+                        })
+                    )
+                }
+                /* else {
+                    // in the future use this to highlight input
+                    // and tell user that they are already displaying
+                    // results for that query
+                    // possibly add google autocomplete api to
+                    // suggest unique queries
+                    // ex: user entered tennis, suggest: tennis courts
+                    reject(`results for ${this.context.query} already displayed`)
+                } */
+            })
+            .then(() => {
+                this.runQuerySearch()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
     }
 
     
     render() {
-        //console.log(this.state.locationImage)
+
         const selectedLocation = this.state.selectedLocation
         const photo_reference = selectedLocation && (
             selectedLocation.photos &&(
                 selectedLocation.photos[0].photo_reference
             )
         )
-
-        this.state.selectedLocation && (!this.state.locationImage && (this.getLocationPhoto()))
 
         const contextValue = {
             name: selectedLocation ? selectedLocation.name : 'Name',
@@ -132,13 +174,17 @@ export default class Map extends Component {
         const zoom = selectedLocation ? 13 : 11
         return (
             <>
-                <GoogleMap
-                    zoom={zoom}
-                    center={center}
-                    defaultOptions={{ disableDefaultUI: true }}
-                    onClick={this.mapClick}
-                >
-                    {this.state.locations.map(loc => (
+            <LocationContext.Consumer>
+                {({ setSelection }) => (
+                    <GoogleMap
+                        zoom={zoom}
+                        center={center}
+                        defaultOptions={{ disableDefaultUI: true }}
+                        onClick={() => this.mapClick(setSelection)}
+                    >
+                    {/* incase there are no locations do nothing 
+                    (there should always be locations unless google error) */}
+                    {this.state.locations && this.state.locations.map(loc => (
                     
                         <Marker 
                             key={ uuid() }
@@ -147,16 +193,15 @@ export default class Map extends Component {
                                 lng: loc.geometry.location.lng 
                             }}
                             onClick={() => {
-                                this.setSelectedLocation(loc)
-                            }}
-                            onCloseClick={() => {
-                                this.setSelectedLocation(null, null)
+                                this.setSelectedLocation(loc, setSelection)
                             }}
                             className="marker"
                         />
                     
                     ))}
-                </GoogleMap>
+                    </GoogleMap>
+                )}
+                </LocationContext.Consumer >
                 <LocationContext.Provider value={contextValue}>
                     <InfoDisplay />
                 </LocationContext.Provider>

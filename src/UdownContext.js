@@ -11,6 +11,9 @@ const UdownContext = createContext({
     openMsg: () => {},
     startChat: () => {},
     chatRoomName: '',
+    expandNav: () => {},
+    query: '',
+    defineQuery: () => {},
 })
 
 export default UdownContext;

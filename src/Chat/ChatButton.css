@@ -4,7 +4,11 @@
   height: 50px;
   bottom: 15px;
   right: 15px;
-  z-index: 3;
+  z-index: 0;
+}
+
+.chat_button_container.active {
+  z-index: 1;
 }
 
 .chat_button {
@@ -24,6 +28,7 @@
   transition: -webkit-box-shadow 0.2s ease-out;
   transition: box-shadow 0.2s ease-out;
   transition: box-shadow 0.2s ease-out, -webkit-box-shadow 0.2s ease-out;
+  z-index: 0;
 }
 
 .chat_button h2 {
