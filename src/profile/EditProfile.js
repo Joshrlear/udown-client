@@ -3,105 +3,186 @@ import { Link } from 'react-router-dom'
 import config from '../config'
 import UdownContext from '../UdownContext';
 import functions from '../functions';
-import './EditProfile.sass'
+import fetches from '../fetches'
+import './profile.scss'
+import { thisExpression } from '@babel/types';
 
+const { getProfileImage, getProfilePhone } = fetches.profileFetches
 const authFunctions = functions.authFunctions
+
+const imageHeight = Math.ceil(window.outerHeight * 0.35);
+const imageWidth = Math.ceil(window.innerWidth);
 
 export default class EditProfile extends Component {
     constructor(props) {
     super(props)
-    this.phone = React.createRef()
+    this.imageUpload = React.createRef()
+    this.phoneNumber = React.createRef()
     this.state = {
-      user_id: ''
+      user_id: '',
+      profileImage: `https://via.placeholder.com/${imageWidth}x${imageHeight}`,
+      phone: '',
+      imageUpload: 'Upload Image',
     }
   }
 
     static contextType = UdownContext;
 
-    
     componentWillMount() {
-      console.log('this is trying to mount')
+
+      {/* const user_id = localStorage.user_id
+      const reqHeaders = new Headers({
+        'Content-Type': 'text/plain',
+        'X-user_id': localStorage.user_id,
+        'X-userInfo': 'phone',
+      })
+
+      fetch(`${config.API_ENDPOINT}profile/${user_id}`, {
+        method: 'GET',
+        headers: reqHeaders,
+        credentials: 'include',
+      })
+      .then(res => {
+        console.log(res)
+        if(!res.ok) {
+          return res.json().then(err => {
+            console.log('error here:', err)
+            throw err
+          })
+        }
+        console.log(res)
+        return res.json()
+      })
+      .catch(err => {
+        console.log(err)
+      }) */}
     }
     
-
     componentDidMount() {
-      console.log("localStorage.user_id: ",localStorage.user_id)
+
       this.setState({
         "user_id": localStorage.user_id
       })
     }
 
     componentDidUpdate() {
-      const user_id = this.state.user_id
+      const user_id = localStorage.user_id
 
-      // change endpoint and router to user rather than images 
-      fetch(`${config.API_ENDPOINT}profile/${user_id}/images`, {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          "user_id": user_id
-        },
-        credentials: 'include'
+      // get profile image
+      const imageResult = Promise.resolve(getProfileImage(user_id, this.props))
+      imageResult.then(value => {
+        if (value) {
+          console.log(value)
+          const base64Image = value.image.image
+          const image = `data:image/jpg;base64, ${base64Image}`
+          /* document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}` */
+          value && (
+            this.state.profileImage !== image  && (
+              this.setState({
+                profileImage: image
+              })
+            )
+          )
+          
+        }
+      })
+
+      // get user phone_number
+      const phoneResult = Promise.resolve(getProfilePhone(user_id, 'phone_number'))
+      phoneResult.then(value => {
+        if (value) {
+          console.log(value.field)
+          this.state.phone !== value.field && (
+            this.setState({
+              phone: value.field
+            })
+          )
+        }
+      })
+    }
+
+    handleSubmit = (e) => {
+      e.preventDefault()
+      const user_id = localStorage.user_id
+      const imageUpload = this.imageUpload.current.files[0] ? this.imageUpload.current.files[0] : null
+      const imageName = this.imageUpload.current.files[0] ? `${Date.now()}-${this.imageUpload.current.files[0].name}` : null
+      const phoneNumber = this.phoneNumber.current.value ? this.phoneNumber.current.value : null
+
+      const formData = new FormData()
+      this.imageUpload.current.files[0] && formData.append('image', imageUpload, imageName)
+      formData.append('phone', phoneNumber)
+
+      fetch(`${config.API_ENDPOINT}profile/${user_id}`, {
+        method: 'POST',
+        body: formData,
+        credentials: 'include' 
       })
       .then(res => {
-        
-          if (!res.ok) {
-            return res.json().then(error => {
-              if (res.status !== 401) {
-                return res.send('')
-              }
-              else {
-                this.props.history.push('/login')
-              }
-            })
-          }
-          
-          return res.json()
-        })
-        .then(res => {
-          if (res !== undefined) {
-           
-            const image = res.image.image
-            document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
-          }
-        })
+        if (!res.ok) {
+          return res.json().then(err => {
+            throw err
+          })
+        }
+        else {
+          console.log(res)
+          return res
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+    handleValue = () => {
+      const imgName = this.imageUpload.current.value.split('fakepath\\')[1]
+      this.setState({
+        imageUpload: imgName
+      })
     }
 
     render() {
-
-      const imageHeight = Math.ceil(window.outerHeight * 0.35);
-      const imageWidth = Math.ceil(window.innerWidth);
+      console.log(this.state.phone)
         return (
-            <div className="edit_profile_container">
+          <div className="edit_profile_container">
+            <div className="edit_profile">
                 <div className="img_container">
-                    <img id='profile-image' className="profile_image" src={`https://via.placeholder.com/${imageWidth}x${imageHeight}`} alt="User profile" />
+                    <img id='profile-image' className="profile_image" src={this.state.profileImage} alt="User profile" />
                 </div>
-                <Link
-                  to="/profile"
-                  className="back_btn">
-                  Back
-                </Link>
                 <form ref='uploadForm' 
                   id='uploadForm' 
-                  action={`${config.API_ENDPOINT}profile/` }
+                  onSubmit={e => this.handleSubmit(e)}
                   method='post' 
                   encType="multipart/form-data">
-                  <input type="file" name="imageUpload" />
-                  <label>Phone: </label>
-                  <input ref={ this.phone } className="phone" placeholder="6198821234"/>
+                  <input 
+                    ref={ this.imageUpload }
+                    onChange={ this.handleValue } 
+                    type="file" 
+                    name="imageUpload"
+                    id="imageUpload" />
+                    <label htmlFor="imageUpload" className="imageUpload"><span>{ this.state.imageUpload || 'No Image Selected' }</span></label>
+                  <label className="phone_label">Edit Phone:</label>
+                  <input 
+                    ref={ this.phoneNumber } 
+                    className="phone" 
+                    placeholder="no number yet..." 
+                    defaultValue={ this.state.phone } 
+                  />
                   <div className="input_note_container">
                     <p className="input_note">   
                       <em>
-                          Phone number is used to send invites via text message based on you notification preference.
+                          Phone number is used to send<br/>
+                          invites via text message.
                       </em>
                     </p>
                   </div>
-                  {/* <a className="save_btn"> */}
-                    <input className="save" type='submit' value='Save' />
-                  {/* </a> */}
-                </form> 
-
+                  <div className="button_rack">
+                    {/* <a className="save_btn"> */}
+                      <input className="save_btn" type='submit' value='Save' />
+                    {/* </a> */}
+                  </div>
+                </form>
             </div>
+          </div>
         )
     }
 }

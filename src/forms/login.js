@@ -4,14 +4,16 @@ import { NavLink } from 'react-router-dom';
 import UdownContext from '../UdownContext';
 import functions from '../functions';
 import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
-import './forms.css';
+import './forms.scss';
 
 const formFunctions = functions.formFunctions
 const authFunctions = functions.authFunctions
 
 export default class Login extends Component {
     state = {
-        error: true
+        error: true,
+        username: '',
+        password: '',
     };
 
     static contextType = UdownContext;
@@ -86,7 +88,7 @@ export default class Login extends Component {
     render() {
         
     return (
-        <div>
+        <div className="login_container">
             <form
                 className="login_form"
                 onSubmit={this.handleSubmit}>
@@ -98,6 +100,7 @@ export default class Login extends Component {
                 <label>Username: </label>
                 <input 
                     name="username"
+                    className="username"
                     placeholder="username here"
                     onChange={e => this.handleInput(e.target)}/>
               </div>

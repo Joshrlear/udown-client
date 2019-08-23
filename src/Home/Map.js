@@ -6,8 +6,7 @@ import LocationContext from './LocationContext'
 import UdownContext from '../UdownContext'
 //import locations from '../data/tennis-courts.json'
 import InfoDisplay from './InfoDisplay'
-import fetches from '../mapFetches/mapFetches'
-import { reject } from 'q';
+import fetches from '../fetches'
 
 const { getLocations, getLocationPhoto } = fetches.mapFetches
 const width = Math.ceil(window.innerWidth)
@@ -171,11 +170,11 @@ export default class Map extends Component {
         }
 
         const center = selectedLocation ? {lat: selectedLocation.geometry.location.lat, lng: selectedLocation.geometry.location.lng} : { lat: 32.8180, lng: -117.0560 }
-        const zoom = selectedLocation ? 13 : 11
+        const zoom = selectedLocation ? 15 : 13
         return (
-            <>
-            <LocationContext.Consumer>
-                {({ setSelection }) => (
+            <div className="map_container">
+                <LocationContext.Consumer>
+                    {({ setSelection }) => (
                     <GoogleMap
                         zoom={zoom}
                         center={center}
@@ -205,7 +204,7 @@ export default class Map extends Component {
                 <LocationContext.Provider value={contextValue}>
                     <InfoDisplay />
                 </LocationContext.Provider>
-            </>
+            </div>
         )
     }
 }

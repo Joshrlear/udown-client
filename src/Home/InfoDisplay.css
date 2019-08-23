@@ -16,17 +16,42 @@ img {
   height: 0vh;
   background-color: #F5F5F5;
   border-left: solid 1px lightgray;
-  -webkit-transition: all .25s ease-out;
-  transition: all .25s ease-out;
 }
 
 .info_display.active {
-  height: 58vh;
+  height: 65vh;
+}
+
+@media screen and (min-width: 1100px) {
+  .info_display.active {
+    height: 92vh;
+    width: 45%;
+    bottom: 0px;
+    right: 0px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .info_container {
+    display: -ms-grid;
+    display: grid;
+    position: relative;
+    top: 5vh;
+    grid: "info" "buttons";
+  }
 }
 
 .info_container .info {
   width: 100%;
   padding: 0% 10% 10% 10%;
+}
+
+@media screen and (min-width: 1100px) {
+  .info_container .info {
+    display: -ms-grid;
+    display: grid;
+    grid-area: info;
+  }
 }
 
 .info_container .info .review_header {
@@ -43,6 +68,16 @@ img {
 
 .info_container .button_container {
   margin-top: 20px;
+}
+
+@media screen and (min-width: 1100px) {
+  .info_container .button_container {
+    width: 40%;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    grid-area: buttons;
+  }
 }
 
 .info_container .button_container > button {
@@ -73,5 +108,24 @@ img {
   width: 200px;
   margin-top: 20px;
   right: 0px;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+}
+
+.info_container .address h3, .info_container .address p {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 7;
+  grid-column: 1/8;
+}
+
+@media screen and (min-width: 1100px) {
+  .info_container .address h3, .info_container .address p {
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 3;
+    grid-column: 3/6;
+  }
 }
 /*# sourceMappingURL=InfoDisplay.css.map */

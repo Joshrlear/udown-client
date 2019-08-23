@@ -1,0 +1,209 @@
+@import "../utilities/variables";
+
+@mixin desktop() {
+    @media screen and ( min-width: 1100px ) {
+      @content;
+    }
+  }
+  
+  @mixin tablet() {
+    @media screen and ( min-width: 760px ) {
+      @content;
+    }
+  }
+  
+  @mixin l-tablet() {
+    @media screen and ( min-width: 900px ) {
+      @content;
+    }
+  }
+
+textarea, p {
+    font-family: $poppins-font;
+    font-size: 1.2rem;
+}
+
+.chat_container {
+    display: none;
+    position: absolute;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    @include l-tablet() {
+        width: 320px;
+        height: 500px;
+        bottom: 0px;
+        left: 2vw;
+        border: 2px lightgrey solid;
+        border-bottom: none;
+        border-radius: 10px 10px 0px 0px;
+        box-sizing: initial;
+    }
+
+
+    &.active {
+        display: block;
+    }
+
+    .chat_title_container {
+        width: 100vw;
+        height: 8vh;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: $blue-color;
+        @include l-tablet() {
+            width: inherit;
+            height: 5vh;
+            border-radius: 7px 7px 0px 0px;
+        }
+
+
+        .chat_title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .back_arrow_container {
+            display: block;
+            height: 6vh;
+
+
+            a {
+                display: flex;
+                position: relative;
+                top: 2vh;
+                left: 2vh;
+                border-radius: 50%;
+                text-decoration: none;
+                color: white;
+
+                &:hover .back_arrow {
+                    border: 0.5em solid $darkGrey-color;
+                }
+
+                &:hover .back_arrow:after {
+                    border-top: 0.5em solid $accent-color;
+                    border-right: 0.5em solid $accent-color;
+                }
+            }
+        }
+    }
+}
+
+.chat_section {
+    height: 80%;
+    overflow: auto;
+    @include l-tablet() {
+        height: 77%;
+    }
+
+}
+
+.message {
+    padding: 10px 20px;
+
+    h3 {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+}
+
+a {
+    cursor: pointer;
+}
+
+.chat_input_section_container {
+    position: fixed;
+    display: grid;
+    grid-template-columns: 72% 3% 20% 5%;
+    bottom: 3vh;
+    width: inherit;
+    height: 38px;
+    padding-top: 0px ;
+    @include l-tablet() {
+        width: inherit;
+        bottom: 2vh;
+    }
+
+    div {
+        padding-top: 0px;
+        margin: 0% 0% 0% 8%;
+    }
+
+    .input_container {
+        height: inherit;
+
+
+        textarea {
+            resize: none;
+            box-sizing: border-box;
+            border: 2px lightgrey solid;
+            width: 100%;
+            height: inherit;
+            margin: 0px;
+
+            &::placeholder {
+                text-align: left;
+                padding-left: 10px;
+            }
+        }
+    }
+
+    .button_container {
+        width: 100%;
+        height: 100%;
+        justify-content: flex-end;
+
+
+        .send_button {
+            width: 100%;
+            height: 100%;
+            text-shadow: none;
+            border: none;
+            margin: 0px;
+            font-size: 1rem;
+            text-align: center;
+            display: block;
+            position: relative;
+            cursor: pointer;
+            border-radius: 20px;
+            text-align: center;
+            padding: 0px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            background-color: $blue-color;
+            transition: box-shadow 0.2s ease-out;
+            &:hover {
+              box-shadow: 0px 0px 100px $darkBlue-color inset;
+            }
+        }
+    }
+}
+
+.close_btn {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    height: inherit;
+}
+
+.fas {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}

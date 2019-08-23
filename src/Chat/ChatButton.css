@@ -1,3 +1,5 @@
+/* color scheme */
+/* fonts */
 .chat_button_container {
   position: fixed;
   width: 50px;
@@ -13,7 +15,7 @@
 
 .chat_button {
   display: none;
-  background-color: #6ab4ce;
+  background-color: #3cb4dc;
   border-radius: 50%;
   border-radius: 50%;
   padding-top: 6px;

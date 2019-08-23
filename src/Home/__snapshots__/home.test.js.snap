@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components renders InfoDisplay with location properties 1`] = `
+<div
+  className="info_display active"
+>
+  <div
+    className="info_container"
+  >
+    <div
+      className="button_container"
+    >
+      <button>
+        Directions
+      </button>
+      <button
+        className="playBtn"
+        onClick={[Function]}
+      >
+        PLAY
+      </button>
+    </div>
+    <main
+      className="info"
+    >
+      <div
+        className="header-button"
+      >
+        <header>
+          <h2>
+            Location Name
+          </h2>
+          <p>
+            Currently Available!
+          </p>
+        </header>
+      </div>
+      <section
+        className="main_info"
+      >
+        <p />
+        <div
+          className="address"
+        >
+          <h3>
+            Address:
+          </h3>
+          <p>
+            Location Address
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components renders Map correctly 1`] = `ShallowWrapper {}`;

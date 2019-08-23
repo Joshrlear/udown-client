@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import asyncScriptLoader from 'async-script-loader'
 import io from 'socket.io-client'
 import UdownContext from '../UdownContext'
-import uuid from 'uuid/v4'
-import faker from 'faker'
-import './Chat.sass'
+import ScrollToBottom from 'react-scroll-to-bottom'
+import './Chat.scss'
 
 let socket
 
@@ -13,6 +11,7 @@ export default class Chat extends Component {
         super(props);
         this.chatInput = React.createRef()
         this.chatSection = React.createRef()
+        this.messagesEnd = React.createRef()
         this.state = {
             currentMessage: '',
             messages: [],
@@ -25,6 +24,11 @@ export default class Chat extends Component {
     componentWillMount() {
         // connect to socket if no socket connected
         !socket && (this.connectSocket())
+    }
+
+    componentDidUpdate() {
+        console.log(this.messagesEnd.current)
+        this.messagesEnd.current && this.messagesEnd.current.scrollIntoView({ behavior: "smooth" })   
     }
 
     connectSocket() {
@@ -68,7 +72,7 @@ export default class Chat extends Component {
     }
 
     closeChat = () => {
-        this.context.openMsg()
+        this.context.closeChat()
     }
 
     handleInput = (message) => {
@@ -107,17 +111,15 @@ export default class Chat extends Component {
         <>
             <div className={ chatToggle }>
                 <div className="chat_title_container">
-                <div className="back_arrow_container">
-                    <a className="close_btn" onClick={this.closeChat}>Close</a>
-                </div>
+                
+                    <a className="close_btn" onClick={this.closeChat}><i className="fas fa-times fa-2x"></i></a>
                     <h1 className="chat_title">Chat</h1>
                 </div>
-                <section ref={ this.chatSection } className="chat_section">
-                    {/* need to move this into separate function later */}
+                <ScrollToBottom className="chat_section">
                     <ul className="messages">
                         {this.state.messages.map((msg, i) => <li key={i} className="message">
                             <div  className="message_container">
-                                <h3 className="from">{msg.username}</h3>
+                                <h3 className="from">{`${msg.username}:`}</h3>
                                 <p className="message_text">{msg.message}</p>
                             </div>
                         </li>)}
@@ -127,11 +129,12 @@ export default class Chat extends Component {
                             <p className="typing_msg"><em>{`${user} is typing...`}</em></p>
                         </li>)}
                     </ul>
-                </section>
+                </ScrollToBottom>
+                <div className="forScroll" ref={ this.messagesEnd }/>
                 <form className="chat_input_section_container"
                 onSubmit={e => {this.sendMessage(e)}}>
                     <div className="input_container">
-                        <input 
+                        <textarea
                             ref={ this.chatInput } 
                             className="chat_intput" 
                             placeholder="type message..."

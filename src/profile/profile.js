@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import config from '../config';
 import UdownContext from '../UdownContext';
 import functions from '../functions';
+import fetches from '../fetches'
 import EditProfile from './EditProfile'
-import './profile.css'
+import './profile.scss'
 
+const { getProfileImage } = fetches.profileFetches
 const authFunctions = functions.authFunctions
 
 export default class Profile extends Component {
@@ -25,45 +27,15 @@ export default class Profile extends Component {
     
 
     componentDidMount() {
-      /* const path = this.props.location.pathname.split('/')
-      const user_id = path[path.length - 1] */
-      //console.log("localStorage.user_id: ",localStorage.user_id)
-      /* this.setState({
-        "user_id": localStorage.user_id
-      }) */
-
       const user_id = localStorage.user_id
 
-      fetch(`${config.API_ENDPOINT}profile/${user_id}/images`, {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          "user_id": user_id
-        },
-        credentials: 'include'
+      const result = Promise.resolve(getProfileImage(user_id, this.props))
+      result.then(value => {
+        if (value) {
+          const image = value.image.image
+          document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
+        }
       })
-      .then(res => {
-
-          if (!res.ok) {
-            return res.json().then(error => {
-              if (res.status !== 401) {
-                return res.send('')
-              }
-              else {
-                this.props.history.push('/login')
-              }
-            })
-          }
-          
-          return res.json()
-        })
-        .then(res => {
-          if (res !== undefined) {
-           
-            const image = res.image.image
-            document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
-          }
-        })
     }
 
     render() {
@@ -76,6 +48,11 @@ export default class Profile extends Component {
               <div className="profile">
                 <div className="img_container">
                   <img id='profile-image' className="profile_image" src={`https://via.placeholder.com/${imageWidth}x${imageHeight}`} alt="User profile" />
+                </div>
+                <div className="profile_info">
+                  <header className="profile_header">
+                    <h3 className="profile_name">Name</h3>
+                  </header>
                 </div>
                 <Link
                   to="/profileEdit"

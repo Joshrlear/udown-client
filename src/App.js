@@ -65,15 +65,19 @@ class App extends Component {
 
   // if new message, click button to open chat
   openMsg = () => {
-
     this.setState({
       chatOpened: !this.state.chatOpened
     })
-    setTimeout(() => this.setState({
+    setTimeout(() => this.state.hasMessage && this.setState({
       hasMessage: !this.state.hasMessage
     }))
   }
 
+  closeChat = () => {
+    this.setState({
+      chatOpened: !this.state.chatOpened
+    })
+  }
 
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}isLoggedIn`, {
@@ -113,6 +117,7 @@ class App extends Component {
     const contextValue = {
       isLoggedIn: this.state.isLoggedIn,
       chatOpened: this.state.chatOpened,
+      closeChat: this.closeChat,
       openMsg: this.openMsg,
       msgBtnClass: this.msgBtnClass(),
       startChat: this.startChat,
@@ -121,8 +126,9 @@ class App extends Component {
       navExpanded: this.state.navExpanded,
       query: this.state.query,
       defineQuery: this.defineQuery,
+      hasMessage: this.state.hasMessage,
     }
-
+    console.log(this.props.history)
     return (
       <UdownContext.Provider value={ contextValue }>
         <main className="App">
@@ -136,10 +142,6 @@ class App extends Component {
             <Route
               path="/"
               component={ Chat }
-            />
-            <Route
-              path="/"
-              component={ ChatButton }
             />
             <Route
               exact

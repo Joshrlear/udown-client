@@ -3,7 +3,8 @@ import config from '../config'
 import io from 'socket.io-client'
 import LocationContext from './LocationContext'
 import udownContext from '../UdownContext'
-import './InfoDisplay.sass'
+import fetches from '../fetches'
+import './InfoDisplay.scss'
 
 let socket
 socket = io(':8000')
@@ -17,48 +18,57 @@ export default function InfoDisplay(props) {
 
   function sendTxt() {
     const { chatOpened, startChat } = chatFuncs
-    //console.log(location.name)
-    
-    //console.log('this is the socket: ', socket)
-    /* socket.on('smsStatus', (data) => {
-      console.log(`text sent to ${data.number}`)
-    }) */
-    fetch(`${config.API_ENDPOINT}text`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'username': localStorage.username,
-        'location': location.name
+    const { getUserPhones } = fetches.profileFetches
+    const { user_id } = localStorage
+
+    // get user phone_number
+    const phoneResult = Promise.resolve(getUserPhones(user_id, 'phone_number'))
+    phoneResult.then(value => {
+      if (value) {
+        const userPhones = value.map(user => user.field)
+        const reqBody = { 
+          'username': localStorage.username, 
+          'location': location.name,
+          'userPhones': userPhones
+        }
+        console.log(userPhones)
+        fetch(`${config.API_ENDPOINT}text`, {
+              method: 'POST',
+              body: JSON.stringify(reqBody),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(res => {
+              if(!res.ok) {
+                return res.json().then(err => {
+                  console.log('error here: ', err)
+                  throw err
+                })
+              }
+              else {
+                return res.json()
+              }
+            })
+            .then(res => {
+              const user = res.username
+              const room = res.roomName
+              const loc = {
+                name: location.name,
+                address: location.address
+              }
+              //socket.emit('join', { user, room, loc })
+              console.log('res is right here: ', res)
+              !chatOpened && (startChat(room))
+            })
+            .catch(err => {
+              console.log(err)
+            })
       }
-    })
-    .then(res => {
-      if(!res.ok) {
-        return res.json().then(err => {
-          console.log('error here: ', err)
-          throw err
-        })
-      }
-      else {
-        return res.json()
-      }
-    })
-    .then(res => {
-      const user = res.username
-      const room = res.roomName
-      const loc = {
-        name: location.name,
-        address: location.address
-      }
-      //socket.emit('join', { user, room, loc })
-      console.log('res is right here: ', res)
-      !chatOpened && (startChat(room))
-    })
-    .catch(err => {
-      console.log(err)
     })
   }
 
-  // removing photo till google places api figured out
+  console.log(location)
   return (
       <div className={location.name === "Name" ? "info_display" : "info_display active"}>
         {/* <img src={location.photo || `https://via.placeholder.com/${width}x${hieght}`}/> */}

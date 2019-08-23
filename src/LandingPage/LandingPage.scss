@@ -1,0 +1,385 @@
+@import '../utilities/_variables';
+
+@mixin desktop() {
+  @media screen and ( min-width: 1100px ) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media screen and ( min-width: 760px ) {
+    @content;
+  }
+}
+
+@mixin l-tablet() {
+  @media screen and ( min-width: 900px ) {
+    @content;
+  }
+}
+
+@mixin left {
+    grid-area: left;
+}
+
+@mixin right {
+    grid-area: right;
+}
+
+
+
+.landing-page_container {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh - 8vh;
+    font-family: $poppins-font;
+    line-height: 1.5em;
+
+    .landing-page {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        @include desktop() {
+            position: initial;
+            display: grid;
+            grid: "title map"
+                  "title chat"
+                  "status info"
+                  / 55% 45%;
+        }
+    }
+
+
+    .title_section {
+        height: 100vh;
+        @include desktop() {
+            grid-area: title;
+        }
+    }
+            
+
+
+    .title_container {
+        position: absolute;
+        width: 100vw;
+        top: calc(50% - 3em);
+        justify-content: center;
+        align-items: center;
+        line-height: normal;
+        @include desktop() {
+            position: fixed;
+            width: 55%;
+        }
+    }
+
+    .background_container {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background: linear-gradient(104deg, $blue-color 30%, $accent-color 120%);
+        overflow: hidden;
+        z-index: -1;
+        @include desktop() {
+            width: 55vw
+        }
+
+        .background {
+            width: 100vw;
+            height: 140vh;
+            left: -8%;
+            top: -5%;
+            position: fixed;
+            z-index: 0;
+            mix-blend-mode: overlay;
+            opacity: 0.4;
+            filter: blur(2.2px);
+        }
+    }
+
+    &.off {
+        display: none;
+    }
+
+    .title, .subtitle {
+        text-align: center;
+        color: white;
+    }
+
+    .title {
+        font-family: $poppins-font;
+        font-size: 56px;
+        font-weight: 700;
+    }
+
+    .subtitle {
+        font-family: $poppins-font;
+        font-size: 20px;
+        font-weight: 200;
+        margin-top: -10px;
+    }
+
+    .map_section {
+        background-color: white;
+        height: 90vh;
+        margin-top: 15%;
+        @include desktop() {
+            grid-area: map;
+        }
+        
+        
+
+        .phone_container {
+            margin: 0% 0% 15% 15%;
+            @include desktop() {
+                position: initial;
+                margin: 0% 0% 10% 0%;
+                height: 50vh;
+            }
+        }
+
+        .infoDisplay, .map {
+            position: relative;
+            width: 50%;
+            object-fit: contain;
+        }
+
+        .map {
+            top: 105%;
+            left: 30%;
+            filter: blur(0.5px);
+            @include desktop() {
+                height: 100%;
+                top: initial;
+                left: 28%;
+                filter: blur(0.75px)
+            }
+        }
+
+        .infoDisplay {
+            position: absolute;
+            top: 105%;
+            right: 35%;
+            @include desktop() {
+                height: 100%;
+                position: relative;
+                top: 10%;
+                right: 33%
+            }
+        }
+
+        .textBox_container {
+            display: grid;
+
+            h3 {
+                margin: 5% auto 0% auto;
+                font-weight: 300;
+                line-height: 1.5em;
+            }
+        }
+    }
+
+    .chat_section {
+        position: relative;
+        height: 100vh;
+        @include desktop() {
+            grid-area: chat;
+        }
+            
+
+        .chat_whitespace {
+            position: absolute;
+            height: 48vh;
+            width: 100vw;
+            bottom: 0%;
+            background-color: white;
+            @include desktop() {
+                height: initial;
+            }
+        }
+
+        .chat_main_container {
+            height: 100%;
+            display: grid;
+            position: relative;
+            z-index: 0;
+            grid-template-rows: repeat(9, 1fr);
+            grid-template-columns: 5% 90% 5%;
+
+            .chat_text_container {
+                grid-row-start: 2;
+                grid-row-end: 3;
+                grid-column-start: 2;
+                grid-column-end: 2;
+                margin-top: 3vh;
+                color: white;
+                @include desktop() {
+                    margin-top: 5vh;
+                    color: black;
+                }
+            }
+                
+            .chat_img_container {
+                grid-row-start: 3;
+                grid-row-end: 9;
+                grid-column-start: 1;
+                grid-column-end: 4;
+                z-index: 1;
+                @include desktop() {
+                    z-index: initial;
+                }
+
+                .chat_img {
+                    height: 80%;
+                    object-fit: contain;
+                }
+            }
+
+            .chat_quote_container {
+                grid-row-start: 8;
+                grid-row-end: 9;
+                grid-column-start: 2;
+                grid-column-end: 3;
+                z-index: 1;
+                margin: auto;
+                padding: 20px;
+                border: rgba(0, 0, 0, 0.25) 2px solid;
+                color: $darkGrey-color;
+                @include desktop() {
+                    z-index: initial;
+                }
+                
+                .chat_quote {
+                    line-height: 1.5em;
+                }
+            }
+        }
+    }
+
+    .map_msgs_section {
+        display: grid;
+        overflow: hidden;
+        height: 45vh;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 55% 45%;
+        @include desktop() {
+            grid-area: status;
+            position: relative;
+            height: 100vh;
+        }
+            
+
+        .status_map {
+            height: 110%;
+            object-position: 42%;
+            grid-column-start: 1;
+            grid-column-end: 6;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+            
+        .status_msgs {
+            padding-top: 15vh;
+            width: 50vw;
+            grid-column-start: 3;
+            grid-column-end: 6;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            @include desktop() {
+                width: 100%;
+                padding-top: 30vh;
+            }
+        }
+    }
+
+    .status_section {
+        background-color: white;
+        height: fit-content;
+        @include desktop() {
+            grid-area: info;
+            padding: 15%;
+        }
+    }
+
+        .status_header_container {
+            display: grid;
+            padding: 7%;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            @include desktop() {
+                padding-top: 15%;
+            }
+
+            .status_project_title {
+                font-size: 24px;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 4;
+                align-self: center;
+                text-align: left;
+            }
+        }
+                
+            .status {
+                position: relative;
+                bottom: -2px;
+                grid-column-start: 3;
+                grid-column-end: 3;
+                grid-row-start: 2;
+                grid-row-end: 2;
+                align-self: center;
+                @include desktop() {
+                    grid-column-start: 2;
+                    left: 10px;
+                }
+            }
+
+        .status_description_container {
+            display: grid;
+            padding: 7%;
+            padding-top: 0%;
+            grid-template-columns: repeat(3, 1fr) ;
+            grid-template-rows: 10% 90%;
+
+            .description_title {
+                padding-bottom: 10px;
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 1;
+                grid-row-end: 1;
+                align-self: center;
+                color: grey;
+            }
+
+            .description {
+                grid-column-start: 1;
+                grid-column-end: 4;
+                grid-row-start: 2;
+                grid-row-end: 3;
+                align-self: center;
+            }
+        }
+
+        .status_icon_links {
+            height: 10vh;
+            display: flex;
+            justify-content: space-evenly;
+            margin-left: 15%;
+            margin-right: 15%;
+            @include desktop() {
+                position: relative;
+                top: 10%
+            }
+
+            .fab {
+                color: black;
+                transition: all 0.15s ease;
+                
+
+                &:hover {
+                    color: $accent-color;
+                }
+            }
+        }
+}

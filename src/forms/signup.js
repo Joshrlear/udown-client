@@ -4,7 +4,7 @@ import config from '../config';
 import UdownContext from '../UdownContext';
 import functions from '../functions';
 import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
-import './forms.css';
+import './forms.scss';
 
 const formFunctions = functions.formFunctions
 
@@ -108,7 +108,7 @@ export default class Login extends Component {
     render() {
 
     return (
-        <div>
+        <div className="signup_container">
             <form 
                 className="signup_form"
                 onSubmit={this.handleSubmit}>

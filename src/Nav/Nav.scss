@@ -1,3 +1,23 @@
+@import "../utilities/_variables.sass";
+
+@mixin desktop() {
+  @media screen and ( min-width: 1100px ) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media screen and ( min-width: 760px ) {
+    @content;
+  }
+}
+
+@mixin l-tablet() {
+  @media screen and ( min-width: 900px ) {
+    @content;
+  }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +37,9 @@ nav {
   width: 100vw;
   background: #1c2324;
   z-index: 1;
+  @include l-tablet() {
+    z-index: 5;
+  }
 }
 
   
@@ -29,6 +52,9 @@ nav {
   grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 2;
+  @include desktop() {
+    grid-column-end: 2; 
+  }
 }
 
 .searchbar_input {
@@ -98,37 +124,29 @@ nav {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
-/* .search_btn {
-  width: 35px;
-  height: 35px;
-  color: #1d2323;
-  font-size: 22px;
-  background-color: white;
-  border-radius: 50%;
-  grid-column-start: 6;
-  grid-column-end: 6;
-  grid-row-start: 2;
-  grid-row-end: 2;
-} */
-
 .search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  width: 40px;
-  height: 42px;
+  height: 100%;
   margin-left: 0px;
-  top: -1vh;
   grid-column-start: 6;
   grid-column-end: 6;
   grid-row-start: 2;
   grid-row-end: 2;
   z-index: 3;
+  @include desktop() {
+    grid-column: 2/2;
+    margin-left: 20px;
+  }
 }
 
 .search_btn_container {
   background: white;
   opacity: 0;
   position: relative;
-  top: -7vh;
+  align-items: center;
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -146,86 +164,121 @@ nav {
   }
 
 
-.search_btn {
-  background: rgba(0, 0, 0, 0);
-  height: 3px;
-  width: 0px;
-  grid-row-start: 4;
-  grid-row-end: 5;
-  z-index: -1;
-  margin: 0;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-
-  &:before,
-  &:after {
-    content: "";
+  .search_btn {
     background: rgba(0, 0, 0, 0);
-    position: absolute;
     height: 3px;
-    width: 15px;
+    width: 0px;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    z-index: -1;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
     transition: all 0.3s ease-out;
-  }
 
-  &.on {
-    width: 18px;
-    border-top-right-radius: 25%;
-    border-bottom-right-radius: 25%;
-  }
+    &:before,
+    &:after {
+      content: "";
+      background: rgba(0, 0, 0, 0);
+      position: absolute;
+      height: 3px;
+      width: 15px;
+      transition: all 0.3s ease-out;
+    }
 
-  &.on, 
-  &.on:before, 
-  &.on:after {
-    margin-left: 6px;
-     background: #1c2324;
-     z-index: 2;
-  }
+    &.on {
+      width: 18px;
+      border-top-right-radius: 25%;
+      border-bottom-right-radius: 25%;
+    }
 
-  &:before {
-    right: -6.3px;
-    bottom: -4px;
-    transform: rotate(-45deg);
-    border-radius: 3px;
-  }
+    &.on, 
+    &.on:before, 
+    &.on:after {
+      margin-left: 6px;
+       background: #1c2324;
+       z-index: 2;
+    }
 
-  &:after {
-    right: -6.3px;
-    top: -4px;
-    transform: rotate(45deg);
-    border-radius: 3px;
+    &:before {
+      right: -6.3px;
+      bottom: -4px;
+      transform: rotate(-45deg);
+      border-radius: 3px;
+    }
+
+    &:after {
+      right: -6.3px;
+      top: -4px;
+      transform: rotate(45deg);
+      border-radius: 3px;
+    }
   }
 }
+
+.newMsg_notification {
+  display: none;
+}
+
+.newMsg_notification.newMsg {
+  display: initial;
+  background-color: $accent-color;
+  border-radius: 50%;
+  width: calc(1.7vw + 5px);
+  height: calc(1.7vw + 5px);
+  position: relative;
+  top: 5%;
+  right: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  pointer-events: none;
+  z-index: 4;
+  @include tablet() {
+    right: 18%;
+  }
+  @include desktop() {
+    display: none;
+  }
 }
 
 .hamburger_container {
+  position: relative;
+  left: 90%;
   display: grid;
   grid-template-rows: repeat(7, 1fr);
-  grid-column-start: 6;
+  grid-column-start: 5;
   grid-column-end: 6;
   grid-row-start: 2;
   grid-row-end: 2;
   z-index: 3;
+  @include desktop() {
+    display: none;
+  }
 
   &.on {
     display: none;
     z-index: -1;
   }
-
 }
-  
+
 .hamburger {
   cursor: pointer;
-  grid-row-start: 4;
-  grid-row-end: 5;
-  //z-index: 2;
+  grid-row: 2/3;
+  grid-column: 2/6;
+  @include tablet() {
+    grid-column: 2/4;
+    width: 85%;
+  }
 }
 
 .line {
-  width: 30px;
-  height: 3px;
+  height: 0.5vh;
   background: #e0e0e0;
-  margin: 5px;
+  margin: 14%;
   transition: all 0.3s ease-out;
 
 
@@ -238,7 +291,18 @@ nav {
 
 }
 
-
+.link.newMsg::after {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  right: -12px;
+  width: 10px;
+  height: 10px;
+  margin-left: -7px;
+  content: '';
+  background-color: $accent-color;
+  border-radius: 50%;
+}
 
 .nav-links_container {
   display: block;
@@ -249,12 +313,22 @@ nav {
   background: #1c2324;
   opacity: 0;
   transition: opacity 0.15s ease-out;
+  @include desktop() {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    grid-row: 2/2;
+    grid-column: 5/7
+  }
 }
 
 .nav-links_container.open {
   opacity: 1;
   height: 100vh;
   z-index: 1;
+  @include desktop() {
+    height: unset;
+  }
 }
 
 .nav-links {
@@ -269,15 +343,33 @@ nav {
   align-items: center;
   margin-left: auto;
   transition: all 0.25s;
+  @include desktop() {
+    display: grid;
+    position: initial;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    padding-top: 0px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .nav-links .link{
   font-size: 25px;
   text-decoration: none;
   color: #e0e0e0;
+  @include tablet() {
+    font-size: 35px;
+  }
+  @include l-tablet() {
+    font-size: 40px;
+  }
+  @include desktop() {
+    font-size: 20px;
+    z-index: 3;
+  }
 }
 
-/* Hover not working */
 .nav-links .link:hover {
   color: #cede1a;
   cursor: pointer;
@@ -298,44 +390,7 @@ nav {
 .nav-links.fade {
   display: flex;
   opacity: 1;
-}
-
-@media screen and (min-width: 769px) {
-
-  nav {
-    color: #e0e0e0;
-  }
-
-  .hamburger {
-    display: none;
-    position: unset;
-    cursor: unset;
-  }
-
-  .nav-links_container {
-    display: block;
-    width: unset;
-    height: unset;
-    opacity: 1;
-  }
-
-  .nav-links {
-    padding-top: 20px;
-    position: unset;
-    flex-direction: unset;
-    clip-path: unset;
-    -webkit-clip-path: unset;
-    height: 100%;
-    width: 50%;
-    background: unset;
-    transform: unset;
-  }
-
-  .nav-links .link{
-    opacity: 1;
-  }
-
-  .nav-links .link{
-    font-size: 20px;
+  @include desktop() {
+    display: grid;
   }
 }
