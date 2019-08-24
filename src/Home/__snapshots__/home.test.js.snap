@@ -1,5 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Components renders Home correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "hasSelection": false,
+      "setSelection": [Function],
+    }
+  }
+>
+  <div
+    className="map_container"
+  >
+    <div
+      id="map"
+    >
+      <withScriptjs(withGoogleMap(Map))
+        containerElement={
+          <div
+            className="containerElement"
+            style={
+              Object {
+                "height": "100vh",
+              }
+            }
+          />
+        }
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=undefined"
+        loadingElement={
+          <div
+            className="loadingElement"
+            style={
+              Object {
+                "height": "100vh",
+              }
+            }
+          />
+        }
+        mapElement={
+          <div
+            className="mapElement"
+            style={
+              Object {
+                "height": "100vh",
+                "width": "100vw",
+              }
+            }
+          />
+        }
+      />
+    </div>
+  </div>
+</ContextProvider>
+`;
+
 exports[`Components renders InfoDisplay with location properties 1`] = `
 <div
   className="info_display active"

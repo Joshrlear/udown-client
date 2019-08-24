@@ -48,9 +48,6 @@ export default class Map extends Component {
             })
             setSelection(true)
         } 
-        else {
-            console.log('selection is not unique')
-        }
 
         // set state only if loc.photo is truthy
         if (loc.photos) {

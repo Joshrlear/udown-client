@@ -27,7 +27,7 @@ describe('Components', () => {
         })
     })
     const WrappedMap = withScriptjs(withGoogleMap(Map))
-    test("renders Map correctly", () => {    
+    test("renders Map correctly", () => {
         const wrapper = shallow(<WrappedMap
             googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${config.GOOGLE_MAPS_API_KEY}`}
             loadingElement={<div className="loadingElement" style={{ height: '100%' }}/>}
@@ -36,16 +36,20 @@ describe('Components', () => {
         />);
       
         expect(wrapper).toMatchSnapshot();
-      });
-      const location = {
-          name: 'park name',
-          address: '123 main street',
-          hours_of_operations: 'open'
-      }
+    });
+    const location = {
+        name: 'park name',
+        address: '123 main street',
+        hours_of_operations: 'open'
+    }
+
+    it('renders Home correctly', () => {
+        const wrapper = shallow(<Home/>)
+        expect(toJson(wrapper)).toMatchSnapshot()
+    })
+
     it('renders InfoDisplay with location properties', () => {
         const wrapper = shallow(<InfoDisplay location={ location }/>)
         expect(toJson(wrapper)).toMatchSnapshot();
-        console.log(wrapper)
-        console.log(location)
     })
 })

@@ -16,11 +16,6 @@ export default class LandingPage extends React.Component {
 
     static contextType = UdownContext;
 
-    componentDidUpdate() {
-        authFunctions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
-    }
-
-
     render() {
         const containerClass = !this.context.chatOpened ? 'landing-page_container ' : 'landing-page_container off'
 

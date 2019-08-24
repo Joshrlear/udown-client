@@ -81,7 +81,7 @@ export default class Login extends Component {
         })
     }
 
-    componentDidUpdate() {
+    componentWillMount() {
         authFunctions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
     }
 

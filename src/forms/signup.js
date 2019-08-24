@@ -7,17 +7,19 @@ import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.scss';
 
 const formFunctions = functions.formFunctions
+const authFunctions = functions.authFunctions
 
 export default class Login extends Component {
     
     state = {
-        error: true
+        error: true,
+        username: '',
+        password: '',
     };
 
     static contextType = UdownContext;
 
     handleInput = target => {
-
         this.setState({
             [target.name]: target.value
         })
@@ -40,7 +42,6 @@ export default class Login extends Component {
             // validate retype_password
 
             if (this.state.password !== this.state.retype_password) {
-                console.log('failed password')
                 this.setState({
                     error: true,
                     errorMsg: `Passwords don't match`
@@ -91,7 +92,8 @@ export default class Login extends Component {
                 return res.json()
             })
             .then(data => {
-                functions.setIdRedirect(this.props, data)
+                
+                authFunctions.setIdRedirect(this.props, data)
             })
             .catch(error => {
                 this.setState({
@@ -101,8 +103,8 @@ export default class Login extends Component {
         })
     }
 
-    componentDidUpdate() {
-        functions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
+    componentWillMount() {
+        authFunctions.redirectIfLoggedIn(this.props, this.context.isLoggedIn)
     }
     
     render() {
@@ -120,6 +122,7 @@ export default class Login extends Component {
                 <label>Username: </label>
                 <input 
                     name="username"
+                    className="username"
                     placeholder="username here"
                     onChange={e => this.handleInput(e.target)}/>
               </div>

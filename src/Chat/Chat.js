@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
 import UdownContext from '../UdownContext'
+import functions from '../functions';
 import ScrollToBottom from 'react-scroll-to-bottom'
 import './Chat.scss'
+
+const authFunctions = functions.authFunctions
 
 let socket
 
@@ -27,14 +30,12 @@ export default class Chat extends Component {
     }
 
     componentDidUpdate() {
-        console.log(this.messagesEnd.current)
-        this.messagesEnd.current && this.messagesEnd.current.scrollIntoView({ behavior: "smooth" })   
+        this.messagesEnd.current && this.messagesEnd.current.scrollIntoView({ behavior: "smooth" })
     }
 
     connectSocket() {
         socket = io(':8000')
         socket.on('chat_message', msg => {
-            //console.log('updating...')
             this.setState({
                 messages: [
                     ...this.state.messages, 
@@ -67,11 +68,11 @@ export default class Chat extends Component {
                     userTyping: [...this.state.userTyping, user]
                 })
             }
-            //console.log(this.state.userTyping)
         })
     }
 
-    closeChat = () => {
+    closeChat = e => {
+        e.preventDefault()
         this.context.closeChat()
     }
 
@@ -79,7 +80,6 @@ export default class Chat extends Component {
         const user = localStorage.username
         
         socket.emit('typing', user)
-        console.log('inside chat, this is the chatRoomName', this.context.chatRoomName)
         const messageInfo = {
             username: localStorage.username,
             message: message
@@ -94,15 +94,15 @@ export default class Chat extends Component {
         e.preventDefault()
         const newMsg = this.state.currentMessage
         
-        //console.log(newMsg)
         this.setState({
             messages: [...this.state.messages, newMsg]
         })
 
         socket.emit('chat_message', ({room: this.context.chatRoomName, user: localStorage.username, message: newMsg}))
-        //socket.in(this.context.chatRoomName).emit('chat_message', newMsg)
+        // socket.in(this.context.chatRoomName).emit('chat_message', newMsg)
         this.chatInput.current.value = ''
     }
+
     
     render() {
         const chatToggle = !this.context.chatOpened ? 'chat_container' : 'chat_container active'
@@ -112,7 +112,7 @@ export default class Chat extends Component {
             <div className={ chatToggle }>
                 <div className="chat_title_container">
                 
-                    <a className="close_btn" onClick={this.closeChat}><i className="fas fa-times fa-2x"></i></a>
+                    <button id="close_btn" className="close_btn" href="javascript:void(0)" onClick={e => this.closeChat(e)}><i className="fas fa-times fa-2x"></i></button>
                     <h1 className="chat_title">Chat</h1>
                 </div>
                 <ScrollToBottom className="chat_section">

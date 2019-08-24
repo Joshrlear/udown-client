@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chat renders Chat correctly 1`] = `
+<Fragment>
+  <div
+    className="chat_container"
+  >
+    <div
+      className="chat_title_container"
+    >
+      <button
+        className="close_btn"
+        href="javascript:void(0)"
+        id="close_btn"
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-times fa-2x"
+        />
+      </button>
+      <h1
+        className="chat_title"
+      >
+        Chat
+      </h1>
+    </div>
+    <_default
+      className="chat_section"
+    >
+      <ul
+        className="messages"
+      />
+      <ul
+        className="users_typing"
+      />
+    </_default>
+    <div
+      className="forScroll"
+    />
+    <form
+      className="chat_input_section_container"
+      onSubmit={[Function]}
+    >
+      <div
+        className="input_container"
+      >
+        <textarea
+          className="chat_intput"
+          onChange={[Function]}
+          placeholder="type message..."
+        />
+      </div>
+      <br />
+      <div
+        className="button_container"
+      >
+        <button
+          className="send_button"
+          type="submit"
+        >
+          Send
+        </button>
+      </div>
+    </form>
+  </div>
+</Fragment>
+`;

@@ -50,7 +50,6 @@ class App extends Component {
 
   // opens chat when socket room created (after clicking play - on infoDisplay)
   startChat = chatRoomName => {
-    console.log(chatRoomName)
     this.setState({
       chatOpened: true,
       chatRoomName
@@ -79,7 +78,7 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch(`${config.API_ENDPOINT}isLoggedIn`, {
       method: 'GET',
       headers: { 
@@ -92,9 +91,32 @@ class App extends Component {
       return res.json()
     })
     .then(data => {
-      this.setState({
-        "isLoggedIn": data.isLoggedIn
-      })
+      data.isLoggedIn !== this.state.isLoggedIn && (
+        this.setState({
+          "isLoggedIn": data.isLoggedIn
+        })
+      )
+    })
+  }
+
+  componentDidUpdate() {
+    fetch(`${config.API_ENDPOINT}isLoggedIn`, {
+      method: 'GET',
+      headers: { 
+        'Content-Type': 'application/json',
+        'user_id': localStorage.user_id
+      },
+      credentials: 'include'
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(data => {
+      data.isLoggedIn !== this.state.isLoggedIn && (
+        this.setState({
+          "isLoggedIn": data.isLoggedIn
+        })
+      )
     })
   }
 
@@ -128,7 +150,7 @@ class App extends Component {
       defineQuery: this.defineQuery,
       hasMessage: this.state.hasMessage,
     }
-    console.log(this.props.history)
+
     return (
       <UdownContext.Provider value={ contextValue }>
         <main className="App">
@@ -146,13 +168,13 @@ class App extends Component {
             <Route
               exact
               path="/"
-              component={ LandingPage }
+              component={ this.state.isLoggedIn ? Home : LandingPage }
             />
 
             {/* Routes with specific paths */}
             <Route
               path="/home"
-              component={ Home }
+              component={ this.state.isLoggedIn ? Home : LandingPage }
             />
             { this.renderLoginSignup() }
             <Route

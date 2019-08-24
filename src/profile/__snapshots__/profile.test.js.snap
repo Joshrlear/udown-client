@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components renders EditProfile correctly 1`] = `
+<div
+  className="edit_profile_container"
+>
+  <div
+    className="edit_profile"
+  >
+    <div
+      className="img_container"
+    >
+      <img
+        alt="User profile"
+        className="profile_image"
+        id="profile-image"
+        src="https://via.placeholder.com/1024x269"
+      />
+    </div>
+    <form
+      encType="multipart/form-data"
+      id="uploadForm"
+      method="post"
+      onSubmit={[Function]}
+    >
+      <input
+        id="imageUpload"
+        name="imageUpload"
+        onChange={[Function]}
+        type="file"
+      />
+      <label
+        className="imageUpload"
+        htmlFor="imageUpload"
+      >
+        <span>
+          Upload Image
+        </span>
+      </label>
+      <label
+        className="phone_label"
+      >
+        Edit Phone:
+      </label>
+      <input
+        className="phone"
+        defaultValue=""
+        placeholder="no number yet..."
+      />
+      <div
+        className="input_note_container"
+      >
+        <p
+          className="input_note"
+        >
+          <em>
+            Phone number is used to send
+            <br />
+            invites via text message.
+          </em>
+        </p>
+      </div>
+      <div
+        className="button_rack"
+      >
+        <input
+          className="save_btn"
+          type="submit"
+          value="Save"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Components renders Profile correctly 1`] = `
+<div
+  className="profile_container"
+>
+  <div
+    className="profile"
+  >
+    <div
+      className="img_container"
+    >
+      <img
+        alt="User profile"
+        className="profile_image"
+        id="profile-image"
+        src="https://via.placeholder.com/1024x269"
+      />
+    </div>
+    <div
+      className="profile_info"
+    >
+      <header
+        className="profile_header"
+      >
+        <h3
+          className="profile_name"
+        >
+          Name
+        </h3>
+      </header>
+    </div>
+    <Link
+      className="edit_btn"
+      to="/profileEdit"
+    >
+      Edit
+    </Link>
+  </div>
+</div>
+`;

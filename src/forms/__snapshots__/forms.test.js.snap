@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components renders Login correctly 1`] = `
+<div
+  className="login_container"
+>
+  <form
+    className="login_form"
+    onSubmit={[Function]}
+  >
+    <h2>
+      Login
+    </h2>
+    <ErrorMsg />
+    <div>
+      <label>
+        Username: 
+      </label>
+      <input
+        className="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="username here"
+      />
+    </div>
+    <br />
+    <div>
+      <label>
+        Password: 
+      </label>
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="password here"
+      />
+    </div>
+    <br />
+    <div
+      className="button_container"
+    >
+      <button
+        type="submit"
+      >
+        Login
+      </button>
+    </div>
+    <br />
+    <NavLink
+      className="link"
+      to="/signup"
+    >
+      Go to SignUp
+    </NavLink>
+  </form>
+</div>
+`;
+
+exports[`Components renders Signup correctly 1`] = `
+<div
+  className="signup_container"
+>
+  <form
+    className="signup_form"
+    onSubmit={[Function]}
+  >
+    <h2>
+      Signup
+    </h2>
+    <ErrorMsg />
+    <div>
+      <label>
+        Username: 
+      </label>
+      <input
+        className="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="username here"
+      />
+    </div>
+    <br />
+    <div>
+      <label>
+        Password: 
+      </label>
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="password here"
+      />
+    </div>
+    <br />
+    <div>
+      <label>
+        Retype password: 
+      </label>
+      <input
+        name="retype_password"
+        onChange={[Function]}
+        placeholder="password here"
+      />
+    </div>
+    <br />
+    <div
+      className="button_container"
+    >
+      <button
+        type="submit"
+      >
+        SignUp
+      </button>
+    </div>
+    <br />
+    <NavLink
+      className="link"
+      to="/login"
+    >
+      Go to Login
+    </NavLink>
+  </form>
+</div>
+`;

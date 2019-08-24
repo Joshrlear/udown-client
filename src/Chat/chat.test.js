@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow, mount, render } from 'enzyme'
-import { configure } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json'
 import { BrowserRouter } from 'react-router-dom';
@@ -24,11 +23,16 @@ describe('Chat', () => {
     })
     
     it(`handleInput should update state.currentMessage`, () => {
-    const wrapper = shallow(<Chat />).instance();
-    wrapper.handleInput('message')
-    expect(wrapper.state.currentMessage).toStrictEqual({
-        'username': undefined,
-        'message': 'message'
+        const wrapper = shallow(<Chat />).instance();
+        wrapper.handleInput('message')
+        expect(wrapper.state.currentMessage).toStrictEqual({
+            'username': undefined,
+            'message': 'message'
+        })
     })
-  })
+
+    it('renders Chat correctly', () => {
+        const wrapper = shallow(<Chat/>)
+        expect(toJson(wrapper)).toMatchSnapshot()
+    })
 })

@@ -43,17 +43,24 @@ constructor(props) {
     };
 
     viewChat = e => {
-        const { openMsg } =this.context
+        const { isLoggedIn, openMsg } =this.context
+        
+        // close expanded nav menu
         this.context.expandNav()
-        this.setState({
-            toggledClass: !this.state.toggledClass
-        })
-        e.target.innerHTML == 'Chat' && openMsg()
-        this.state.hasMsg == true && (
             this.setState({
-                hasMsg: false
+                toggledClass: !this.state.toggledClass
             })
-        )
+        
+        if (isLoggedIn) {
+            // open chat
+            e.target.innerHTML == 'Chat' && openMsg()
+            this.state.hasMsg == true && (
+                this.setState({
+                    hasMsg: false
+                })
+            )  
+        }
+
     }
 
     logout = e => {
@@ -98,7 +105,7 @@ constructor(props) {
     }
 
     render() {
-        console.log(this.state.hasMsg)
+
         const navLinkClass = this.state.toggledClass ? "nav-links_container open" : "nav-links_container";
         const linkClass = this.state.toggledClass ? "nav-links fade" : "nav-links";
         const search_btn = !this.state.query ? "" : " on"

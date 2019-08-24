@@ -31,7 +31,6 @@ export default function InfoDisplay(props) {
           'location': location.name,
           'userPhones': userPhones
         }
-        console.log(userPhones)
         fetch(`${config.API_ENDPOINT}text`, {
               method: 'POST',
               body: JSON.stringify(reqBody),
@@ -42,7 +41,6 @@ export default function InfoDisplay(props) {
             .then(res => {
               if(!res.ok) {
                 return res.json().then(err => {
-                  console.log('error here: ', err)
                   throw err
                 })
               }
@@ -58,7 +56,6 @@ export default function InfoDisplay(props) {
                 address: location.address
               }
               //socket.emit('join', { user, room, loc })
-              console.log('res is right here: ', res)
               !chatOpened && (startChat(room))
             })
             .catch(err => {
@@ -68,7 +65,6 @@ export default function InfoDisplay(props) {
     })
   }
 
-  console.log(location)
   return (
       <div className={location.name === "Name" ? "info_display" : "info_display active"}>
         {/* <img src={location.photo || `https://via.placeholder.com/${width}x${hieght}`}/> */}

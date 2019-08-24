@@ -15,48 +15,18 @@ const imageWidth = Math.ceil(window.innerWidth);
 
 export default class EditProfile extends Component {
     constructor(props) {
-    super(props)
-    this.imageUpload = React.createRef()
-    this.phoneNumber = React.createRef()
-    this.state = {
-      user_id: '',
-      profileImage: `https://via.placeholder.com/${imageWidth}x${imageHeight}`,
-      phone: '',
-      imageUpload: 'Upload Image',
+      super(props)
+      this.imageUpload = React.createRef()
+      this.phoneNumber = React.createRef()
+      this.state = {
+        user_id: '',
+        profileImage: `https://via.placeholder.com/${imageWidth}x${imageHeight}`,
+        phone: '',
+        imageUpload: 'Upload Image',
+      }
     }
-  }
 
     static contextType = UdownContext;
-
-    componentWillMount() {
-
-      {/* const user_id = localStorage.user_id
-      const reqHeaders = new Headers({
-        'Content-Type': 'text/plain',
-        'X-user_id': localStorage.user_id,
-        'X-userInfo': 'phone',
-      })
-
-      fetch(`${config.API_ENDPOINT}profile/${user_id}`, {
-        method: 'GET',
-        headers: reqHeaders,
-        credentials: 'include',
-      })
-      .then(res => {
-        console.log(res)
-        if(!res.ok) {
-          return res.json().then(err => {
-            console.log('error here:', err)
-            throw err
-          })
-        }
-        console.log(res)
-        return res.json()
-      })
-      .catch(err => {
-        console.log(err)
-      }) */}
-    }
     
     componentDidMount() {
 
@@ -72,7 +42,6 @@ export default class EditProfile extends Component {
       const imageResult = Promise.resolve(getProfileImage(user_id, this.props))
       imageResult.then(value => {
         if (value) {
-          console.log(value)
           const base64Image = value.image.image
           const image = `data:image/jpg;base64, ${base64Image}`
           /* document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}` */
@@ -91,7 +60,6 @@ export default class EditProfile extends Component {
       const phoneResult = Promise.resolve(getProfilePhone(user_id, 'phone_number'))
       phoneResult.then(value => {
         if (value) {
-          console.log(value.field)
           this.state.phone !== value.field && (
             this.setState({
               phone: value.field
@@ -141,7 +109,6 @@ export default class EditProfile extends Component {
     }
 
     render() {
-      console.log(this.state.phone)
         return (
           <div className="edit_profile_container">
             <div className="edit_profile">

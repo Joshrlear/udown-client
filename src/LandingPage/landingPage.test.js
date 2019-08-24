@@ -29,9 +29,6 @@ describe('LandingPage rendering', () => {
         resizeWindow(320, 568);
         expect(component.html()).toMatchSnapshot();
 
-        // .get and .find not a function?
-        //expect(component.get(1).hasClass(`\b(\w*landing-page_container off\w*)|(\w*off\w*)\b`)).toBe(true);
-
         resizeWindow(1024, 1366);
         expect(component.html()).toMatchSnapshot();
 

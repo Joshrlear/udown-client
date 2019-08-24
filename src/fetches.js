@@ -22,11 +22,9 @@ const mapFetches = {
                 }
             })
             .then(res => {
-                console.log('mapFetches/getLocations res: ', res)
                 return res
             })
             .catch(err => {
-                console.log('Error: ', err)
             })
         )
     },
@@ -47,7 +45,7 @@ const mapFetches = {
               else {
               // currently it is not receiving info from server.
               // the objectURL is just a link to my website showing only nav bar...
-              console.log('here! ', res.headers)
+              // keep as it will be updated in the future
               res.blob().then(blob => {
                   const objectURL = URL.createObjectURL(blob)
                   {

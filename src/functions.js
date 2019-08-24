@@ -1,4 +1,3 @@
-import React from 'react';
 import config from './config';
 import GoogleMapsLoader from 'react-google-maps'
 
@@ -26,13 +25,14 @@ const authFunctions = {
 
     redirectIfLoggedIn(props, context) {
         if (context === true) {
-            props.history.push(`/profile/${localStorage.user_id}`)
+            localStorage.user_id && props.history.push(`/profile/${localStorage.user_id}`)
         }
+        /* else if (props) {
+            props.history.push(`/login`)
+        } */
     },
 
     setIdRedirect(props, result) {
-        console.log(result)
-        //should I encrypt info?
         localStorage.user_id = result.id
         localStorage.username = result.username
         props.history.push(`/profile/${localStorage.user_id}`)
