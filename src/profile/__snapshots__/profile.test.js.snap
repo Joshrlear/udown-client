@@ -45,6 +45,7 @@ exports[`Components renders EditProfile correctly 1`] = `
       <input
         className="phone"
         defaultValue=""
+        disabled={false}
         placeholder="no number yet..."
       />
       <div
