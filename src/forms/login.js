@@ -89,6 +89,11 @@ export default class Login extends Component {
         
     return (
         <div className="login_container">
+            <section className="test_account_info">
+                <h3>Test account</h3>
+                <p>username: test</p>
+                <p>password: password</p>
+                </section>
             <form
                 className="login_form"
                 onSubmit={this.handleSubmit}>

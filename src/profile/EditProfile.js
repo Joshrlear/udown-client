@@ -133,6 +133,7 @@ export default class EditProfile extends Component {
                     className="phone" 
                     placeholder="no number yet..." 
                     defaultValue={ this.state.phone } 
+                    disabled={ localStorage.username == "test" }
                   />
                   <div className="input_note_container">
                     <p className="input_note">   
