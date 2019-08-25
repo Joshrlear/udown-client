@@ -6,7 +6,7 @@ import LandingPage from './LandingPage/LandingPage';
 import Home from './Home/Home'
 import Login from './forms/login';
 import Signup from './forms/signup';
-import Profile from './profile/Profile';
+import Profile from './profile/newProfile';
 import EditProfile from './profile/EditProfile'
 import ErrorBoundary from './Errors/ErrorBoundary';
 import UdownContext from './UdownContext';
