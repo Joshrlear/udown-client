@@ -106,7 +106,7 @@ class App extends Component {
         'Content-Type': 'application/json',
         'user_id': localStorage.user_id
       },
-      credentials: 'include'
+      //credentials: 'include'
     })
     .then(res => {
       return res.json()

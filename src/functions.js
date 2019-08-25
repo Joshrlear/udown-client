@@ -42,7 +42,7 @@ const authFunctions = {
         localStorage.removeItem('user_id')
         fetch(`${config.API_ENDPOINT}logout`, {
             method: 'GET',
-            credentials: 'include'
+            //credentials: 'include'
         })
         .then(result => {
             props.history.push('/login')

@@ -83,7 +83,7 @@ export default class EditProfile extends Component {
       fetch(`${config.API_ENDPOINT}profile/${user_id}`, {
         method: 'POST',
         body: formData,
-        credentials: 'include' 
+        //credentials: 'include' 
       })
       .then(res => {
         if (!res.ok) {

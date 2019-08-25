@@ -72,7 +72,7 @@ const profileFetches = {
             "Content-Type": "application/json",
             "user_id": user_id
           },
-          credentials: 'include'
+          //credentials: 'include'
         })
         .then(res => {
 
@@ -104,7 +104,7 @@ const profileFetches = {
           "user_id": user_id,
           "field": "phone_number"
         },
-        credentials: 'include'
+        //credentials: 'include'
       })
       .then(res => {
           if (!res.ok) {
@@ -134,7 +134,7 @@ const profileFetches = {
           "user_id": user_id,
           "field": "phone_number"
         },
-        credentials: 'include'
+        //credentials: 'include'
       })
       .then(res => {
           if (!res.ok) {

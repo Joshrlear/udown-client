@@ -80,7 +80,7 @@ export default class Login extends Component {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                credentials: "include"
+                //credentials: "include"
             })
             .then(res => {
                 if (!res.ok) {
