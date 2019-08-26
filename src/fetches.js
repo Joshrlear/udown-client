@@ -76,7 +76,7 @@ const profileFetches = {
           //credentials: 'include'
         })
         .then(res => {
-
+          console.log(res)
             if (!res.ok) {
               return res.json().then(error => {
                 if (res.status !== 401) {
