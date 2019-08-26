@@ -115,7 +115,7 @@ const profileFetches = {
                 throw error
               }
               else {
-                return res.json()
+                return res
               }
             })
           }
