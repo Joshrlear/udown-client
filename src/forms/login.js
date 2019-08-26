@@ -72,6 +72,7 @@ export default class Login extends Component {
             
         })
         .then(data => {
+            console.log('----------hello!', data.user_id)
             authFunctions.setIdRedirect(this.props, data)
         })
         .catch(error => {

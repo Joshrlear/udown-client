@@ -6,6 +6,7 @@ const UdownContext = createContext({
     userHistory: [],
     pushHistory: () => {},
     isLoggedIn: false,
+    setIsLoggedIn: () =>{},
     chatOpened: false,
     msgBtnClass: 'chat_button',
     openMsg: () => {},

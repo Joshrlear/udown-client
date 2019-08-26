@@ -65,6 +65,7 @@ const mapFetches = {
 
 const profileFetches = {
   getProfileImage(user_id, props) {
+    console.log("user_id", user_id, props)
     return (
       fetch(`${config.API_ENDPOINT}profile/${user_id}/images`, {
           method: 'GET',
@@ -96,6 +97,7 @@ const profileFetches = {
   },
 
   getProfilePhone(user_id, field) {
+    console.log('========',user_id, field)
     return (
       fetch(`${config.API_ENDPOINT}profile/${user_id}/${field}`, {
         method: 'GET',
@@ -117,6 +119,7 @@ const profileFetches = {
               }
             })
           }
+          console.log('Now here^^^^^^^^^')
           return res.json()
         })
         .catch(error => {

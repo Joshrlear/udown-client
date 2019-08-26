@@ -78,46 +78,50 @@ class App extends Component {
     })
   }
 
+  setIsLoggedIn = () => {
+    /* fetch('/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(() => { */
+      console.log(localStorage.user_id)
+      if (localStorage.user_id) {
+        console.log('has user_id')
+        this.state.isLoggedIn !== true && this.setState({ isLoggedIn: true })
+      }
+      else {
+        console.log('no user_id')
+        this.state.isLoggedIn !== false && this.setState({ isLoggedIn: false })
+      } 
+    //})
+  }
+
   componentWillMount() {
-    fetch(`${config.API_ENDPOINT}isLoggedIn`, {
+    /* fetch(`${config.API_ENDPOINT}isLoggedIn`, {
       method: 'GET',
       headers: { 
         'Content-Type': 'application/json',
         'user_id': localStorage.user_id
       },
       //credentials: 'include'
-    })
-    .then(res => {
-      return res.json()
-    })
-    .then(data => {
-      data.isLoggedIn !== this.state.isLoggedIn && (
-        this.setState({
-          "isLoggedIn": data.isLoggedIn
-        })
-      )
-    })
+    }) */
+    console.log('app will mount')
+    this.setIsLoggedIn()
   }
 
   componentDidUpdate() {
-    fetch(`${config.API_ENDPOINT}isLoggedIn`, {
+    /* fetch(`${config.API_ENDPOINT}isLoggedIn`, {
       method: 'GET',
       headers: { 
         'Content-Type': 'application/json',
         'user_id': localStorage.user_id
       },
       //credentials: 'include'
-    })
-    .then(res => {
-      return res.json()
-    })
-    .then(data => {
-      data.isLoggedIn !== this.state.isLoggedIn && (
-        this.setState({
-          "isLoggedIn": data.isLoggedIn
-        })
-      )
-    })
+    }) */
+    console.log('app did update')
+    this.setIsLoggedIn()
   }
 
   msgBtnClass(val) {
@@ -138,6 +142,7 @@ class App extends Component {
   render() {
     const contextValue = {
       isLoggedIn: this.state.isLoggedIn,
+      setIsLoggedIn: this.setIsLoggedIn,
       chatOpened: this.state.chatOpened,
       closeChat: this.closeChat,
       openMsg: this.openMsg,
@@ -150,7 +155,7 @@ class App extends Component {
       defineQuery: this.defineQuery,
       hasMessage: this.state.hasMessage,
     }
-
+    console.log(this.state.isLoggedIn)
     return (
       <UdownContext.Provider value={ contextValue }>
         <main className="App">
