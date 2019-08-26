@@ -61,8 +61,9 @@ export default class Profile extends Component {
       const result = Promise.resolve(getProfileImage(user_id, this.props))
       result.then(value => {
         if (value) {
+          let image;
           console.log('Profile.js line64 should be the result of getProfileImage, value:',value)
-          const image = value.image.image
+          value.image && (image = value.image.image)
           document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
         }
       })
