@@ -88,6 +88,9 @@ const profileFetches = {
                 }
               })
             }
+            else if (res.status === 204) {
+              return res
+            }
             return res.json()
           })
           .catch(error => {
@@ -115,7 +118,7 @@ const profileFetches = {
                 throw error
               }
               else {
-                return res
+                return res.json()
               }
             })
           }
