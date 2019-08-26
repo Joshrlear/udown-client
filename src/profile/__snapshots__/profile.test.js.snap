@@ -76,41 +76,79 @@ exports[`Components renders EditProfile correctly 1`] = `
 `;
 
 exports[`Components renders Profile correctly 1`] = `
-<div
-  className="profile_container"
->
-  <div
-    className="profile"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    <div
-      className="img_container"
-    >
-      <img
-        alt="User profile"
-        className="profile_image"
-        id="profile-image"
-        src="https://via.placeholder.com/1024x269"
-      />
-    </div>
-    <div
-      className="profile_info"
-    >
-      <header
-        className="profile_header"
+    <Profile>
+      <div
+        className="profile_container"
       >
-        <h3
-          className="profile_name"
+        <div
+          className="profile"
         >
-          Name
-        </h3>
-      </header>
-    </div>
-    <Link
-      className="edit_btn"
-      to="/profileEdit"
-    >
-      Edit
-    </Link>
-  </div>
-</div>
+          <div
+            className="img_container"
+          >
+            <img
+              alt="User profile"
+              className="profile_image"
+              id="profile-image"
+              src="https://via.placeholder.com/1024x269"
+            />
+          </div>
+          <div
+            className="profile_info"
+          >
+            <header
+              className="profile_header"
+            >
+              <h3
+                className="profile_name"
+              >
+                username
+              </h3>
+              <p
+                className="phone_number"
+              >
+                No phone number
+              </p>
+            </header>
+          </div>
+          <Link
+            className="edit_btn"
+            to="/profileEdit"
+          >
+            <a
+              className="edit_btn"
+              href="/profileEdit"
+              onClick={[Function]}
+            >
+              Edit
+            </a>
+          </Link>
+        </div>
+      </div>
+    </Profile>
+  </Router>
+</BrowserRouter>
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { configure, shallow } from 'enzyme';
+import { configure, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -24,7 +24,7 @@ describe('Components', () => {
     })
 
     it('renders Profile correctly', () => {
-        const wrapper = shallow(<Profile/>)
+        const wrapper = mount(<BrowserRouter><Profile/></BrowserRouter>)
         expect(toJson(wrapper)).toMatchSnapshot()
     })
 
