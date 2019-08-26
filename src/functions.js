@@ -39,7 +39,7 @@ const authFunctions = {
     },
 
     logout(props) {
-        localStorage.removeItem('user_id')
+        localStorage.removeItem('user_id', 'username')
         fetch(`${config.API_ENDPOINT}logout`, {
             method: 'GET',
             //credentials: 'include'
