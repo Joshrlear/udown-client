@@ -65,6 +65,7 @@ export default class Profile extends Component {
           const image = value.image.image
           document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
         }
+        else { return null }
       })
     }
 
