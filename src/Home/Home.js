@@ -37,7 +37,7 @@ class Home extends Component {
         const isMobileDevice = window.innerWidth <= 1100
         const height = isMobileDevice && this.state.hasSelection ? "35vh" : "100vh"
         const width = !isMobileDevice && this.state.hasSelection ? "55vw" : "100vw"
-
+        console.log('google maps api key:',config.GOOGLE_MAPS_API_KEY)
         return (
             <LocationContext.Provider value={ contextValue }>
                 <div className="map_container">
