@@ -73,7 +73,7 @@ export default class Profile extends Component {
 
       const imageHeight = Math.ceil(window.outerHeight * 0.35);
       const imageWidth = Math.ceil(window.innerWidth);
-      const phonenumber = this.state.phone_number.length > 4 ? this.state.phone_number : 'No phone number'
+      const phonenumber = this.state.phone_number && this.state.phone_number || 'No phone number'
 
       return (
           <div className="profile_container">
