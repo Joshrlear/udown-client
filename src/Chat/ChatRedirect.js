@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import io from 'socket.io-client'
+import config from '../config'
 import UdownContext from '../UdownContext';
 
 let socket

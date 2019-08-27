@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import io from 'socket.io-client'
+import config from '../config'
 import UdownContext from '../UdownContext'
 import functions from '../functions';
 import ScrollToBottom from 'react-scroll-to-bottom'
