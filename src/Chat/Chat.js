@@ -34,7 +34,7 @@ export default class Chat extends Component {
     }
 
     connectSocket() {
-        socket = io(':8000')
+        socket = io(config.API_ENDPOINT)
         socket.on('chat_message', msg => {
             this.setState({
                 messages: [

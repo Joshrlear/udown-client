@@ -7,7 +7,7 @@ import fetches from '../fetches'
 import './InfoDisplay.scss'
 
 let socket
-socket = io(':8000')
+socket = io(config.API_ENDPOINT)
 
 export default function InfoDisplay(props) {
   const width = Math.ceil(window.innerWidth)
