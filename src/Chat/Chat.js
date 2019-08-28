@@ -37,6 +37,7 @@ export default class Chat extends Component {
     connectSocket() {
         socket = io(config.API_ENDPOINT)
         socket.on('chat_message', msg => {
+            console.log(msg)
             this.setState({
                 messages: [
                     ...this.state.messages, 
@@ -99,7 +100,7 @@ export default class Chat extends Component {
             messages: [...this.state.messages, newMsg]
         })
         console.log(this.context.chatRoomName)
-        socket.emit('chat_message', ({room: this.context.chatRoomName, user: localStorage.username, message: newMsg}))
+        socket.emit('chat_message', ({/* room: this.context.chatRoomName, */ user: localStorage.username, message: newMsg}))
         // socket.in(this.context.chatRoomName).emit('chat_message', newMsg)
         this.chatInput.current.value = ''
     }
