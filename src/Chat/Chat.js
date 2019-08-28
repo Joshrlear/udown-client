@@ -99,7 +99,7 @@ export default class Chat extends Component {
             messages: [...this.state.messages, newMsg]
         })
         console.log(this.context.chatRoomName)
-        socket.emit('chat_message', ({/* room: this.context.chatRoomName, */ user: localStorage.username, message: newMsg}))
+        socket.emit('chat_message', ({/* room: this.context.chatRoomName, */ username: localStorage.username, message: newMsg}))
         // socket.in(this.context.chatRoomName).emit('chat_message', newMsg)
         this.chatInput.current.value = ''
     }
@@ -117,10 +117,10 @@ export default class Chat extends Component {
                 </div>
                 <ScrollToBottom className="chat_section">
                     <ul className="messages">
-                        {this.state.messages.map((chat, i) => <li key={i} className="message">
+                        {this.state.messages.map((msg, i) => <li key={i} className="message">
                             <div  className="message_container">
-                                <h3 className="from">{`${chat.message.username}:`}</h3>
-                                <p className="message_text">{chat.message.message}</p>
+                                <h3 className="from">{`${msg.username}:`}</h3>
+                                <p className="message_text">{msg.message}</p>
                             </div>
                         </li>)}
                     </ul>
