@@ -98,7 +98,7 @@ export default class Chat extends Component {
         this.setState({
             messages: [...this.state.messages, newMsg]
         })
-
+        console.log(this.context.chatRoomName)
         socket.emit('chat_message', ({room: this.context.chatRoomName, user: localStorage.username, message: newMsg}))
         // socket.in(this.context.chatRoomName).emit('chat_message', newMsg)
         this.chatInput.current.value = ''
