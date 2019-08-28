@@ -14,6 +14,20 @@ textarea, p {
   background: white;
 }
 
+@media screen and (min-width: 900px) {
+  .chat_container {
+    width: 320px;
+    height: 500px;
+    bottom: 0px;
+    left: 2vw;
+    border: 2px lightgrey solid;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    -webkit-box-sizing: initial;
+            box-sizing: initial;
+  }
+}
+
 .chat_container.active {
   display: block;
 }
@@ -28,21 +42,35 @@ textarea, p {
   background-color: #3cb4dc;
 }
 
+@media screen and (min-width: 900px) {
+  .chat_container .chat_title_container {
+    width: inherit;
+    height: 5vh;
+    -ms-grid-columns: 80% 20%;
+        grid-template-columns: 80% 20%;
+    border-radius: 7px 7px 0px 0px;
+  }
+}
+
 .chat_container .chat_title_container .chat_title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-left: 15px;
   height: 100%;
   text-align: center;
   color: white;
   font-size: 1.5rem;
   font-weight: 500;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
 }
 
 .chat_container .chat_title_container .back_arrow_container {
@@ -72,8 +100,14 @@ textarea, p {
 }
 
 .chat_section {
-  height: 80vh;
+  height: 80%;
   overflow: auto;
+}
+
+@media screen and (min-width: 900px) {
+  .chat_section {
+    height: 77%;
+  }
 }
 
 .message {
@@ -98,12 +132,19 @@ a {
   position: fixed;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 72% 3% 20%;
-      grid-template-columns: 72% 3% 20%;
+  -ms-grid-columns: 72% 3% 20% 5%;
+      grid-template-columns: 72% 3% 20% 5%;
   bottom: 3vh;
-  width: 100vw;
+  width: inherit;
   height: 38px;
   padding-top: 0px;
+}
+
+@media screen and (min-width: 900px) {
+  .chat_input_section_container {
+    width: inherit;
+    bottom: 2vh;
+  }
 }
 
 .chat_input_section_container div {
@@ -183,6 +224,9 @@ a {
 }
 
 .close_btn {
+  background-color: transparent;
+  border: none;
+  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: (1fr)[3];
@@ -190,6 +234,10 @@ a {
   -ms-grid-columns: (1fr)[5];
       grid-template-columns: repeat(5, 1fr);
   height: inherit;
+  text-decoration: none;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 
 .fas {

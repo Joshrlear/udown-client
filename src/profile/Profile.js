@@ -55,13 +55,11 @@ export default class Profile extends Component {
       
       //const id = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1]
       const user_id = localStorage.user_id
-      console.log(user_id)
       this.context.setIsLoggedIn()
 
       const result = Promise.resolve(getProfileImage(user_id, this.props))
       result.then(value => {
         if (value.image) {
-          console.log('Profile.js line64 should be the result of getProfileImage, value:',value)
           const image = value.image.image
           document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}`
         }

@@ -27,9 +27,9 @@ const authFunctions = {
         if (context === true) {
             localStorage.user_id && props.history.push(`/profile/${localStorage.user_id}`)
         }
-        /* else if (props) {
+        else if (props) {
             props.history.push(`/login`)
-        } */
+        }
     },
 
     setIdRedirect(props, data) {

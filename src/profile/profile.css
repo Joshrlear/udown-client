@@ -138,6 +138,7 @@ p {
 
 .img_container > * {
   display: block;
+  width: 100%;
 }
 
 .profile_image {
@@ -286,6 +287,10 @@ p {
 .phone::placeholder {
   color: grey;
   font-style: italic;
+}
+
+.phone_number {
+  margin-top: 10px;
 }
 
 button {

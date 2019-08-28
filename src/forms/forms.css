@@ -14,6 +14,18 @@
       grid-template-rows: repeat(7, 1fr);
 }
 
+.test_account_info {
+  position: relative;
+  top: 8vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: lightgrey;
+  padding-top: 13px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
 .login_form {
   position: relative;
   -ms-grid-row: 2;
@@ -111,6 +123,12 @@ input {
   margin-left: auto;
   margin-right: auto;
   font-size: 22px;
+}
+
+@media screen and (min-width: 760px) {
+  input {
+    width: 100%;
+  }
 }
 
 ::-webkit-input-placeholder {

@@ -86,13 +86,10 @@ class App extends Component {
       }
     })
     .then(() => { */
-      console.log(localStorage.user_id)
       if (localStorage.user_id) {
-        console.log('has user_id')
         this.state.isLoggedIn !== true && this.setState({ isLoggedIn: true })
       }
       else {
-        console.log('no user_id')
         this.state.isLoggedIn !== false && this.setState({ isLoggedIn: false })
       } 
     //})
@@ -107,7 +104,6 @@ class App extends Component {
       },
       //credentials: 'include'
     }) */
-    console.log('app will mount')
     this.setIsLoggedIn()
   }
 
@@ -120,7 +116,6 @@ class App extends Component {
       },
       //credentials: 'include'
     }) */
-    console.log('app did update')
     this.setIsLoggedIn()
   }
 
@@ -155,7 +150,7 @@ class App extends Component {
       defineQuery: this.defineQuery,
       hasMessage: this.state.hasMessage,
     }
-    console.log(this.state.isLoggedIn)
+
     return (
       <UdownContext.Provider value={ contextValue }>
         <main className="App">

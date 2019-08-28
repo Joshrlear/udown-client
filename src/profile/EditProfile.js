@@ -79,7 +79,6 @@ export default class EditProfile extends Component {
       const formData = new FormData()
       this.imageUpload.current.files[0] && formData.append('image', imageUpload, imageName)
       formData.append('phone', phoneNumber)
-      console.log('LLLLLLLLLLLL',user_id)
       fetch(`${config.API_ENDPOINT}profile/${user_id}`, {
         method: 'POST',
         body: formData,
@@ -93,7 +92,6 @@ export default class EditProfile extends Component {
           })
         }
         else {
-          console.log(res)
           return res
         }
       })

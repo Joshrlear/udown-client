@@ -25,6 +25,12 @@ nav {
   z-index: 1;
 }
 
+@media screen and (min-width: 900px) {
+  nav {
+    z-index: 5;
+  }
+}
+
 .searchbar_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -237,25 +243,6 @@ nav {
   border-radius: 3px;
 }
 
-.hamburger_container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: (1fr)[7];
-      grid-template-rows: repeat(7, 1fr);
-  -ms-grid-column: 6;
-      grid-column-start: 6;
-  grid-column-end: 6;
-  -ms-grid-row: 2;
-      grid-row-start: 2;
-  grid-row-end: 2;
-  z-index: 3;
-}
-
-.hamburger_container.on {
-  display: none;
-  z-index: -1;
-}
-
 .newMsg_notification {
   display: none;
 }
@@ -264,30 +251,85 @@ nav {
   display: initial;
   background-color: #c8db16;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  margin-left: -1px;
-  margin-bottom: 30px;
+  width: calc(1.7vw + 5px);
+  height: calc(1.7vw + 5px);
+  position: relative;
+  top: 5%;
+  right: 30%;
+  margin-left: auto;
+  margin-right: auto;
   -ms-grid-column: 6;
       grid-column-start: 6;
+  grid-column-end: 7;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 2;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@media screen and (min-width: 760px) {
+  .newMsg_notification.newMsg {
+    right: 18%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .newMsg_notification.newMsg {
+    display: none;
+  }
+}
+
+.hamburger_container {
+  position: relative;
+  left: 90%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[7];
+      grid-template-rows: repeat(7, 1fr);
+  -ms-grid-column: 5;
+      grid-column-start: 5;
   grid-column-end: 6;
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 2;
+  z-index: 3;
+}
+
+@media screen and (min-width: 1100px) {
+  .hamburger_container {
+    display: none;
+  }
+}
+
+.hamburger_container.on {
+  display: none;
+  z-index: -1;
 }
 
 .hamburger {
   cursor: pointer;
-  -ms-grid-row: 4;
-      grid-row-start: 4;
-  grid-row-end: 5;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-column: 2/6;
+}
+
+@media screen and (min-width: 760px) {
+  .hamburger {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-column: 2/4;
+    width: 85%;
+  }
 }
 
 .line {
-  width: 30px;
-  height: 3px;
+  height: 0.5vh;
   background: #e0e0e0;
-  margin: 5px;
+  margin: 14%;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
@@ -327,11 +369,14 @@ nav {
 
 @media screen and (min-width: 1100px) {
   .nav-links_container {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
     -ms-grid-row: 2;
     grid-row: 2/2;
-    -ms-grid-column: 4;
-    -ms-grid-column-span: 3;
-    grid-column: 4/7;
+    -ms-grid-column: 5;
+    -ms-grid-column-span: 2;
+    grid-column: 5/7;
   }
 }
 
@@ -373,9 +418,14 @@ nav {
   .nav-links {
     display: -ms-grid;
     display: grid;
+    position: initial;
+    -webkit-transform: none;
+            transform: none;
+    width: 100%;
+    height: 100%;
     padding-top: 0px;
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -385,8 +435,23 @@ nav {
   color: #e0e0e0;
 }
 
+@media screen and (min-width: 760px) {
+  .nav-links .link {
+    font-size: 35px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .nav-links .link {
+    font-size: 40px;
+  }
+}
+
 @media screen and (min-width: 1100px) {
   .nav-links .link {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
     z-index: 3;
   }
 }
@@ -418,50 +483,10 @@ nav {
   opacity: 1;
 }
 
-@media screen and (min-width: 769px) {
-  nav {
-    color: #e0e0e0;
-  }
-  .hamburger {
-    display: none;
-    position: unset;
-    cursor: unset;
-  }
-  .nav-links_container {
-    display: block;
-    width: unset;
-    height: unset;
-    opacity: 1;
-  }
-  .nav-links {
-    padding-top: 20px;
-    position: unset;
-    -webkit-box-orient: unset;
-    -webkit-box-direction: unset;
-        -ms-flex-direction: unset;
-            flex-direction: unset;
-    clip-path: unset;
-    -webkit-clip-path: unset;
-    height: 100%;
-    width: 50%;
-    background: unset;
-    -webkit-transform: unset;
-            transform: unset;
-  }
-}
-
-@media screen and (min-width: 769px) and (min-width: 1100px) {
-  .nav-links {
-    padding-top: 0px;
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .nav-links .link {
-    opacity: 1;
-  }
-  .nav-links .link {
-    font-size: 20px;
+@media screen and (min-width: 1100px) {
+  .nav-links.fade {
+    display: -ms-grid;
+    display: grid;
   }
 }
 /*# sourceMappingURL=Nav.css.map */

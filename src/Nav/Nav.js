@@ -110,6 +110,7 @@ constructor(props) {
         const linkClass = this.state.toggledClass ? "nav-links fade" : "nav-links";
         const search_btn = !this.state.query ? "" : " on"
         const hasMsg = this.state. hasMsg ? "newMsg" : ""
+        const loginLogout = this.context.isLoggedIn ? "Logout" : "Login"
 
         return (
             <nav>
@@ -144,7 +145,7 @@ constructor(props) {
                     {/* <span className={ `link ${hasMsg}` }/> */}
                     <span className={ `link ${hasMsg}`} name="chat" onClick={e => this.viewChat(e)}>Chat</span>
                     <NavLink className="link" name="profile" to="/profile" onClick={e => this.toggleMenu(e)}>Profile</NavLink>
-                    <NavLink className="link" name="logout" to="/login" onClick={e => this.logout(e)}>Logout</NavLink>
+                    <NavLink className="link" name="logout" to="/login" onClick={e => this.logout(e)}>{ loginLogout }</NavLink>
                   </ul>
                 </div>
             </nav>
