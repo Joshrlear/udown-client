@@ -108,7 +108,7 @@ export default class Chat extends Component {
     
     render() {
         const chatToggle = !this.context.chatOpened ? 'chat_container' : 'chat_container active'
-
+        this.state.messages && console.log(this.state.messages.message)
         return(
         <>
             <div className={ chatToggle }>
