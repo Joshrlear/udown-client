@@ -5,7 +5,7 @@ const mapFetches = {
     // get map markers based on query
     getLocations(query) {
         return (
-            fetch(`${config.api_endpoint}home/map`, {
+            fetch(`${config.API_ENDPOINT}home/map`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const mapFetches = {
     // Get location photo from google api
     getLocationPhotos(locationPhoto, width) {
       return (
-        fetch(`${config.api_endpoint}home/location-photo`, {
+        fetch(`${config.API_ENDPOINT}home/location-photo`, {
             method: 'POST',
             headers: {
               //'ContentType': 'application/json',
@@ -67,7 +67,7 @@ const profileFetches = {
   getProfileImage(user_id, props) {
     console.log("user_id", user_id, props)
     return (
-      fetch(`${config.api_endpoint}profile/${user_id}/images`, {
+      fetch(`${config.API_ENDPOINT}profile/${user_id}/images`, {
           method: 'GET',
           headers: {
             "Content-Type": "application/json",
@@ -104,7 +104,7 @@ const profileFetches = {
   getProfilePhone(user_id, field) {
     console.log('========',user_id, field)
     return (
-      fetch(`${config.api_endpoint}profile/${user_id}/${field}`, {
+      fetch(`${config.API_ENDPOINT}profile/${user_id}/${field}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +135,7 @@ const profileFetches = {
 
   getUserPhones(user_id, field) {
     return (
-      fetch(`${config.api_endpoint}profile/${user_id}/others/${field}`, {
+      fetch(`${config.API_ENDPOINT}profile/${user_id}/others/${field}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",

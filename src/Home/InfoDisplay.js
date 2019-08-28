@@ -7,7 +7,7 @@ import fetches from '../fetches'
 import './InfoDisplay.scss'
 
 let socket
-socket = io(config.api_endpoint)
+socket = io(config.API_ENDPOINT)
 
 export default function InfoDisplay(props) {
   const width = Math.ceil(window.innerWidth)
@@ -31,7 +31,7 @@ export default function InfoDisplay(props) {
           'location': location.name,
           'userPhones': userPhones
         }
-        fetch(`${config.api_endpoint}text`, {
+        fetch(`${config.API_ENDPOINT}text`, {
               method: 'POST',
               body: JSON.stringify(reqBody),
               headers: {
