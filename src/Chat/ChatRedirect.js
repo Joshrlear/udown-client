@@ -4,7 +4,7 @@ import config from '../config'
 import UdownContext from '../UdownContext';
 
 let socket
-socket = io(config.API_ENDPOINT)
+socket = io(config.api_endpoint)
 
 export default function ChatRedirect(props) {
     const { startChat } = useContext(UdownContext)

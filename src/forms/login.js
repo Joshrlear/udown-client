@@ -52,7 +52,7 @@ export default class Login extends Component {
 
         this.formValidate(newUser)
 
-        fetch(`${config.API_ENDPOINT}login`, {
+        fetch(`${config.api_endpoint}login`, {
             method: 'POST',
             body: JSON.stringify(newUser),
             headers: {

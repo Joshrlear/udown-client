@@ -74,7 +74,7 @@ export default class Login extends Component {
 
         // if valid inputs run fetch request
         validated.then(() => {
-            fetch(`${config.API_ENDPOINT}signup` , {
+            fetch(`${config.api_endpoint}signup` , {
                 method: 'POST',
                 body: JSON.stringify(newUser),
                 headers: {
