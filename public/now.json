@@ -1,0 +1,6 @@
+{
+    "env": {
+      "MY_KEY": "API_ENDPOINT",
+      "SECRET": "@https://rocky-badlands-82553.herokuapp.com/"
+    }
+  }
