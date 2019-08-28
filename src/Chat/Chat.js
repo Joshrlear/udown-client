@@ -37,7 +37,6 @@ export default class Chat extends Component {
     connectSocket() {
         socket = io(config.API_ENDPOINT)
         socket.on('chat_message', msg => {
-            console.log(msg)
             this.setState({
                 messages: [
                     ...this.state.messages, 
@@ -108,7 +107,6 @@ export default class Chat extends Component {
     
     render() {
         const chatToggle = !this.context.chatOpened ? 'chat_container' : 'chat_container active'
-        this.state.messages && console.log(this.state.messages)
         return(
         <>
             <div className={ chatToggle }>
@@ -119,10 +117,10 @@ export default class Chat extends Component {
                 </div>
                 <ScrollToBottom className="chat_section">
                     <ul className="messages">
-                        {this.state.messages.map((msg, i) => <li key={i} className="message">
+                        {this.state.messages.map((chat, i) => <li key={i} className="message">
                             <div  className="message_container">
-                                <h3 className="from">{`${msg.username}:`}</h3>
-                                <p className="message_text">{msg.message}</p>
+                                <h3 className="from">{`${chat.message.username}:`}</h3>
+                                <p className="message_text">{chat.message.message}</p>
                             </div>
                         </li>)}
                     </ul>
