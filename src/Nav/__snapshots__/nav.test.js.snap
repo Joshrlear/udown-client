@@ -91,7 +91,7 @@ exports[`Nav renders Nav correctly 1`] = `
         onClick={[Function]}
         to="/login"
       >
-        Logout
+        Login
       </NavLink>
     </ul>
   </div>
