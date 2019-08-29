@@ -32,7 +32,7 @@ const authFunctions = {
             localStorage.user_id && props.history.push(`/profile/${localStorage.user_id}`)
         }
         // if user not logged in and user trys to go to profile/editProfile
-        else if (pathname.match(/\b(\w*profile\w*)\b/ig)) {
+        else if (props.history && pathname.match(/\b(\w*profile\w*)\b/ig)) {
             props.history.push(`/login`)
         }
     },
