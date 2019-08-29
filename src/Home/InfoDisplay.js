@@ -29,7 +29,7 @@ export default function InfoDisplay(props) {
         let otherUser
         const users = value.map(user => 
           otherUser = {
-            'user_id': user.id,
+            'username': user.username,
             'phone': user.phone_number
           })
           console.log(users)

@@ -13,9 +13,9 @@ export default function ChatRedirect(props) {
     /* socket.on(`${localStorage.username} has joined`, () => {
         
     }) */
-    const user_id = props.location.pathname.split('-').length - 2
-    console.log(user_id)
-    localStorage.user_id = user_id
+    const username = props.location.pathname.split('-').length - 2
+    console.log(username)
+    localStorage.username = username
     startChat()
     props.history.push('/home')
 
