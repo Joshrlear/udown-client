@@ -122,19 +122,29 @@
     .map_section {
         background-color: white;
         height: 90vh;
-        margin-top: 15%;
+        margin-top: 10%;
         @include desktop() {
             grid-area: map;
         }
         
+        .map_main_section {
+            display: grid;
+            height: 100%;
+            grid-template-rows: repeat(9, 1fr);
+        }
         
 
         .phone_container {
-            margin: 0% 0% 15% 15%;
+            grid-row: 1/8;
+            height: 100%;
             @include desktop() {
                 position: initial;
-                margin: 0% 0% 10% 0%;
+                grid-row: 1/6;
                 height: 50vh;
+            }
+            @include tablet() {
+                grid-row: 2/7;
+                height: 100%;
             }
         }
 
@@ -145,31 +155,45 @@
         }
 
         .map {
-            top: 105%;
-            left: 30%;
+            height: 70%;
+            top: -15%;
+            left: 35%;
             filter: blur(0.5px);
             @include desktop() {
                 height: 100%;
-                top: initial;
+                top: 4%;
                 left: 28%;
-                filter: blur(0.75px)
+            }
+            @include tablet() {
+                top: -5%;
+                filter: blur(0.14vw);
             }
         }
 
         .infoDisplay {
             position: absolute;
-            top: 105%;
-            right: 35%;
+            right: 33%;
+            top: initial;
             @include desktop() {
-                height: 100%;
                 position: relative;
                 top: 10%;
+            }
+            @include tablet() {
+                height: 100%;
                 right: 33%
             }
         }
 
         .textBox_container {
             display: grid;
+            @include desktop() {
+                height: 100%;
+                align-items: center;
+                grid-row: 6/9;
+            }
+            @include tablet() {
+                grid-row: 8/9;
+            }
 
             h3 {
                 margin: 5% auto 0% auto;
@@ -221,16 +245,18 @@
                 
             .chat_img_container {
                 grid-row-start: 3;
-                grid-row-end: 9;
+                grid-row-end: 7;
                 grid-column-start: 1;
                 grid-column-end: 4;
                 z-index: 1;
                 @include desktop() {
+                    grid-row: 3/8;
                     z-index: initial;
                 }
 
                 .chat_img {
-                    height: 80%;
+                    height: 100%;
+                    padding: 5%;
                     object-fit: contain;
                 }
             }
@@ -242,10 +268,12 @@
                 grid-column-end: 3;
                 z-index: 1;
                 margin: auto;
-                padding: 20px;
+                padding: 4vw;
                 border: rgba(0, 0, 0, 0.25) 2px solid;
                 color: $darkGrey-color;
                 @include desktop() {
+                    grid-row: 7/10;
+                    padding: 4%;
                     z-index: initial;
                 }
                 
@@ -296,6 +324,7 @@
         background-color: white;
         height: fit-content;
         @include desktop() {
+            height: 100%;
             grid-area: info;
             padding: 15%;
         }
@@ -324,13 +353,13 @@
             .status {
                 position: relative;
                 bottom: -2px;
-                grid-column-start: 3;
+                grid-column-start: 2;
                 grid-column-end: 3;
                 grid-row-start: 2;
                 grid-row-end: 2;
                 align-self: center;
                 @include desktop() {
-                    grid-column-start: 2;
+                    grid-column-start: 3;
                     left: 10px;
                 }
             }
