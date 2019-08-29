@@ -64,9 +64,6 @@ exports[`Components renders InfoDisplay with location properties 1`] = `
     <div
       className="button_container"
     >
-      <button>
-        Directions
-      </button>
       <button
         className="playBtn"
         onClick={[Function]}

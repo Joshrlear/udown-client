@@ -35,9 +35,6 @@ exports[`Nav renders Nav correctly 1`] = `
     </div>
   </div>
   <div
-    className="newMsg_notification "
-  />
-  <div
     className="hamburger_container"
   >
     <div
