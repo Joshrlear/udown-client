@@ -74,7 +74,7 @@ export default class EditProfile extends Component {
       const user_id = localStorage.user_id
       const imageUpload = this.imageUpload.current.files[0] ? this.imageUpload.current.files[0] : null
       const imageName = this.imageUpload.current.files[0] ? `${Date.now()}-${this.imageUpload.current.files[0].name}` : null
-      const phoneNumber = this.phoneNumber.current.value ? this.phoneNumber.current.value : null
+      const phoneNumber = this.phoneNumber.current.value && this.phoneNumber.current.value
 
       const formData = new FormData()
       this.imageUpload.current.files[0] && formData.append('image', imageUpload, imageName)

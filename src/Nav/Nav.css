@@ -51,7 +51,7 @@ nav {
   grid-row-end: 2;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .searchbar_container {
     grid-column-end: 2;
   }
@@ -153,7 +153,7 @@ nav {
   z-index: 3;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .search {
     -ms-grid-column: 2;
     grid-column: 2/2;
@@ -243,13 +243,13 @@ nav {
   border-radius: 3px;
 }
 
-.newMsg_notification {
+/* .newMsg_notification {
   display: none;
 }
 
 .newMsg_notification.newMsg {
   display: initial;
-  background-color: #c8db16;
+  background-color: $accent-color;
   border-radius: 50%;
   width: calc(1.7vw + 5px);
   height: calc(1.7vw + 5px);
@@ -258,28 +258,19 @@ nav {
   right: 30%;
   margin-left: auto;
   margin-right: auto;
-  -ms-grid-column: 6;
-      grid-column-start: 6;
+  grid-column-start: 6;
   grid-column-end: 7;
-  -ms-grid-row: 2;
-      grid-row-start: 2;
+  grid-row-start: 2;
   grid-row-end: 2;
   pointer-events: none;
   z-index: 4;
-}
-
-@media screen and (min-width: 760px) {
-  .newMsg_notification.newMsg {
+  @include tablet() {
     right: 18%;
   }
-}
-
-@media screen and (min-width: 1100px) {
-  .newMsg_notification.newMsg {
+  @include desktop() {
     display: none;
   }
-}
-
+} */
 .hamburger_container {
   position: relative;
   left: 90%;
@@ -296,7 +287,7 @@ nav {
   z-index: 3;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .hamburger_container {
     display: none;
   }
@@ -341,7 +332,7 @@ nav {
   z-index: -1;
 }
 
-.link.newMsg::after {
+/* .link.newMsg::after {
   display: inline-block;
   position: relative;
   top: -2px;
@@ -350,10 +341,9 @@ nav {
   height: 10px;
   margin-left: -7px;
   content: '';
-  background-color: #c8db16;
+  background-color: $accent-color;
   border-radius: 50%;
-}
-
+} */
 .nav-links_container {
   display: block;
   width: 100vw;
@@ -367,16 +357,17 @@ nav {
   transition: opacity 0.15s ease-out;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .nav-links_container {
     width: 100%;
     height: 100%;
     opacity: 1;
     -ms-grid-row: 2;
     grid-row: 2/2;
-    -ms-grid-column: 5;
-    -ms-grid-column-span: 2;
-    grid-column: 5/7;
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 3;
+    grid-column: 4/7;
+    padding-left: 15%;
   }
 }
 
@@ -386,7 +377,7 @@ nav {
   z-index: 1;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .nav-links_container.open {
     height: unset;
   }
@@ -414,7 +405,7 @@ nav {
   transition: all 0.25s;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .nav-links {
     display: -ms-grid;
     display: grid;
@@ -447,7 +438,7 @@ nav {
   }
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .nav-links .link {
     margin-left: auto;
     margin-right: auto;
@@ -483,7 +474,7 @@ nav {
   opacity: 1;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .nav-links.fade {
     display: -ms-grid;
     display: grid;

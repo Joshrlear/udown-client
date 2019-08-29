@@ -15,7 +15,7 @@
   height: 100vh;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .landing-page {
     position: initial;
     display: -ms-grid;
@@ -28,7 +28,7 @@
   height: 100vh;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .title_section {
     grid-area: title;
   }
@@ -47,7 +47,7 @@
   line-height: normal;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .title_container {
     position: fixed;
     width: 55%;
@@ -63,7 +63,7 @@
   z-index: -1;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .background_container {
     width: 55vw;
   }
@@ -110,13 +110,13 @@
   margin-top: 10%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_section {
     grid-area: map;
   }
 }
 
-.landing-page_container .map_section .map_main_section {
+.landing-page_container .map_section .map_main_container {
   display: -ms-grid;
   display: grid;
   height: 100%;
@@ -126,26 +126,21 @@
 
 .landing-page_container .map_section .phone_container {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 7;
-  grid-row: 1/8;
+  -ms-grid-row-span: 5;
+  grid-row: 1/6;
   height: 100%;
+  margin-top: 10%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_section .phone_container {
     position: initial;
-    -ms-grid-row: 1;
-    -ms-grid-row-span: 5;
-    grid-row: 1/6;
     height: 50vh;
   }
 }
 
 @media screen and (min-width: 760px) {
   .landing-page_container .map_section .phone_container {
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 5;
-    grid-row: 2/7;
     height: 100%;
   }
 }
@@ -161,20 +156,23 @@
   height: 70%;
   top: -15%;
   left: 35%;
-  -webkit-filter: blur(0.5px);
-          filter: blur(0.5px);
+  -webkit-filter: blur(0.8px);
+          filter: blur(0.8px);
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_section .map {
     height: 100%;
     top: 4%;
     left: 28%;
+    -webkit-filter: blur(0.1vw);
+            filter: blur(0.1vw);
   }
 }
 
 @media screen and (min-width: 760px) {
   .landing-page_container .map_section .map {
+    height: 90%;
     top: -5%;
     -webkit-filter: blur(0.14vw);
             filter: blur(0.14vw);
@@ -182,20 +180,22 @@
 }
 
 .landing-page_container .map_section .infoDisplay {
-  position: absolute;
+  position: relative;
+  height: 100%;
   right: 33%;
   top: initial;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_section .infoDisplay {
     position: relative;
-    top: 10%;
+    top: 1%;
   }
 }
 
 @media screen and (min-width: 760px) {
   .landing-page_container .map_section .infoDisplay {
+    position: relative;
     height: 100%;
     right: 33%;
   }
@@ -204,9 +204,12 @@
 .landing-page_container .map_section .textBox_container {
   display: -ms-grid;
   display: grid;
+  -ms-grid-row: 7;
+  -ms-grid-row-span: 3;
+  grid-row: 7/10;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_section .textBox_container {
     height: 100%;
     -webkit-box-align: center;
@@ -220,9 +223,7 @@
 
 @media screen and (min-width: 760px) {
   .landing-page_container .map_section .textBox_container {
-    -ms-grid-row: 8;
-    -ms-grid-row-span: 1;
-    grid-row: 8/9;
+    margin-top: 5%;
   }
 }
 
@@ -237,7 +238,7 @@
   height: 100vh;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .chat_section {
     grid-area: chat;
   }
@@ -251,7 +252,7 @@
   background-color: white;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .chat_section .chat_whitespace {
     height: initial;
   }
@@ -280,7 +281,7 @@
   color: white;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .chat_section .chat_main_container .chat_text_container {
     margin-top: 5vh;
     color: black;
@@ -295,9 +296,10 @@
       grid-column-start: 1;
   grid-column-end: 4;
   z-index: 1;
+  overflow: hidden;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .chat_section .chat_main_container .chat_img_container {
     -ms-grid-row: 3;
     -ms-grid-row-span: 5;
@@ -308,14 +310,17 @@
 
 .landing-page_container .chat_section .chat_main_container .chat_img_container .chat_img {
   height: 100%;
+  width: 130%;
   padding: 5%;
   -o-object-fit: contain;
      object-fit: contain;
+  position: relative;
+  right: 15%;
 }
 
 .landing-page_container .chat_section .chat_main_container .chat_quote_container {
-  -ms-grid-row: 8;
-      grid-row-start: 8;
+  -ms-grid-row: 7;
+      grid-row-start: 7;
   grid-row-end: 9;
   -ms-grid-column: 2;
       grid-column-start: 2;
@@ -323,11 +328,10 @@
   z-index: 1;
   margin: auto;
   padding: 4vw;
-  border: rgba(0, 0, 0, 0.25) 2px solid;
   color: #1d2323;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .chat_section .chat_main_container .chat_quote_container {
     -ms-grid-row: 7;
     -ms-grid-row-span: 3;
@@ -337,8 +341,17 @@
   }
 }
 
+@media screen and (min-width: 760px) {
+  .landing-page_container .chat_section .chat_main_container .chat_quote_container {
+    -ms-grid-row: 8;
+        grid-row-start: 8;
+    grid-row-end: 9;
+    border: rgba(0, 0, 0, 0.25) 2px solid;
+  }
+}
+
 .landing-page_container .chat_section .chat_main_container .chat_quote_container .chat_quote {
-  line-height: 1.5em;
+  line-height: 2rem;
 }
 
 .landing-page_container .map_msgs_section {
@@ -352,11 +365,11 @@
       grid-template-rows: 55% 45%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_msgs_section {
     grid-area: status;
     position: relative;
-    height: 100vh;
+    height: 92vh;
   }
 }
 
@@ -383,7 +396,7 @@
   grid-row-end: 3;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .map_msgs_section .status_msgs {
     width: 100%;
     padding-top: 30vh;
@@ -397,11 +410,12 @@
   height: fit-content;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .status_section {
     height: 100%;
+    position: relative;
     grid-area: info;
-    padding: 15%;
+    padding: 19% 15% 0% 15%;
   }
 }
 
@@ -409,16 +423,10 @@
   display: -ms-grid;
   display: grid;
   padding: 7%;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: 11.5rem;
+      grid-template-columns: 11.5rem;
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
-}
-
-@media screen and (min-width: 1100px) {
-  .landing-page_container .status_header_container {
-    padding-top: 15%;
-  }
 }
 
 .landing-page_container .status_header_container .status_project_title {
@@ -449,10 +457,8 @@
       align-self: center;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .status {
-    -ms-grid-column: 3;
-        grid-column-start: 3;
     left: 10px;
   }
 }
@@ -506,10 +512,10 @@
   margin-right: 15%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .landing-page_container .status_icon_links {
     position: relative;
-    top: 10%;
+    padding-top: 5%;
   }
 }
 

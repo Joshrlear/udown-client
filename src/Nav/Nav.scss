@@ -1,7 +1,7 @@
 @import "../utilities/_variables.sass";
 
 @mixin desktop() {
-  @media screen and ( min-width: 1100px ) {
+  @media screen and ( min-width: 1024px ) {
     @content;
   }
 }
@@ -216,7 +216,8 @@ nav {
   }
 }
 
-.newMsg_notification {
+// to be integrated in next version
+/* .newMsg_notification {
   display: none;
 }
 
@@ -243,7 +244,7 @@ nav {
   @include desktop() {
     display: none;
   }
-}
+} */
 
 .hamburger_container {
   position: relative;
@@ -291,7 +292,8 @@ nav {
 
 }
 
-.link.newMsg::after {
+// to be integrated in next version
+/* .link.newMsg::after {
   display: inline-block;
   position: relative;
   top: -2px;
@@ -302,7 +304,7 @@ nav {
   content: '';
   background-color: $accent-color;
   border-radius: 50%;
-}
+} */
 
 .nav-links_container {
   display: block;
@@ -318,7 +320,8 @@ nav {
     height: 100%;
     opacity: 1;
     grid-row: 2/2;
-    grid-column: 5/7
+    grid-column: 4/7;
+    padding-left: 15%;
   }
 }
 

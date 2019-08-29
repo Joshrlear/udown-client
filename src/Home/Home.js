@@ -34,7 +34,7 @@ class Home extends Component {
         }
 
         // controls map size on selection (only on mobile)
-        const isMobileDevice = window.innerWidth <= 1100
+        const isMobileDevice = window.innerWidth <= 1023
         const height = isMobileDevice && this.state.hasSelection ? "35vh" : "100vh"
         const width = !isMobileDevice && this.state.hasSelection ? "55vw" : "100vw"
         return (

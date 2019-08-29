@@ -131,7 +131,8 @@ constructor(props) {
                         </div>
                     </div>
                 </div>
-                <div className={ `newMsg_notification ${hasMsg}` }/>
+                {/* to be integrated on next version */}
+                {/* <div className={ `newMsg_notification ${hasMsg}` }/> */}
                 <div className={`hamburger_container${search_btn}`}>
                     <div id="hamburger" className="hamburger" onClick={e => this.toggleMenu(e)}>
                       <div className={`line${search_btn}`}/>
@@ -142,7 +143,6 @@ constructor(props) {
                 <div className={ navLinkClass }>
                   <ul className={ linkClass }>
                     <NavLink className="link" name="home" to="/home" onClick={e => this.toggleMenu(e)}>Home</NavLink>
-                    {/* <span className={ `link ${hasMsg}` }/> */}
                     <span className={ `link ${hasMsg}`} name="chat" onClick={e => this.viewChat(e)}>Chat</span>
                     <NavLink className="link" name="profile" to="/profile" onClick={e => this.toggleMenu(e)}>Profile</NavLink>
                     <NavLink className="link" name="logout" to="/login" onClick={e => this.logout(e)}>{ loginLogout }</NavLink>

@@ -129,7 +129,7 @@ const profileFetches = {
     )
   },
 
-  getUserPhones(user_id, field) {
+  getOtherUsers(user_id, field) {
     return (
       fetch(`${config.API_ENDPOINT}profile/${user_id}/others/${field}`, {
         method: 'GET',
@@ -157,6 +157,10 @@ const profileFetches = {
           console.log(error)
         })
     )
+  },
+
+  getUsername(user_id) {
+    fetch('/')
   }
 }
 

@@ -18,18 +18,25 @@ export default function InfoDisplay(props) {
 
   function sendTxt() {
     const { chatOpened, startChat } = chatFuncs
-    const { getUserPhones } = fetches.profileFetches
+    const { getOtherUsers } = fetches.profileFetches
     const { user_id } = localStorage
 
     // get user phone_number
-    const phoneResult = Promise.resolve(getUserPhones(user_id, 'phone_number'))
+    const phoneResult = Promise.resolve(getOtherUsers(user_id, 'phone_number'))
     phoneResult.then(value => {
       if (value) {
-        const userPhones = value.map(user => user.field)
-        const reqBody = { 
+        value.map(user => console.log('getOtherUsers info',user))
+        let otherUser
+        const users = value.map(user => 
+          otherUser = {
+            'user_id': user.id,
+            'phone': user.phone_number
+          })
+          console.log(users)
+         const reqBody = { 
           'username': localStorage.username, 
           'location': location.name,
-          'userPhones': userPhones
+          'users': users
         }
         fetch(`${config.API_ENDPOINT}text`, {
               method: 'POST',
@@ -62,7 +69,8 @@ export default function InfoDisplay(props) {
               console.log(err)
             })
       }
-    })
+      else {console.log('no one has a number :(')}
+    }) 
   }
 
   return (
@@ -70,7 +78,6 @@ export default function InfoDisplay(props) {
         {/* <img src={location.photo || `https://via.placeholder.com/${width}x${hieght}`}/> */}
         <div className="info_container">
         <div className="button_container">
-          <button>Directions</button>
           <button className="playBtn" onClick={sendTxt}>PLAY</button>
         </div>
           <main className="info">

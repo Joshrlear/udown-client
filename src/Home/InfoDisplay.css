@@ -22,7 +22,7 @@ img {
   height: 65vh;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .info_display.active {
     height: 92vh;
     width: 45%;
@@ -31,7 +31,7 @@ img {
   }
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .info_container {
     display: -ms-grid;
     display: grid;
@@ -46,7 +46,7 @@ img {
   padding: 0% 10% 10% 10%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .info_container .info {
     display: -ms-grid;
     display: grid;
@@ -70,25 +70,18 @@ img {
   margin-top: 20px;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .info_container .button_container {
     width: 40%;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
     grid-area: buttons;
   }
 }
 
 .info_container .button_container > button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   width: 130px;
   height: 40px;
-  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .info_container .main_info {
@@ -121,7 +114,7 @@ img {
   grid-column: 1/8;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1024px) {
   .info_container .address h3, .info_container .address p {
     -ms-grid-column: 3;
     -ms-grid-column-span: 3;

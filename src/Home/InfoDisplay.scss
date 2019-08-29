@@ -1,5 +1,5 @@
 @mixin desktop() {
-  @media screen and ( min-width: 1100px ) {
+  @media screen and ( min-width: 1024px ) {
     @content;
   }
 }
@@ -76,17 +76,15 @@ img {
     margin-top: 20px;
     @include desktop() {
       width: 40%;
-      justify-content: space-evenly;
       grid-area: buttons;
     }
   }
 
   .button_container > button {
-    display: flex;
-    justify-content: space-around;
     width: 130px;
     height: 40px;
-    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .main_info { 
     display: block;

@@ -1,7 +1,7 @@
 @import '../utilities/_variables';
 
 @mixin desktop() {
-  @media screen and ( min-width: 1100px ) {
+  @media screen and ( min-width: 1024px ) {
     @content;
   }
 }
@@ -127,7 +127,7 @@
             grid-area: map;
         }
         
-        .map_main_section {
+        .map_main_container {
             display: grid;
             height: 100%;
             grid-template-rows: repeat(9, 1fr);
@@ -135,15 +135,14 @@
         
 
         .phone_container {
-            grid-row: 1/8;
+            grid-row: 1/6;
             height: 100%;
+            margin-top: 10%;
             @include desktop() {
                 position: initial;
-                grid-row: 1/6;
                 height: 50vh;
             }
             @include tablet() {
-                grid-row: 2/7;
                 height: 100%;
             }
         }
@@ -158,27 +157,31 @@
             height: 70%;
             top: -15%;
             left: 35%;
-            filter: blur(0.5px);
+            filter: blur(0.8px);
             @include desktop() {
                 height: 100%;
                 top: 4%;
                 left: 28%;
+                filter: blur(0.1vw);
             }
             @include tablet() {
+                height: 90%;
                 top: -5%;
                 filter: blur(0.14vw);
             }
         }
 
         .infoDisplay {
-            position: absolute;
+            position: relative;
+            height: 100%;
             right: 33%;
             top: initial;
             @include desktop() {
                 position: relative;
-                top: 10%;
+                top: 1%;
             }
             @include tablet() {
+                position: relative;
                 height: 100%;
                 right: 33%
             }
@@ -186,13 +189,14 @@
 
         .textBox_container {
             display: grid;
+            grid-row: 7/10;
             @include desktop() {
                 height: 100%;
                 align-items: center;
                 grid-row: 6/9;
             }
             @include tablet() {
-                grid-row: 8/9;
+                margin-top: 5%;
             }
 
             h3 {
@@ -249,6 +253,7 @@
                 grid-column-start: 1;
                 grid-column-end: 4;
                 z-index: 1;
+                overflow: hidden;
                 @include desktop() {
                     grid-row: 3/8;
                     z-index: initial;
@@ -256,29 +261,36 @@
 
                 .chat_img {
                     height: 100%;
+                    width: 130%;
                     padding: 5%;
                     object-fit: contain;
+                    position: relative;
+                    right: 15%;
                 }
             }
 
             .chat_quote_container {
-                grid-row-start: 8;
+                grid-row-start: 7;
                 grid-row-end: 9;
                 grid-column-start: 2;
                 grid-column-end: 3;
                 z-index: 1;
                 margin: auto;
                 padding: 4vw;
-                border: rgba(0, 0, 0, 0.25) 2px solid;
                 color: $darkGrey-color;
                 @include desktop() {
                     grid-row: 7/10;
                     padding: 4%;
                     z-index: initial;
                 }
+                @include tablet() {
+                    grid-row-start: 8;
+                    grid-row-end: 9;
+                    border: rgba(0, 0, 0, 0.25) 2px solid;
+                }
                 
                 .chat_quote {
-                    line-height: 1.5em;
+                    line-height: 2rem;
                 }
             }
         }
@@ -293,7 +305,7 @@
         @include desktop() {
             grid-area: status;
             position: relative;
-            height: 100vh;
+            height: 92vh;
         }
             
 
@@ -325,19 +337,18 @@
         height: fit-content;
         @include desktop() {
             height: 100%;
+            position: relative;
             grid-area: info;
-            padding: 15%;
+            padding: 19% 15% 0% 15%;
         }
     }
 
         .status_header_container {
             display: grid;
             padding: 7%;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 11.5rem;
             grid-template-rows: repeat(3, 1fr);
-            @include desktop() {
-                padding-top: 15%;
-            }
+            
 
             .status_project_title {
                 font-size: 24px;
@@ -359,7 +370,6 @@
                 grid-row-end: 2;
                 align-self: center;
                 @include desktop() {
-                    grid-column-start: 3;
                     left: 10px;
                 }
             }
@@ -398,7 +408,7 @@
             margin-right: 15%;
             @include desktop() {
                 position: relative;
-                top: 10%
+                padding-top: 5%
             }
 
             .fab {
