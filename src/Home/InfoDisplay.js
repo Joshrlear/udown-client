@@ -25,14 +25,12 @@ export default function InfoDisplay(props) {
     const phoneResult = Promise.resolve(getOtherUsers(user_id, 'phone_number'))
     phoneResult.then(value => {
       if (value) {
-        value.map(user => console.log('getOtherUsers info',user))
         let otherUser
         const users = value.map(user => 
           otherUser = {
             'username': user.username,
             'phone': user.phone_number
           })
-          console.log(users)
          const reqBody = { 
           'username': localStorage.username, 
           'location': location.name,
@@ -69,7 +67,7 @@ export default function InfoDisplay(props) {
               console.log(err)
             })
       }
-      else {console.log('no one has a number :(')}
+      else {console.log('no one available :(')}
     }) 
   }
 
