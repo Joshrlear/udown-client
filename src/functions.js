@@ -23,11 +23,16 @@ const formFunctions = {
 
 const authFunctions = {
 
-    redirectIfLoggedIn(props, context) {
-        if (context === true) {
+    redirectIfLoggedIn(props, loggedIn) {
+        let pathname
+        // if there is a history object
+        props.history && (pathname = props.history.pathname)
+        // if user is logged in
+        if (loggedIn === true) {
             localStorage.user_id && props.history.push(`/profile/${localStorage.user_id}`)
         }
-        else if (props.history) {
+        // if user not logged in and user trys to go to profile/editProfile
+        else if (pathname.match(/\b(\w*profile\w*)\b/ig)) {
             props.history.push(`/login`)
         }
     },
