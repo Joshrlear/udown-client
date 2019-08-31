@@ -53,10 +53,8 @@ export default class Login extends Component {
         // filtering unwwanted state elements then validating state
         const { username, password } = this.state
         const   user = { username, password }
-        console.log(user)
 
         if (this.formValidate(user)) {
-            console.log('is running line 54')
             fetch(`${config.API_ENDPOINT}login`, {
                 method: 'POST',
                 body: JSON.stringify(user),

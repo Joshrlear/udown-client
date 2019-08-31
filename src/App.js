@@ -78,22 +78,18 @@ class App extends Component {
 
   setIsLoggedIn = () => {
     if (localStorage.user_id) {
-      console.log('has user_id in local storage')
       this.state.isLoggedIn !== true && this.setState({ isLoggedIn: true })
     }
     else {
-      console.log('doesnt have user_id in local storage')
       this.state.isLoggedIn !== false && this.setState({ isLoggedIn: false })
     } 
   }
 
   componentWillMount() {
-    console.log('App is mounting')
     this.setIsLoggedIn()
   }
 
   componentDidUpdate() {
-    console.log('App is updating')
     this.setIsLoggedIn()
   }
 
