@@ -1,18 +1,15 @@
 import React, { useContext } from 'react'
 import config from '../config'
-import io from 'socket.io-client'
 import LocationContext from './LocationContext'
 import udownContext from '../UdownContext'
 import fetches from '../fetches'
 import './InfoDisplay.scss'
 
-let socket
-socket = io(config.API_ENDPOINT)
 
 export default function InfoDisplay(props) {
   // window size for when google photos implemented
-  const width = Math.ceil(window.innerWidth)
-  const hieght = Math.ceil(window.innerHeight / 5)
+  //const width = Math.ceil(window.innerWidth)
+  //const hieght = Math.ceil(window.innerHeight / 5)
   const location = useContext(LocationContext)
   const chatFuncs = useContext(udownContext)
 
@@ -25,12 +22,11 @@ export default function InfoDisplay(props) {
     const phoneResult = Promise.resolve(getOtherUsers(user_id, 'phone_number'))
     phoneResult.then(value => {
       if (value) {
-        let otherUser
         const users = value.map(user => 
-          otherUser = {
+          ({
             'username': user.username,
             'phone': user.phone_number
-          })
+          }))
          const reqBody = { 
           'username': localStorage.username, 
           'location': location.name,
@@ -54,12 +50,13 @@ export default function InfoDisplay(props) {
               }
             })
             .then(res => {
-              const user = res.username
+              // implement with chatrooms
+              //const user = res.username
               const room = res.roomName
-              const loc = {
+              /* const loc = {
                 name: location.name,
                 address: location.address
-              }
+              } */
               !chatOpened && (startChat(room))
             })
             .catch(err => {

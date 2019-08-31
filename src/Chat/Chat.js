@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import io from 'socket.io-client'
 import config from '../config'
 import UdownContext from '../UdownContext'
-import functions from '../functions';
 import ScrollToBottom from 'react-scroll-to-bottom'
 import './Chat.scss'
-
-const authFunctions = functions.authFunctions
 
 let socket
 
@@ -100,7 +97,6 @@ export default class Chat extends Component {
         this.chatInput.current.value = ''
     }
 
-    
     render() {
         const chatToggle = !this.context.chatOpened ? 'chat_container' : 'chat_container active'
         return(

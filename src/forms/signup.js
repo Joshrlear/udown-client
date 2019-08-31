@@ -5,7 +5,6 @@ import UdownContext from '../UdownContext';
 import functions from '../functions';
 import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.scss';
-import { stat } from 'fs';
 
 const formFunctions = functions.formFunctions
 const authFunctions = functions.authFunctions

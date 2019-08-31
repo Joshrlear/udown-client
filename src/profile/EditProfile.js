@@ -37,11 +37,11 @@ export default class EditProfile extends Component {
       // get profile image
       const imageResult = Promise.resolve(getProfileImage(user_id, this.props))
       imageResult.then(value => {
-        if (value) {
+        if (value.image) {
           const base64Image = value.image.image
           const image = `data:image/jpg;base64, ${base64Image}`
           /* document.getElementById('profile-image').src = `data:image/jpg;base64, ${image}` */
-          value && (
+          value.image && (
             this.state.profileImage !== image  && (
               this.setState({
                 profileImage: image
@@ -87,6 +87,7 @@ export default class EditProfile extends Component {
           })
         }
         else {
+          this.props.history.push('/profile')
           return res
         }
       })
