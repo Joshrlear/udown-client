@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import config from '../config';
 import UdownContext from '../UdownContext';
 import functions from '../functions';
 import fetches from '../fetches'
-import EditProfile from './EditProfile'
 import './profile.scss'
 
 const { getProfileImage, getProfilePhone } = fetches.profileFetches

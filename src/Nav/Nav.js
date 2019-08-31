@@ -38,7 +38,7 @@ constructor(props) {
             this.setState({
                 toggledClass: !this.state.toggledClass
             })
-            e.target.innerHTML == 'Chat' && openMsg()
+            e.target.innerHTML === 'Chat' && openMsg()
         }
     };
 
@@ -53,8 +53,8 @@ constructor(props) {
         
         if (isLoggedIn) {
             // open chat
-            e.target.innerHTML == 'Chat' && openMsg()
-            this.state.hasMsg == true && (
+            e.target.innerHTML === 'Chat' && openMsg()
+            this.state.hasMsg === true && (
                 this.setState({
                     hasMsg: false
                 })
@@ -63,9 +63,12 @@ constructor(props) {
 
     }
 
-    logout = e => {
-        authFunctions.logout(this.props)
-        this.toggleMenu(e)
+    loginLogout = e => {
+        if (this.context.isLoggedIn) {
+            authFunctions.logout(this.props)
+            this.context.setIsLoggedIn()
+        }
+        this.toggleMenu(e) 
     }
 
     inputFocus = () => {
@@ -109,7 +112,7 @@ constructor(props) {
         const navLinkClass = this.state.toggledClass ? "nav-links_container open" : "nav-links_container";
         const linkClass = this.state.toggledClass ? "nav-links fade" : "nav-links";
         const search_btn = !this.state.query ? "" : " on"
-        const hasMsg = this.state. hasMsg ? "newMsg" : ""
+        const hasMsg = this.state.hasMsg ? "newMsg" : ""
         const loginLogout = this.context.isLoggedIn ? "Logout" : "Login"
 
         return (
@@ -145,7 +148,7 @@ constructor(props) {
                     <NavLink className="link" name="home" to="/home" onClick={e => this.toggleMenu(e)}>Home</NavLink>
                     <span className={ `link ${hasMsg}`} name="chat" onClick={e => this.viewChat(e)}>Chat</span>
                     <NavLink className="link" name="profile" to="/profile" onClick={e => this.toggleMenu(e)}>Profile</NavLink>
-                    <NavLink className="link" name="logout" to="/login" onClick={e => this.logout(e)}>{ loginLogout }</NavLink>
+                    <NavLink className="link" name="loginLogout" to="/login" onClick={e => this.loginLogout(e)}>{ loginLogout }</NavLink>
                   </ul>
                 </div>
             </nav>

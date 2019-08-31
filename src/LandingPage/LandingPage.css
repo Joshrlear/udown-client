@@ -86,7 +86,7 @@
   display: none;
 }
 
-.landing-page_container .title, .landing-page_container .subtitle {
+.landing-page_container .title, .landing-page_container .subtitle, .landing-page_container .demo_link {
   text-align: center;
   color: white;
 }
@@ -102,6 +102,15 @@
   font-size: 20px;
   font-weight: 200;
   margin-top: -10px;
+}
+
+.landing-page_container .demo_link {
+  display: block;
+  text-decoration: none;
+  line-height: 3rem;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .landing-page_container .map_section {

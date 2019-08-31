@@ -7,7 +7,7 @@ const formFunctions = {
     inputLengthValidator(inputValue) {
         return Object.entries(inputValue)
             .map(val => val[1].length < 3 
-                ? false 
+                ? val[0] === 'retype_password' ? 'retyped password' : val[0]
                 : true
             )
     },
@@ -45,11 +45,10 @@ const authFunctions = {
         localStorage.removeItem('user_id')
         localStorage.removeItem('username')
         fetch(`${config.API_ENDPOINT}logout`, {
-            method: 'GET',
-            //credentials: 'include'
+            method: 'GET'
         })
         .then(result => {
-            props.history.push('/login')
+            props.history.push('/')
         })
     }
 }

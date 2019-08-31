@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import config from '../config'
 import io from 'socket.io-client'
 import LocationContext from './LocationContext'
@@ -10,11 +10,11 @@ let socket
 socket = io(config.API_ENDPOINT)
 
 export default function InfoDisplay(props) {
+  // window size for when google photos implemented
   const width = Math.ceil(window.innerWidth)
   const hieght = Math.ceil(window.innerHeight / 5)
   const location = useContext(LocationContext)
   const chatFuncs = useContext(udownContext)
-  const [locationPhoto, setLocationPhoto] = useState(`https://via.placeholder.com/${width}x${hieght}`)
 
   function sendTxt() {
     const { chatOpened, startChat } = chatFuncs
@@ -60,7 +60,6 @@ export default function InfoDisplay(props) {
                 name: location.name,
                 address: location.address
               }
-              //socket.emit('join', { user, room, loc })
               !chatOpened && (startChat(room))
             })
             .catch(err => {
@@ -73,7 +72,6 @@ export default function InfoDisplay(props) {
 
   return (
       <div className={location.name === "Name" ? "info_display" : "info_display active"}>
-        {/* <img src={location.photo || `https://via.placeholder.com/${width}x${hieght}`}/> */}
         <div className="info_container">
         <div className="button_container">
           <button className="playBtn" onClick={sendTxt}>PLAY</button>

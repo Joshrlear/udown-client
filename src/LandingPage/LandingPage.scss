@@ -101,7 +101,7 @@
         display: none;
     }
 
-    .title, .subtitle {
+    .title, .subtitle, .demo_link {
         text-align: center;
         color: white;
     }
@@ -117,6 +117,15 @@
         font-size: 20px;
         font-weight: 200;
         margin-top: -10px;
+    }
+
+    .demo_link {
+        display: block;
+        text-decoration: none;
+        line-height: 3rem;
+        font-size: 20px;
+        font-weight: 300;
+        font-style: italic;
     }
 
     .map_section {

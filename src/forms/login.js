@@ -24,22 +24,26 @@ export default class Login extends Component {
         })
     }
 
-    formValidate(newUser) {
-        if (formFunctions.inputLengthValidator(newUser).includes(false) === true) {
-            
-            const invalidArr = formFunctions.inputLength(newUser)
-            const invalid = invalidArr.filter(val => val !== null).map(val => val[0]).join(', ')
-            const errorMsg = `Invalid fields: ${invalid}`
+    formValidate(user) {
+        const form = formFunctions.inputLengthValidator(user)
+        if (!form.every(val => val === true)) {
+            const filter = form.filter(val => val !== true)
+            const invalidFields = filter.length === 2 
+                ? 'username and password are'
+                : form.filter(val => val !== true)
+            const errorMsg = `${invalidFields} invalid`
             this.setState({
                 error: true,
                 errorMsg
-            }) 
+            })
+            return false
         } 
         else {
             this.setState({
                 error: false, 
                 errorMsg: ''
             })
+            return true
         } 
     }
   
@@ -48,37 +52,38 @@ export default class Login extends Component {
         e.preventDefault();
         // filtering unwwanted state elements then validating state
         const { username, password } = this.state
-        const   newUser = { username, password }
+        const   user = { username, password }
+        console.log(user)
 
-        this.formValidate(newUser)
-
-        fetch(`${config.API_ENDPOINT}login`, {
-            method: 'POST',
-            body: JSON.stringify(newUser),
-            headers: {
-                "Content-Type": "application/json"
-            },
-            //credentials: "include"
-        })
-        .then(res => {
-            if (!res.ok) {
-                return res.json().then(error => {
-                    
-                    throw error
-                })
-            }
-            
-            return res.json()
-            
-        })
-        .then(data => {
-            authFunctions.setIdRedirect(this.props, data)
-        })
-        .catch(error => {
-            this.setState({
-                errorMsg: error.message
+        if (this.formValidate(user)) {
+            console.log('is running line 54')
+            fetch(`${config.API_ENDPOINT}login`, {
+                method: 'POST',
+                body: JSON.stringify(user),
+                headers: {
+                    "Content-Type": "application/json"
+                }
             })
-        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => {
+
+                        throw error
+                    })
+                }
+
+                return res.json()
+
+            })
+            .then(data => {
+                authFunctions.setIdRedirect(this.props, data)
+            })
+            .catch(error => {
+                this.setState({
+                    errorMsg: error.errorMsg
+                })
+            })            
+        }
     }
 
     componentWillMount() {

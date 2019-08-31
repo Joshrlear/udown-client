@@ -48,16 +48,10 @@ const mapFetches = {
               // keep as it will be updated in the future
               res.blob().then(blob => {
                   const objectURL = URL.createObjectURL(blob)
-                  {
-                      /* this.setState({
-                      locationImage: objectURL
-                  }) */
-                }
                   return objectURL
               })
             }
           })
-          /* .then(results => console.log('here is the response for location-photo: ', results)) */
           .catch(err => console.log(err))
       )
     }
@@ -72,8 +66,7 @@ const profileFetches = {
           headers: {
             "Content-Type": "application/json",
             "user_id": user_id
-          },
-          //credentials: 'include'
+          }
         })
         .then(res => {
             if (!res.ok) {
@@ -107,8 +100,7 @@ const profileFetches = {
           "Content-Type": "application/json",
           "user_id": user_id,
           "field": "phone_number"
-        },
-        //credentials: 'include'
+        }
       })
       .then(res => {
           if (!res.ok) {
@@ -137,8 +129,7 @@ const profileFetches = {
           "Content-Type": "application/json",
           "user_id": user_id,
           "field": "phone_number"
-        },
-        //credentials: 'include'
+        }
       })
       .then(res => {
           if (!res.ok) {

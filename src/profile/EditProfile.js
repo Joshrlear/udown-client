@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import config from '../config'
 import UdownContext from '../UdownContext';
-import functions from '../functions';
 import fetches from '../fetches'
 import './profile.scss'
-import { thisExpression } from '@babel/types';
 
 const { getProfileImage, getProfilePhone } = fetches.profileFetches
-const authFunctions = functions.authFunctions
 
 const imageHeight = Math.ceil(window.outerHeight * 0.35);
 const imageWidth = Math.ceil(window.innerWidth);
@@ -83,7 +79,6 @@ export default class EditProfile extends Component {
         method: 'POST',
         body: formData,
         headers: { "user_id": user_id }
-        //credentials: 'include' 
       })
       .then(res => {
         if (!res.ok) {
@@ -132,7 +127,7 @@ export default class EditProfile extends Component {
                     className="phone" 
                     placeholder="no number yet..." 
                     defaultValue={ this.state.phone } 
-                    disabled={ localStorage.username == "test" }
+                    disabled={ localStorage.username === "test" }
                   />
                   <div className="input_note_container">
                     <p className="input_note">   

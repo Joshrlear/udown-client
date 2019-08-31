@@ -1,8 +1,7 @@
-import React, { Component, useState, useRef } from 'react';
+import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap } from 'react-google-maps';
 import config from '../config';
 import LocationContext from './LocationContext'
-import InfoDisplay from './InfoDisplay'
 import Map from './Map'
 import './Home.scss';
 

@@ -5,6 +5,7 @@ import UdownContext from '../UdownContext';
 import functions from '../functions';
 import ErrorMsg from '../Errors/ErrorMsg/ErrorMsg';
 import './forms.scss';
+import { stat } from 'fs';
 
 const formFunctions = functions.formFunctions
 const authFunctions = functions.authFunctions
@@ -15,6 +16,7 @@ export default class Login extends Component {
         error: true,
         username: '',
         password: '',
+        retype_password: ''
     };
 
     static contextType = UdownContext;
@@ -26,12 +28,15 @@ export default class Login extends Component {
     }
 
     formValidate(stateVals) {
-
-        if (formFunctions.inputLengthValidator(stateVals).includes(false) === true) {
-
-            const invalidArr = formFunctions.inputLength(stateVals)
-            const invalid = invalidArr.filter(val => val !== null).map(val => val[0]).join(', ')
-            const errorMsg = `Invalid fields: ${invalid}`
+        let form = formFunctions.inputLengthValidator(stateVals)
+        if (!form.every(val => val === true)) {
+            const filter = form.filter(val => val !== true)
+            const invalidFields = filter.length === 3
+                ? 'Signup fields are'
+                : filter.length === 2 
+                    ? form.filter(val => val !== true).join().replace(',', ' and ')
+                    : form.filter(val => val !== true)
+            const errorMsg = `${invalidFields} invalid`
             this.setState({
                 error: true,
                 errorMsg
@@ -40,7 +45,6 @@ export default class Login extends Component {
         } 
         else {
             // validate retype_password
-
             if (this.state.password !== this.state.retype_password) {
                 this.setState({
                     error: true,
@@ -79,8 +83,7 @@ export default class Login extends Component {
                 body: JSON.stringify(newUser),
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                //credentials: "include"
+                }
             })
             .then(res => {
                 if (!res.ok) {

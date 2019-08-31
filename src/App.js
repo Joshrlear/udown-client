@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import config from './config';
 import Nav from './Nav/Nav';
 import LandingPage from './LandingPage/LandingPage';
 import Home from './Home/Home'
@@ -10,7 +9,6 @@ import Profile from './profile/Profile';
 import EditProfile from './profile/EditProfile'
 import ErrorBoundary from './Errors/ErrorBoundary';
 import UdownContext from './UdownContext';
-import ChatButton from './Chat/ChatButton';
 import Chat from './Chat/Chat'
 import ChatRedirect from './Chat/ChatRedirect'
 
@@ -79,43 +77,23 @@ class App extends Component {
   }
 
   setIsLoggedIn = () => {
-    /* fetch('/', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(() => { */
-      if (localStorage.user_id) {
-        this.state.isLoggedIn !== true && this.setState({ isLoggedIn: true })
-      }
-      else {
-        this.state.isLoggedIn !== false && this.setState({ isLoggedIn: false })
-      } 
-    //})
+    if (localStorage.user_id) {
+      console.log('has user_id in local storage')
+      this.state.isLoggedIn !== true && this.setState({ isLoggedIn: true })
+    }
+    else {
+      console.log('doesnt have user_id in local storage')
+      this.state.isLoggedIn !== false && this.setState({ isLoggedIn: false })
+    } 
   }
 
   componentWillMount() {
-    /* fetch(`${config.API_ENDPOINT}isLoggedIn`, {
-      method: 'GET',
-      headers: { 
-        'Content-Type': 'application/json',
-        'user_id': localStorage.user_id
-      },
-      //credentials: 'include'
-    }) */
+    console.log('App is mounting')
     this.setIsLoggedIn()
   }
 
   componentDidUpdate() {
-    /* fetch(`${config.API_ENDPOINT}isLoggedIn`, {
-      method: 'GET',
-      headers: { 
-        'Content-Type': 'application/json',
-        'user_id': localStorage.user_id
-      },
-      //credentials: 'include'
-    }) */
+    console.log('App is updating')
     this.setIsLoggedIn()
   }
 
@@ -185,6 +163,7 @@ class App extends Component {
                   path="/profileEdit"
                   component={ EditProfile }
                 />
+                {/* redirect user to chat from text message link */}
             <Route
               path="/chat/:roomName"
               component={ ChatRedirect }

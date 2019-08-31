@@ -54,9 +54,6 @@ export default class Chat extends Component {
                 clearTimeout(timeout)
                 // begin timeout
                 timeout = setTimeout(() => {
-                    // need to remove if user clicks off input.
-                    // currently if they click off after backspace it
-                    // keeps user in "userTyping" state
                     
                     // after 3 seconds all usernames will be removed
                     this.setState({
@@ -99,8 +96,7 @@ export default class Chat extends Component {
         this.setState({
             messages: [...this.state.messages, newMsg]
         })
-        socket.emit('chat_message', ({/* room: this.context.chatRoomName, */ username: username, message: message}))
-        // socket.in(this.context.chatRoomName).emit('chat_message', newMsg)
+        socket.emit('chat_message', ({ username: username, message: message}))
         this.chatInput.current.value = ''
     }
 

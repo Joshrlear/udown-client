@@ -1,17 +1,14 @@
 import React, { Component, } from 'react';
 import { GoogleMap, Marker } from 'react-google-maps';
-import config from '../config'
 import uuid from 'uuid/v4';
 import LocationContext from './LocationContext'
 import UdownContext from '../UdownContext'
-//import locations from '../data/tennis-courts.json'
 import InfoDisplay from './InfoDisplay'
 import fetches from '../fetches'
 
 const { getLocations, getLocationPhoto } = fetches.mapFetches
 const width = Math.ceil(window.innerWidth)
 const hieght = Math.ceil(window.innerHeight / 5)
-const searchQuery = UdownContext 
 
 export default class Map extends Component {
     constructor(props) {
@@ -89,29 +86,6 @@ export default class Map extends Component {
             this.setState({
                 locationImage: result
             })
-            {// KEEP THIS FOR REF UNTIL PHOTOS WORK
-            /* fetch(`${config.API_ENDPOINT}home/location-photo`, {
-              method: 'POST',
-              headers: {
-                //'ContentType': 'application/json',
-                'photo': this.state.locationPhoto,
-                'width': width
-              }
-            })
-            .then(res => { 
-                // currently it is not receiving info from server.
-                // the objectURL is just a link to my website showing only nav bar...
-                console.log('here! ', res.headers)
-                res.blob().then(blob => {
-                    const objectURL = URL.createObjectURL(blob)
-                    this.setState({
-                        locationImage: objectURL
-                    })
-                })
-                return res
-            })
-            .then(results => console.log('here is the response for location-photo: ', results))
-            .catch(err => console.log(err)) */}
         }
     }
 
@@ -128,15 +102,6 @@ export default class Map extends Component {
                         })
                     )
                 }
-                /* else {
-                    // in the future use this to highlight input
-                    // and tell user that they are already displaying
-                    // results for that query
-                    // possibly add google autocomplete api to
-                    // suggest unique queries
-                    // ex: user entered tennis, suggest: tennis courts
-                    reject(`results for ${this.context.query} already displayed`)
-                } */
             })
             .then(() => {
                 this.runQuerySearch()
@@ -151,11 +116,12 @@ export default class Map extends Component {
     render() {
 
         const selectedLocation = this.state.selectedLocation
-        const photo_reference = selectedLocation && (
+        //keeping photo_ref references for later updates
+        /* const photo_reference = selectedLocation && (
             selectedLocation.photos &&(
                 selectedLocation.photos[0].photo_reference
             )
-        )
+        ) */
 
         const contextValue = {
             name: selectedLocation ? selectedLocation.name : 'Name',
