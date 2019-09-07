@@ -21,8 +21,9 @@ export default class Login extends Component {
     static contextType = UdownContext;
 
     handleInput = target => {
+        const value = target.value.toLowerCase()
         this.setState({
-            [target.name]: target.value
+            [target.name]: value
         })
     }
 
@@ -94,7 +95,7 @@ export default class Login extends Component {
                 return res.json()
             })
             .then(data => {
-                
+                console.log('--------- data from signup', data)
                 authFunctions.setIdRedirect(this.props, data)
             })
             .catch(error => {
@@ -132,6 +133,7 @@ export default class Login extends Component {
               <div>
                 <label>Password: </label>
                 <input 
+                    type="password"
                     name="password"
                     placeholder="password here"
                     onChange={e => this.handleInput(e.target)}/>
@@ -140,6 +142,7 @@ export default class Login extends Component {
               <div>
                 <label>Retype password: </label>
                 <input 
+                    type="password"
                     name="retype_password"
                     placeholder="password here"
                     onChange={e => this.handleInput(e.target)}/>
