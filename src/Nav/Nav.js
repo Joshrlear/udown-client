@@ -65,10 +65,8 @@ constructor(props) {
 
     loginLogout = e => {
         if (this.context.isLoggedIn) {
-            console.log('checking loggedin first:',this.context.isLoggedIn)
             authFunctions.logout(this.props)
             this.context.setIsLoggedIn()
-            console.log('checking loggedin second:',this.context.isLoggedIn)
         }
         this.toggleMenu(e) 
     }

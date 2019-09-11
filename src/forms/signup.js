@@ -95,7 +95,6 @@ export default class Login extends Component {
                 return res.json()
             })
             .then(data => {
-                console.log('--------- data from signup', data)
                 authFunctions.setIdRedirect(this.props, data)
             })
             .catch(error => {
