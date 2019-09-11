@@ -41,13 +41,13 @@ describe('Components', () => {
 
     it(`handleInput should update state.username`, () => {
         const wrapper = shallow(<Login />).instance()
-        wrapper.handleInput({ name: "username", value: "testUser" })
-        expect(wrapper.state.username).toStrictEqual("testUser")
+        wrapper.handleInput({ name: "username", value: "TestUser" })
+        expect(wrapper.state.username).toStrictEqual("testuser")
     })
 
     it(`handleInput should update state.username`, () => {
         const wrapper = shallow(<Signup />).instance()
         wrapper.handleInput({ name: "username", value: "testUser" })
-        expect(wrapper.state.username).toStrictEqual("testUser")
+        expect(wrapper.state.username).toStrictEqual("testuser")
     })
 })

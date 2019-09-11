@@ -45,6 +45,7 @@ exports[`Components renders Login correctly 1`] = `
         name="password"
         onChange={[Function]}
         placeholder="password here"
+        type="password"
       />
     </div>
     <br />
@@ -100,6 +101,7 @@ exports[`Components renders Signup correctly 1`] = `
         name="password"
         onChange={[Function]}
         placeholder="password here"
+        type="password"
       />
     </div>
     <br />
@@ -111,6 +113,7 @@ exports[`Components renders Signup correctly 1`] = `
         name="retype_password"
         onChange={[Function]}
         placeholder="password here"
+        type="password"
       />
     </div>
     <br />

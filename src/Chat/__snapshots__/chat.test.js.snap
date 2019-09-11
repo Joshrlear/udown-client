@@ -10,7 +10,7 @@ exports[`Chat renders Chat correctly 1`] = `
     >
       <button
         className="close_btn"
-        href="javascript:void(0)"
+        href="#"
         id="close_btn"
         onClick={[Function]}
       >
