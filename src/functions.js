@@ -36,7 +36,6 @@ const authFunctions = {
     },
 
     setIdRedirect(props, data) {
-        console.log('>>>>>>> data in functions.js',data)
         localStorage.user_id = data.user_id
         localStorage.username = data.username
         props.history.push(`/profile/${localStorage.user_id}`)

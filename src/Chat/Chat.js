@@ -104,7 +104,7 @@ export default class Chat extends Component {
             <div className={ chatToggle }>
                 <div className="chat_title_container">
                 
-                    <button id="close_btn" className="close_btn" href="javascript:void(0)" onClick={e => this.closeChat(e)}><i className="fas fa-times fa-2x"></i></button>
+                    <button id="close_btn" className="close_btn" href="#" onClick={e => this.closeChat(e)}><i className="fas fa-times fa-2x"></i></button>
                     <h1 className="chat_title">Chat</h1>
                 </div>
                 <ScrollToBottom className="chat_section">
