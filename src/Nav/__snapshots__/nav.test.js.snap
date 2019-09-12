@@ -24,6 +24,8 @@ exports[`Nav renders Nav correctly 1`] = `
   >
     <div
       className="search_btn_container"
+      onKeyPress={[Function]}
+      tabIndex="0"
     >
       <div
         className="search_btn"
