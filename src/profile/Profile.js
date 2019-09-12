@@ -51,7 +51,6 @@ export default class Profile extends Component {
 
       }
       
-      //const id = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1]
       const user_id = localStorage.user_id
       this.context.setIsLoggedIn()
 
