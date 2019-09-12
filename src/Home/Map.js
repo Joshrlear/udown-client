@@ -67,17 +67,24 @@ export default class Map extends Component {
     }
 
 
-    componentDidMount() {
+    componentWillMount() {
         this.runQuerySearch()
     }
 
     runQuerySearch(){
-        const result = Promise.resolve(getLocations(this.state.query))
-        result.then((value) => {
-            this.setState({
-                locations: value.results
-            })
-        })
+        let query
+        if (this.context.query) {
+            if (this.context.query !== this.state.query) {
+                query = this.context.query
+                const result = Promise.resolve(getLocations(query))
+                    result.then((value) => {
+                        this.setState({
+                            query,
+                            locations: value.results
+                        })
+                    })
+            }     
+        }
     }
 
     getLocationPhoto = () => {
@@ -90,31 +97,11 @@ export default class Map extends Component {
     }
 
     componentDidUpdate() {
-
-        // only starts on query search
-        if (this.context.query) {
-            // only start on unique query
-            new Promise((resolve, reject, next) => {
-                if (this.state.query !== this.context.query) {
-                    resolve(
-                        this.setState({
-                            query: this.context.query
-                        })
-                    )
-                }
-            })
-            .then(() => {
-                this.runQuerySearch()
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        }
+        this.runQuerySearch()
     }
 
     
     render() {
-
         const selectedLocation = this.state.selectedLocation
         //keeping photo_ref references for later updates
         /* const photo_reference = selectedLocation && (

@@ -102,7 +102,8 @@ constructor(props) {
         else if (e.key === "Enter") {
             this.context.defineQuery(this.state.query)
             this.queryRef.current.value = ''
-            this.setState({ query: '' })
+            const queryReset = Promise.resolve(this.setState({ query: '' }))
+            queryReset.then(() => this.inputFocusout())
             this.props.history.push('/home')
         }
     }
@@ -128,7 +129,11 @@ constructor(props) {
                     />
                 </div>
                 <div className="search" onClick={e => this.searchQuery(e)}>
-                    <div className={`search_btn_container${search_btn}`}>
+                    <div 
+                        className={`search_btn_container${search_btn}` } 
+                        tabIndex="0"
+                        onKeyPress={e => this.searchQuery(e)}
+                        >
                         <div className={`search_btn${search_btn}`}>
                             <span className=""></span>
                         </div>
